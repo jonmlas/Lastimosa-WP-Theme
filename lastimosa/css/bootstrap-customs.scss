@@ -1,0 +1,137 @@
+.container-fluid {
+	padding:0;
+}
+
+/*Bootstrap 3 no padding*/
+@media only screen and (max-width : 768px) {
+	[class*='col-'] {
+		padding-top:8px;
+		padding-bottom:7px;
+	}
+}
+
+/*Bootstrap 5 columns*/
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.site-main.container {
+    padding: 0;
+}
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+@media (min-width: 768px) {
+	.row-eq-height .row,
+	.row-eq-height .fw-row {
+	  display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -ms-flexbox;
+	  display:         flex;
+	}
+}
+
+/*
+ * Just a simple way to remove the styles in lists
+ * --------------------------------------------------
+ */
+.list-unstyled ul {
+    list-style: none;
+	padding:0;
+}
+
+
+/*
+ * Responsive Floats in Bootstrap 4
+ * --------------------------------------------------
+ */
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.float-none {
+  float: none !important;
+}
+
+@media (min-width: 576px) {
+  .float-sm-left {
+    float: left !important;
+  }
+  .float-sm-right {
+    float: right !important;
+  }
+  .float-sm-none {
+    float: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .float-md-left {
+    float: left !important;
+  }
+  .float-md-right {
+    float: right !important;
+  }
+  .float-md-none {
+    float: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .float-lg-left {
+    float: left !important;
+  }
+  .float-lg-right {
+    float: right !important;
+  }
+  .float-lg-none {
+    float: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .float-xl-left {
+    float: left !important;
+  }
+  .float-xl-right {
+    float: right !important;
+  }
+  .float-xl-none {
+    float: none !important;
+  }
+}
