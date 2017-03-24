@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) die( 'Direct access forbidden.' );
-add_action( 'lastimosa_init', 'lastimosa_constants' );
+
 /**
  * This function defines the theme constants
  */
@@ -50,6 +50,7 @@ class Theme_Includes
 		 * Both frontend and backend
 		 */
 		{
+			self::include_child_first('/helpers-unyson.php');
 			self::include_child_first('/helpers-option.php');
 			self::include_child_first('/helpers-structure.php');
 			self::include_child_first('/helpers.php');
@@ -58,7 +59,6 @@ class Theme_Includes
 			self::include_child_first('/template-tags.php');
 			self::include_child_first('/wp-sass/wp-sass.php');
 			self::include_child_first('/wp_bootstrap_navwalker.php');
-			//self::include_child_first('/includes/option-types/fw-multi-inline/class-fw-option-type-fw-multi-inline.php');
 			self::include_all_child_first('/includes');
 
 			add_action('init', array(__CLASS__, '_action_init'));

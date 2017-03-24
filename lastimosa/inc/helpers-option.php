@@ -1,33 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
-	die( 'Forbidden' );
-}
-
-/**
- * Custom ID
- */
-if(! function_exists('options_custom_id')){
-	function options_custom_id() {
-		$option = array(
-			'label'   => __('CSS ID', 'unyson'),
-			'desc'    => false,
-			'type'    => 'text'
-		);
-		return $option; 
-	}
-}
-
-/**
- * Get the ID
- */
-if(! function_exists('lastimosa_options_get_id')){
-	function lastimosa_options_get_id($shortcode,$id,$custom_id) {
-		if (!empty($custom_id)) : 
-			return $custom_id;
-		else :
-			return substr($shortcode, 0, 3).'-'.substr($id, 0, 10);
-		endif;
-	}
-}
+<?php if ( ! defined( 'ABSPATH' ) ) die( 'Direct access forbidden.' );
 
 /**
  * Text Transformation
@@ -62,7 +33,7 @@ if(! function_exists('options_bg_atts')){
 			'desc'          => false,
 			'inner-options' => array(
 				'image'    => array(
-					'label'   => __( $name.' Background', 'unyson' ),
+					'label'   => __( $name.' Background', 'lastimosa' ),
 					'type'    => 'background-image',
 					'value'   => 'none',
 					'choices' => array(
@@ -123,66 +94,66 @@ if(! function_exists('options_bg_atts')){
 					),
 				),
 				'color'              => array(
-					'label' => __( '', 'unyson' ),
-					'desc' => __( 'background color', 'unyson' ),
+					'label' => __( '', 'lastimosa' ),
+					'desc' => __( 'background color', 'lastimosa' ),
 					'type'  => 'color-picker',
 					'value' => '',
 				),
 				'position' => array(
-					'label' => __( '', 'unyson' ),
-					'desc'  => __( 'image position', 'unyson' ),
+					'label' => __( '', 'lastimosa' ),
+					'desc'  => __( 'image position', 'lastimosa' ),
 					'type'  => 'select',
 					'value' => 'top center',
 					'choices' => array(
-						'top left' => __( 'Top Left', 'unyson' ),
-						'top center' => __( 'Top Center', 'unyson' ),
-						'top right' => __( 'Top Right', 'unyson' ),
-						'center left' => __( 'Center Left', 'unyson' ),
-						'center center' => __( 'Center Center', 'unyson' ),
-						'center right' => __( 'Center Right', 'unyson' ),
-						'bottom left' => __( 'Bottom Left', 'unyson' ),
-						'bottom center' => __( 'Bottom Center', 'unyson' ),
-						'bottom right' => __( 'Bottom Right', 'unyson' ),
+						'top left' => __( 'Top Left', 'lastimosa' ),
+						'top center' => __( 'Top Center', 'lastimosa' ),
+						'top right' => __( 'Top Right', 'lastimosa' ),
+						'center left' => __( 'Center Left', 'lastimosa' ),
+						'center center' => __( 'Center Center', 'lastimosa' ),
+						'center right' => __( 'Center Right', 'lastimosa' ),
+						'bottom left' => __( 'Bottom Left', 'lastimosa' ),
+						'bottom center' => __( 'Bottom Center', 'lastimosa' ),
+						'bottom right' => __( 'Bottom Right', 'lastimosa' ),
 					)
 				),
 				'repeat' => array(
-					'label' => __( '', 'unyson' ),
-					'desc'  => __( 'image repeat', 'unyson' ),
+					'label' => __( '', 'lastimosa' ),
+					'desc'  => __( 'image repeat', 'lastimosa' ),
 					'type'  => 'select',
 					/*'attr'  => array( 'class' => '' ),*/
 					'value' => 'repeat',
 					'choices' => array(
-						'no-repeat' => __( 'Display Once (No-Repeat)', 'unyson' ),
-						'repeat' => __( 'Full Tile (Repeat XY Axis)', 'unyson' ),
-						'repeat-x' => __( 'Horizontal Tile (Repeat X Axis)', 'unyson' ),
-						'repeat-y' => __( 'Vertical Tile (Repeat Y Axis)', 'unyson' ),
+						'no-repeat' => __( 'Display Once (No-Repeat)', 'lastimosa' ),
+						'repeat' => __( 'Full Tile (Repeat XY Axis)', 'lastimosa' ),
+						'repeat-x' => __( 'Horizontal Tile (Repeat X Axis)', 'lastimosa' ),
+						'repeat-y' => __( 'Vertical Tile (Repeat Y Axis)', 'lastimosa' ),
 					)
 				),
 				'attachment' => array(
-					'label' => __( '', 'unyson' ),
-					'desc'  => __( 'image attachment', 'unyson' ),
+					'label' => __( '', 'lastimosa' ),
+					'desc'  => __( 'image attachment', 'lastimosa' ),
 					'type'  => 'select',
 					'value' => 'scroll',
 					'choices' => array(
-						'scroll' => __( 'Scroll', 'unyson' ),
-						'fixed' => __( 'Fixed', 'unyson' ),
+						'scroll' => __( 'Scroll', 'lastimosa' ),
+						'fixed' => __( 'Fixed', 'lastimosa' ),
 					),
 					'help'	=> __( '<p><strong>scroll</strong> - The background scrolls along with the page. This is default</p>
 									<p><strong>fixed</strong> - The background is fixed with regard to the viewport.</p>
-									', 'unyson'),
+									', 'lastimosa'),
 				),
 				'size' => array(
-					'label' => __( '', 'unyson' ),
-					'desc'  => __( 'image size', 'unyson' ),
+					'label' => __( '', 'lastimosa' ),
+					'desc'  => __( 'image size', 'lastimosa' ),
 					'help'  => __( '<strong>auto</strong> -	Default value. The background-image contains its width and height.<br><br>
 						<strong>cover</strong> - Scale the background image to be as large as possible so that the background area is completely covered by the background image. Some parts of the background image may not be in view within the background positioning area.<br><br>
-						<strong>contain</strong> - Scale the image to the largest size such that both its width and its height can fit inside the content area', 'unyson' ),
+						<strong>contain</strong> - Scale the image to the largest size such that both its width and its height can fit inside the content area', 'lastimosa' ),
 					'type'  => 'select',
 					'value' => 'auto',
 					'choices' => array(
-						'auto' => __( 'Auto', 'unyson' ),
-						'cover' => __( 'Cover', 'unyson' ),
-						'contain' => __( 'Contain', 'unyson' ),
+						'auto' => __( 'Auto', 'lastimosa' ),
+						'cover' => __( 'Cover', 'lastimosa' ),
+						'contain' => __( 'Contain', 'lastimosa' ),
 					)
 				),
 			),	
@@ -204,98 +175,98 @@ if(! function_exists('options_link')){
 				'desc'         => false,
 				'picker'       => array(
 					'selected' => array(
-						'label'   => __( 'Link', 'unyson' ),
+						'label'   => __( 'Link', 'lastimosa' ),
 						'type'    => 'select',
 						'choices' => array(
-							'manual' => __( 'Manual', 'unyson' ),
-							'page' 	=> __( 'Page', 'unyson' ),
-							'post' 	=> __( 'Blog Post', 'unyson' ),
-							'media' => __( 'Media', 'unyson' ),
+							'manual' => __( 'Manual', 'lastimosa' ),
+							'page' 	=> __( 'Page', 'lastimosa' ),
+							'post' 	=> __( 'Blog Post', 'lastimosa' ),
+							'media' => __( 'Media', 'lastimosa' ),
 						),
 					)
 				),
 				'choices'      => array(
 					'manual'  => array(
 						'link'   => array(
-							'label' => __( 'URL', 'unyson' ),
+							'label' => __( 'URL', 'lastimosa' ),
 							'type'  => 'text',
 							'value' => '',
-							'desc'  => __( 'Enter the link. Leave Manual Link empty to disable.', 'unyson' )
+							'desc'  => __( 'Enter the link. Leave Manual Link empty to disable.', 'lastimosa' )
 						),
 						'target'      => array(
-							'label'   => __( 'Target', 'unyson' ),
+							'label'   => __( 'Target', 'lastimosa' ),
 							'type'    => 'select',
 							'value'   => '_self',
-							'desc'    => __( 'How the link will be opened.','unyson' ),
+							'desc'    => __( 'How the link will be opened.','lastimosa' ),
 							'choices' => array(
-								'_self'  	=> __( 'Open link in same window', 'unyson' ),
-								'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-								'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-								'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+								'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+								'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+								'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+								'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 							),
 						),
 					),
 					'page' => array(
 						'link'      => array(
 							'type'  => 'multi-select',
-							'label' => __( 'Page', 'unyson' ),
-							'desc'  => __( 'Type the title of the page to search', 'unyson' ),
+							'label' => __( 'Page', 'lastimosa' ),
+							'desc'  => __( 'Type the title of the page to search', 'lastimosa' ),
 							'population' => 'posts',
 							'source'=> 'page',
 							'limit' => 1,
 						),
 						'target'      => array(
-							'label'   => __( 'Target', 'unyson' ),
+							'label'   => __( 'Target', 'lastimosa' ),
 							'type'    => 'select',
 							'value'   => '_self',
-							'desc'    => __( 'How the link will be opened.','unyson' ),
+							'desc'    => __( 'How the link will be opened.','lastimosa' ),
 							'choices' => array(
-								'_self'  	=> __( 'Open link in same window', 'unyson' ),
-								'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-								'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-								'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+								'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+								'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+								'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+								'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 							),
 						),
 					),
 					'post' => array(
 						'link'      => array(
 							'type'       => 'multi-select',
-							'label'      => __( 'Post', 'unyson' ),
-							'desc'  => __( 'Type the title of the post to search', 'unyson' ),
+							'label'      => __( 'Post', 'lastimosa' ),
+							'desc'  => __( 'Type the title of the post to search', 'lastimosa' ),
 							'population' => 'posts',
 							'source'     => 'post',
 							'limit' => 1,
 						),
 						'target'      => array(
-							'label'   => __( 'Target', 'unyson' ),
+							'label'   => __( 'Target', 'lastimosa' ),
 							'type'    => 'select',
 							'value'   => '_self',
-							'desc'    => __( 'How the link will be opened.','unyson' ),
+							'desc'    => __( 'How the link will be opened.','lastimosa' ),
 							'choices' => array(
-								'_self'  	=> __( 'Open link in same window', 'unyson' ),
-								'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-								'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-								'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+								'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+								'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+								'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+								'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 							),
 						),
 					),
 					'media' => array(
 						'link'                    => array(
-							'label'       => __( '', 'unyson' ),
-							'desc'        => __( 'Upload your media file or select from Media Library.', 'unyson' ),
+							'label'       => __( '', 'lastimosa' ),
+							'desc'        => __( 'Upload your media file or select from Media Library.', 'lastimosa' ),
 							'type'        => 'upload',
 							'images_only' => false,
 						),
 						'target'      => array(
-							'label'   => __( 'Target', 'unyson' ),
+							'label'   => __( 'Target', 'lastimosa' ),
 							'type'    => 'select',
 							'value'   => '_self',
-							'desc'    => __( 'How the link will be opened.','unyson' ),
+							'desc'    => __( 'How the link will be opened.','lastimosa' ),
 							'choices' => array(
-								'_self'  	=> __( 'Open link in same window', 'unyson' ),
-								'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-								'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-								'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+								'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+								'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+								'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+								'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 							),
 						),
 					),
@@ -317,98 +288,98 @@ if(! function_exists('options_link_atts')){
 			'desc'         => false,
 			'picker'       => array(
 				'selected' => array(
-					'label'   => __( 'Link', 'unyson' ),
+					'label'   => __( 'Link', 'lastimosa' ),
 					'type'    => 'select',
 					'choices' => array(
-						'manual' => __( 'Manual', 'unyson' ),
-						'page' 	=> __( 'Page', 'unyson' ),
-						'post' 	=> __( 'Blog Post', 'unyson' ),
-						'media' => __( 'Media', 'unyson' ),
+						'manual' => __( 'Manual', 'lastimosa' ),
+						'page' 	=> __( 'Page', 'lastimosa' ),
+						'post' 	=> __( 'Blog Post', 'lastimosa' ),
+						'media' => __( 'Media', 'lastimosa' ),
 					),
 				)
 			),
 			'choices'      => array(
 				'manual'  => array(
 					'link'   => array(
-						'label' => __( 'URL', 'unyson' ),
+						'label' => __( 'URL', 'lastimosa' ),
 						'type'  => 'text',
 						'value' => '',
-						'desc'  => __( 'Enter the link. Leave Manual Link empty to disable.', 'unyson' )
+						'desc'  => __( 'Enter the link. Leave Manual Link empty to disable.', 'lastimosa' )
 					),
 					'target'      => array(
-						'label'   => __( 'Target', 'unyson' ),
+						'label'   => __( 'Target', 'lastimosa' ),
 						'type'    => 'select',
 						'value'   => '_self',
-						'desc'    => __( 'How the link will be opened.','unyson' ),
+						'desc'    => __( 'How the link will be opened.','lastimosa' ),
 						'choices' => array(
-							'_self'  	=> __( 'Open link in same window', 'unyson' ),
-							'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-							'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-							'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+							'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+							'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+							'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+							'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 						),
 					),
 				),
 				'page' => array(
 					'link'      => array(
 						'type'  => 'multi-select',
-						'label' => __( 'Page', 'unyson' ),
-						'desc'  => __( 'Type the title of the page to search', 'unyson' ),
+						'label' => __( 'Page', 'lastimosa' ),
+						'desc'  => __( 'Type the title of the page to search', 'lastimosa' ),
 						'population' => 'posts',
 						'source'=> 'page',
 						'limit' => 1,
 					),
 					'target'      => array(
-						'label'   => __( 'Target', 'unyson' ),
+						'label'   => __( 'Target', 'lastimosa' ),
 						'type'    => 'select',
 						'value'   => '_self',
-						'desc'    => __( 'How the link will be opened.','unyson' ),
+						'desc'    => __( 'How the link will be opened.','lastimosa' ),
 						'choices' => array(
-							'_self'  	=> __( 'Open link in same window', 'unyson' ),
-							'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-							'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-							'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+							'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+							'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+							'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+							'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 						),
 					),
 				),
 				'post' => array(
 					'link'      => array(
 						'type'       => 'multi-select',
-						'label'      => __( 'Post', 'unyson' ),
-						'desc'  => __( 'Type the title of the post to search', 'unyson' ),
+						'label'      => __( 'Post', 'lastimosa' ),
+						'desc'  => __( 'Type the title of the post to search', 'lastimosa' ),
 						'population' => 'posts',
 						'source'     => 'post',
 						'limit' => 1,
 					),
 					'target'      => array(
-						'label'   => __( 'Target', 'unyson' ),
+						'label'   => __( 'Target', 'lastimosa' ),
 						'type'    => 'select',
 						'value'   => '_self',
-						'desc'    => __( 'How the link will be opened.','unyson' ),
+						'desc'    => __( 'How the link will be opened.','lastimosa' ),
 						'choices' => array(
-							'_self'  	=> __( 'Open link in same window', 'unyson' ),
-							'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-							'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-							'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+							'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+							'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+							'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+							'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 						),
 					),
 				),
 				'media' => array(
 					'link'                    => array(
-						'label'       => __( '', 'unyson' ),
-						'desc'        => __( 'Upload your media file or select from Media Library.', 'unyson' ),
+						'label'       => __( '', 'lastimosa' ),
+						'desc'        => __( 'Upload your media file or select from Media Library.', 'lastimosa' ),
 						'type'        => 'upload',
 						'images_only' => false,
 					),
 					'target'      => array(
-						'label'   => __( 'Target', 'unyson' ),
+						'label'   => __( 'Target', 'lastimosa' ),
 						'type'    => 'select',
 						'value'   => '_self',
-						'desc'    => __( 'How the link will be opened.','unyson' ),
+						'desc'    => __( 'How the link will be opened.','lastimosa' ),
 						'choices' => array(
-							'_self'  	=> __( 'Open link in same window', 'unyson' ),
-							'_blank'  	=> __( 'Open link in new window', 'unyson' ),
-							'lightbox' 	=> __( 'Open link inside a lightbox', 'unyson' ),
-							'modal' 	=> __( 'Open link inside bootstrap modal', 'unyson' ),
+							'_self'  	=> __( 'Open link in same window', 'lastimosa' ),
+							'_blank'  	=> __( 'Open link in new window', 'lastimosa' ),
+							'lightbox' 	=> __( 'Open link inside a lightbox', 'lastimosa' ),
+							'modal' 	=> __( 'Open link inside bootstrap modal', 'lastimosa' ),
 						),
 					),
 				),
@@ -449,99 +420,6 @@ if(! function_exists('get_options_link')){
 	}
 }
 
-/**
- * Margin Options
- */
-if(!function_exists('options_box_property')) {
-	function options_box_property($name,$option,$value) {
-		if($option == 'Top'){
-			$label = $name;
-		}else{
-			$label = '';
-		}		
-		$option = array(
-			'type'         => 'multi-picker',
-			'label'        => false,
-			'desc'         => false,
-			'picker'       => array(
-				'select' => array(
-					'label'   => __( $label, 'unyson' ),
-					'type'    => 'select',
-					'value'   => $value,
-					'choices' => array(
-						'0'  	=> __( '(0px) none', 'unyson' ),
-						'15px' 	=> __( '(15px) extra small', 'unyson' ),
-						'30px'	=> __( '(30px) small', 'unyson' ),
-						'45px' 	=> __( '(45px) small-medium ', 'unyson' ),
-						'60px' 	=> __( '(60px) medium ', 'unyson' ),
-						'75px' 	=> __( '(75px) medium-large', 'unyson' ),
-						'90px' 	=> __( '(90px) large', 'unyson' ),
-						'105px' => __( '(105px) extra large ', 'unyson' ),
-						'120px' => __( '(120px) jumbo ', 'unyson' ),
-						'custom'=> __( 'custom', 'unyson' )
-					),
-					'desc'    => __( $option.' '.$name,'unyson' ),
-				)
-			),
-			'choices'      => array(
-				'custom'  => array(
-					'size'  => array(
-						'type'  => 'text',
-						'label' => __( '', 'unyson' ),
-						'value'   => '60px',
-						'desc'  => __( 'Custom '.$option.' '.$name,'unyson' )
-					),
-				),
-				
-			),
-			'show_borders' => false,
-		);
-		return $option;
-	}
-}
-
-if(! function_exists('options_box_properties')){
-	function options_box_properties($name,$top='0',$bottom='0',$left='0',$right='0') {
-		$options = array(
-			'label'         => false,
-			'type'          => 'multi',
-			'value'         => array(),
-			'desc'          => false,
-			'inner-options' => array(
-				'top'       => options_box_property($name,'Top',$top),
-				'bottom'    => options_box_property($name,'Bottom',$top),
-				'left'      => options_box_property($name,'Left',$left),
-				'right'     => options_box_property($name,'Right',$right),
-			),
-		);
-		return $options; 
-	}
-}
-
-
-/**
- * Class
- */
-if(! function_exists('options_class')){
-	function options_class() {
-		$option = array(
-			'label'   => __('CSS Class', 'unyson'),
-			'desc'    => false,
-			'type'    => 'text'
-		);
-		return $option; 
-	}
-}
-
-if(! function_exists('get_css_box_measurements')){
-	function get_css_box_measurements($side_size) {
-		if($side_size['select'] == 'custom'):
-			return 'unquote("'.$side_size['custom']['size'].'")';
-		else:
-			return $side_size['select'];
-		endif;
-	}
-}
 
 if(! function_exists('font_style')){
 	function font_style($style) {
@@ -612,8 +490,8 @@ if ( ! function_exists( 'lastimosa_get_link' ) ) {
 	}
 }
 
-if(! function_exists('shortcode_css')) {
-	function shortcode_css($atts) {
+if(! function_exists('lastimosa_options_get_shortcode_css')) {
+	function lastimosa_options_get_shortcode_css($atts) {
 		global $post;
 		$shortcode_atts = array();
 		$atts['id'] = substr($atts['id'], 0, 10);
@@ -621,50 +499,48 @@ if(! function_exists('shortcode_css')) {
 
 		$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
 		
-		$margin_top 	= ' '.get_css_box_measurements($atts['margin']['top']);
-		$margin_bottom 	= ' '.get_css_box_measurements($atts['margin']['bottom']);
-		$margin_left 	= ' '.get_css_box_measurements($atts['margin']['left']);
-		$margin_right 	= ' '.get_css_box_measurements($atts['margin']['right']);
-		$margin 		= 'margin:'.$margin_top.$margin_right.$margin_bottom.$margin_left.'; ';
-		$shortcode_atts[] = $margin;
+		$shortcode_atts[] = 'margin:unquote("'.join( ' ', $atts['margin'] ).'"); ';
+		$shortcode_atts[] = 'padding:unquote("'.join( ' ', $atts['padding'] ).'"); ';	
 		
-		$padding_top 	= ' '.get_css_box_measurements($atts['padding']['top']);
-		$padding_bottom = ' '.get_css_box_measurements($atts['padding']['bottom']);
-		$padding_left 	= ' '.get_css_box_measurements($atts['padding']['left']);
-		$padding_right 	= ' '.get_css_box_measurements($atts['padding']['right']);
-		$padding 		= 'padding:'.$padding_top.$padding_right.$padding_bottom.$padding_left.'; ';
-		$shortcode_atts[] = $padding;		
-		
-		// Check if there is a custom background.
-		if (is_array($atts['background']['image'])) { // Check if a custom background has been set
-			$bg_image 		= $atts['background']['image']['data']['css']['background-image'];
-			$bg_color		= $atts['background']['color'];
-			
-			if ( ($bg_image != 'none') || (!empty($bg_color)) ) {
-				$bg_position 	= $atts['background']['position'].' ';
-				$bg_repeat		= $atts['background']['repeat'];
-				if($bg_image == 'none' && !empty($bg_color)) {
-					$background 	= 'background:' . $bg_color . ';';	
-				}elseif($bg_image != 'none' && empty($bg_color)) {
-					$background 	= 'background:' . $bg_image . ' ' . $bg_position . $bg_repeat .';';	
+		if($atts['shortcode'] == 'section') {
+			if(in_array($atts['style']['selected'], array('default','parallax'))) {
+				// We'll have to move the section's background array.
+				$atts['background'] = $atts['style'][$atts['style']['selected']]['background'];
+				unset($atts['style']);
+			}
+		}
+		if(isset($atts['background'])) {
+			// Check if there is a custom background.
+			if (is_array($atts['background']['image'])) { // Check if a custom background has been set
+				$bg_image 		= $atts['background']['image']['data']['css']['background-image'];
+				$bg_color		= $atts['background']['color'];
+				
+				if ( ($bg_image != 'none') || (!empty($bg_color)) ) {
+					$bg_position 	= $atts['background']['position'].' ';
+					$bg_repeat		= $atts['background']['repeat'];
+					if($bg_image == 'none' && !empty($bg_color)) {
+						$background 	= 'background:' . $bg_color . ';';	
+					}elseif($bg_image != 'none' && empty($bg_color)) {
+						$background 	= 'background:' . $bg_image . ' ' . $bg_position . $bg_repeat .';';	
+					}else{
+						$background 	= 'background:' . $bg_image . ' ' . $bg_color . ' ' .  $bg_position . $bg_repeat .';';
+					}
+					if ( ($bg_image != 'none') && $atts['background']['size'] != 'auto' ) {
+						$bg_size 		= 'background-size:' . $atts['background']['size'] . ';';
+					}else{
+						$bg_size 		= '';
+					}
 				}else{
-					$background 	= 'background:' . $bg_image . ' ' . $bg_color . ' ' .  $bg_position . $bg_repeat .';';
-				}
-				if ( ($bg_image != 'none') && $atts['background']['size'] != 'auto' ) {
-					$bg_size 		= 'background-size:' . $atts['background']['size'] . ';';
-				}else{
+					$background 	= '';
 					$bg_size 		= '';
 				}
 			}else{
 				$background 	= '';
 				$bg_size 		= '';
 			}
-		}else{
-			$background 	= '';
-			$bg_size 		= '';
-		}
 		$shortcode_atts[] = $background;
 		$shortcode_atts[] = $bg_size;
+		}
 		
 		if($atts['shortcode'] == 'section' && $atts['height']['select'] == 'custom') {
 			$min_height		= 'min-height:'.$atts['height']['custom']['height'] . ';';
@@ -735,23 +611,23 @@ if(! function_exists('options_image')) {
 		return array(
 			'src'     => array(
 				'type'  => 'upload',
-				'label' => __( 'Choose Image', 'unyson' ),
-				'desc'  => __( 'Either upload a new, or choose an existing image from your media library', 'unyson' )
+				'label' => __( 'Choose Image', 'lastimosa' ),
+				'desc'  => __( 'Either upload a new, or choose an existing image from your media library', 'lastimosa' )
 			),
 			'width'  => array(
 				'type'  => 'text',
-				'label' => __( 'Width', 'unyson' ),
-				'desc'  => __( 'Set image width in pixels. E.g.: 100', 'unyson' ),
+				'label' => __( 'Width', 'lastimosa' ),
+				'desc'  => __( 'Set image width in pixels. E.g.: 100', 'lastimosa' ),
 				'value' => ''
 			),
 			'height' => array(
 				'type'  => 'text',
-				'label' => __( 'Height', 'unyson' ),
-				'desc'  => __( 'Set image height in pixels. E.g.: 50', 'unyson' ),
+				'label' => __( 'Height', 'lastimosa' ),
+				'desc'  => __( 'Set image height in pixels. E.g.: 50', 'lastimosa' ),
 				'value' => ''
 			),
 			'alignment'   => array(
-				'label'   => __( 'Alignment', 'unyson' ),
+				'label'   => __( 'Alignment', 'lastimosa' ),
 				'type'    => 'select',
 				'value'   => 'alignleft',
 				'choices' => array(
@@ -767,33 +643,33 @@ if(! function_exists('options_image')) {
 				'desc'         => false,
 				'picker'       => array(
 					'image_style' => array(
-						'label'   => __( 'Image Style', 'unyson' ),
+						'label'   => __( 'Image Style', 'lastimosa' ),
 						'type'    => 'select',
 						'choices' => array(
-							''  => __( 'No Styling', 'unyson' ),
-							'border' => __( 'Border', 'unyson' ),
-							'round' => __( 'Rounded Corners', 'unyson' ),
-							'circle' => __( 'Circle (must have equal width & height)', 'unyson' ),
-							'round-border' => __( 'Rounded Corners + Border', 'unyson' ),
-							'circle-border' => __( 'Circle + Border', 'unyson' ),
+							''  => __( 'No Styling', 'lastimosa' ),
+							'border' => __( 'Border', 'lastimosa' ),
+							'round' => __( 'Rounded Corners', 'lastimosa' ),
+							'circle' => __( 'Circle (must have equal width & height)', 'lastimosa' ),
+							'round-border' => __( 'Rounded Corners + Border', 'lastimosa' ),
+							'circle-border' => __( 'Circle + Border', 'lastimosa' ),
 						),
 						'value'	 => '',
-						'desc'    => __( 'Choose a style', 'unyson' ),
+						'desc'    => __( 'Choose a style', 'lastimosa' ),
 					)
 				),
 				'choices'      => array(
 					/*'border'  => array(
 						'price'  => array(
 							'type'  => 'text',
-							'label' => __( 'Price', 'unyson' ),
+							'label' => __( 'Price', 'lastimosa' ),
 						),
 						'memory' => array(
 							'type'    => 'select',
-							'label'   => __( 'Memory', 'unyson' ),
+							'label'   => __( 'Memory', 'lastimosa' ),
 							'choices' => array(
-								'16' => __( '16Gb', 'unyson' ),
-								'32' => __( '32Gb', 'unyson' ),
-								'64' => __( '64Gb', 'unyson' ),
+								'16' => __( '16Gb', 'lastimosa' ),
+								'32' => __( '32Gb', 'lastimosa' ),
+								'64' => __( '64Gb', 'lastimosa' ),
 							)
 						)
 					),*/
@@ -892,9 +768,9 @@ if(! function_exists('options_heading')) :
  */
 function options_heading($text = 'Heading') {
 	$theme_colors = c_get_option('theme_colors');
-	$color['text-default'] = __( 'Default' , 'unyson');
+	$color['text-default'] = __( 'Default' , 'lastimosa');
 	foreach($theme_colors as $theme_color) {
-		$color['text-'.sanitize_title_with_dashes($theme_color['text'])] = __( $theme_color['text'] , 'unyson');
+		$color['text-'.sanitize_title_with_dashes($theme_color['text'])] = __( $theme_color['text'] , 'lastimosa');
 	}
 	return array(
 		'text'    => array(
@@ -917,21 +793,21 @@ function options_heading($text = 'Heading') {
 			)
 		),
 		'color'                    => array(
-			'label'   => __( 'Color', 'unyson' ),
+			'label'   => __( 'Color', 'lastimosa' ),
 			'type'    => 'select',
 			'value'   => '',
 			'choices' => $color,
 		),
 		'formatting'                => array(
-			'label'   => __( 'Formatting', 'unyson' ),
+			'label'   => __( 'Formatting', 'lastimosa' ),
 			'type'    => 'checkboxes',
 			'value'   => array(
 				'bold' => false,
 				'italic' => false,
 			),
 			'choices' => array(
-				'bold' => __( 'Bold', 'unyson' ),
-				'italic' => __( 'Italic', 'unyson' ),
+				'bold' => __( 'Bold', 'lastimosa' ),
+				'italic' => __( 'Italic', 'lastimosa' ),
 			),
 		),
 		'alignment' => array(
@@ -951,62 +827,65 @@ function options_heading($text = 'Heading') {
 }
 endif;
 
+
+if(! function_exists('lastimosa_options_get_heading')) :
 /**
- *  Get header from option
- */
-if(! function_exists('options_get_heading')) {
-	function options_get_heading($atts,$class) {
-		$atts_class = array();
-		$atts_class[] = $class;
-		if($atts['color'] != 'text-default') {
-			$atts_class[] = $atts['color'];
-		}
-		$atts_class[] = $atts['alignment'];
-		$atts_class[] = $atts['transformation'];	
-		
-		$link = get_options_link($atts,NULL);
-		
-		if(!empty($atts['text'])): 
-			if ( empty( $link['url'] ) ) {
-				if(!empty($atts['formatting'])) {
-					if($atts['formatting']['bold'] && $atts['formatting']['italic']) { 			// If bold and italics are both enabled
-						return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-								fw_html_tag('strong',array(),
-									fw_html_tag('em',array(), $atts['text'])));
-					}elseif($atts['formatting']['bold']) {													// If only bold is enabled.
-						return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-								fw_html_tag('strong',array(), $atts['text']));
-					}elseif($atts['formatting']['italic']) {													// If only italic is enabled.
-						return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-								fw_html_tag('em',array(), $atts['text']));
-					}
-				}else{
-					return fw_html_tag($atts['tag'], 
-						array( 'class' => join( ' ', $atts_class )), 
-						$atts['text']);
-				}
-			} else {
-				if(!empty($atts['formatting'])) {
-					if($atts['formatting']['bold'] && $atts['formatting']['italic']) { 			// If bold and italics are both enabled
-						return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-								fw_html_tag('strong',array(),
-									fw_html_tag('em',array(), $atts['text'])));
-					}elseif($atts['formatting']['bold']) {													// If only bold is enabled.
-						return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-								fw_html_tag('strong',array(), $atts['text']));
-					}elseif($atts['formatting']['italic']) {													// If only italic is enabled.
-						return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-								fw_html_tag('em',array(), $atts['text']));
-					}
-				}else{
-					return fw_html_tag($atts['tag'], array( 'class' => join( ' ', $atts_class )), 
-						fw_html_tag('a', $link['atts'],
-							$atts['text']));
-				}
-			}
-        endif; 
+*  Get header from option
+*/
+function lastimosa_options_get_heading($atts,$handle) {
+	$atts_class = array();
+	$atts_class[] = $handle;
+	if($atts[$handle]['color'] != 'text-default') {
+		$atts_class[] = $atts[$handle]['color'];
 	}
+	$atts_class[] = $atts[$handle]['alignment'];
+	if(!empty($atts[$handle]['transformation'])) {
+		$atts_class[] = $atts[$handle]['transformation'];	
+	}
+	$link = get_options_link($atts[$handle],NULL);
+	
+	if(!empty($atts[$handle]['text'])): 
+		if ( empty( $link['url'] ) ) {
+			if(!empty($atts[$handle]['formatting'])) {
+				if(isset($atts[$handle]['formatting']['bold']) && isset($atts[$handle]['formatting']['italic'])) { 			// If bold and italics are both enabled
+					return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+							fw_html_tag('strong',array(),
+								fw_html_tag('em',array(), $atts[$handle]['text'])));
+				}elseif($atts[$handle]['formatting']['bold']) {													// If only bold is enabled.
+					return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+							fw_html_tag('strong',array(), $atts[$handle]['text']));
+				}elseif($atts[$handle]['formatting']['italic']) {													// If only italic is enabled.
+					return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+							fw_html_tag('em',array(), $atts[$handle]['text']));
+				}
+			}else{
+				return fw_html_tag($atts[$handle]['tag'], 
+					array( 'class' => join( ' ', $atts_class )), 
+					$atts[$handle]['text']);
+			}
+		} else {
+			if(!empty($atts[$handle]['formatting'])) {
+				if(isset($atts[$handle]['formatting']['bold']) && isset($atts[$handle]['formatting']['italic'])) { 		// If bold and italics are both enabled
+					return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+							fw_html_tag('strong',array(),
+								fw_html_tag('em',array(), $atts[$handle]['text'])));
+				}elseif($atts[$handle]['formatting']['bold']) {													// If only bold is enabled.
+					return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+							fw_html_tag('strong',array(), $atts[$handle]['text']));
+				}elseif($atts[$handle]['formatting']['italic']) {													// If only italic is enabled.
+					return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+							fw_html_tag('em',array(), $atts[$handle]['text']));
+				}
+			}else{
+				return fw_html_tag($atts[$handle]['tag'], array( 'class' => join( ' ', $atts_class )), 
+					fw_html_tag('a', $link[$handle]['atts'],
+						$atts[$handle]['text']));
+			}
+		}
+	endif; 
 }
+endif;
+
 
 /**
  *  Text option attributes
@@ -1014,9 +893,9 @@ if(! function_exists('options_get_heading')) {
 if(! function_exists('options_text')) {
 	function options_text() {
 		$theme_colors = c_get_option('theme_colors');
-		$color[''] = __( 'Default' , 'unyson');
+		$color[''] = __( 'Default' , 'lastimosa');
 		foreach($theme_colors as $theme_color) {
-			$color['text-'.sanitize_title_with_dashes($theme_color['text'])] = __( $theme_color['text'] , 'unyson');
+			$color['text-'.sanitize_title_with_dashes($theme_color['text'])] = __( $theme_color['text'] , 'lastimosa');
 		}
 		return array(
 			'content' => array(
@@ -1033,7 +912,7 @@ if(! function_exists('options_text')) {
 				'value' => ''
 			),
 			'color'	=> array(
-				'label'   => __( 'Color', 'unyson' ),
+				'label'   => __( 'Color', 'lastimosa' ),
 				'type'    => 'select',
 				'value'   => '',
 				'choices' => $color,
@@ -1232,61 +1111,76 @@ function lastimosa_options_animate() {
 			),
 		),
 		'duration'                => array(
-			'label' => __( 'Duration', 'unyson' ),
+			'label' => __( 'Duration', 'lastimosa' ),
 			'type'  => 'short-text',
 			'value' => '',
-			'desc'  => __( 'Change the animation duration. ',	'unyson' ),
+			'desc'  => __( 'Change the animation duration. ',	'lastimosa' ),
 			'help'  => sprintf( "%s<br />%s",
-				__( 'E.g.: <b>2s</b> for 2 seconds.', 'unyson' ),
-				__( 'Leave blank to disable.', 'unyson' )
+				__( 'E.g.: <b>2s</b> for 2 seconds.', 'lastimosa' ),
+				__( 'Leave blank to disable.', 'lastimosa' )
 			),
 		),
 		'delay'                => array(
-			'label' => __( 'Delay', 'unyson' ),
+			'label' => __( 'Delay', 'lastimosa' ),
 			'type'  => 'short-text',
 			'value' => '',
-			'desc'  => __( 'The delay before the animation starts. ',	'unyson' ),
+			'desc'  => __( 'The delay before the animation starts. ',	'lastimosa' ),
 			'help'  => sprintf( "%s<br />%s",
-				__( 'E.g.: <b>5s</b> for 5 seconds.', 'unyson' ),
-				__( 'Leave blank to disable.', 'unyson' )
+				__( 'E.g.: <b>5s</b> for 5 seconds.', 'lastimosa' ),
+				__( 'Leave blank to disable.', 'lastimosa' )
 			),
 		),
 		'offset'                => array(
-			'label' => __( 'Offset', 'unyson' ),
+			'label' => __( 'Offset', 'lastimosa' ),
 			'type'  => 'short-text',
 			'value' => '',
-			'desc'  => __( 'The distance to start the animation (related to the browser bottom).',	'unyson' ),
+			'desc'  => __( 'The distance to start the animation (related to the browser bottom).',	'lastimosa' ),
 			'help'  => sprintf( "%s<br />%s",
-				__( 'E.g.: <b>10</b> for 10px.', 'unyson' ),
-				__( 'Leave blank to disable.', 'unyson' )
+				__( 'E.g.: <b>10</b> for 10px.', 'lastimosa' ),
+				__( 'Leave blank to disable.', 'lastimosa' )
 			),
 		),
 		'iteration' => array(
-			'label' => __( 'Iteration', 'unyson' ),
+			'label' => __( 'Iteration', 'lastimosa' ),
 			'type'  => 'short-text',
 			'value' => '',
-			'desc'  => __( 'Number of times the animation is repeated.','unyson' ),
+			'desc'  => __( 'Number of times the animation is repeated.','lastimosa' ),
 			'help'  => sprintf( "%s<br />%s<br />%s",
-				__( 'E.g.: <b>10</b> for 10 times.', 'unyson' ),
-				__( 'Type <b>infinite</b> for infinite loop.', 'unyson' ),
-				__( 'Leave blank to disable.', 'unyson' )
+				__( 'E.g.: <b>10</b> for 10 times.', 'lastimosa' ),
+				__( 'Type <b>infinite</b> for infinite loop.', 'lastimosa' ),
+				__( 'Leave blank to disable.', 'lastimosa' )
 			),
 		),
 	);
 }
 endif;
 
+
 if(! function_exists('lastimosa_options_visibility')) :
 /**
  *  Visibility Options
  */
 function lastimosa_options_visibility() {
+	
+$user_choices = array(
+	'' => __( 'Visible for all', 'lastimosa' ),
+	'logged-in' => __( 'Visible for Logged in user', 'lastimosa' ),
+	'logged-out' => __( 'Visible for Logged out user', 'lastimosa' ),
+);
+	 
+$wp_roles = wp_roles();
+$roles = $wp_roles->get_names();
+foreach($roles as $key => $role) {
+	$user_choices['visible-'.$key] = __( 'Visible for '.$role.' user', 'lastimosa' );
+}
+$user_choices['hidden'] = __( 'Hidden', 'lastimosa' );
+	
 	return array(
 		'responsive' => array(
-			'label'   => __( 'Responsive', 'lastimosa' ),
-			'type'    => 'select',
+			'label'   => __( 'Visibility', 'lastimosa' ),
+			'type'    => 'select-multiple',
 			'value'   => '',
-			'desc'    => __( '','unyson' ),
+			'desc'    => __( 'Device\'s Responsiveness Visibility.','lastimosa' ),
 			'choices' => array(
 				'' => __( 'Always Shown', 'lastimosa' ),
 				'visible-xs-block' => __( 'Visible on Extra small devices. Phones (<768px)', 'lastimosa' ),
@@ -1298,20 +1192,61 @@ function lastimosa_options_visibility() {
 				'hidden-md' => __( 'Hidden on Medium devices. Desktops (≥992px)', 'lastimosa' ),
 				'hidden-lg' => __( 'Hidden on Large devices. Desktops (≥1200px)', 'lastimosa' ),
 			),
+			'help' 	=> sprintf( "%s",
+				__( 'Ctrl + Click to select multiple choices.','lastimosa' )
+			),
 		),
 		'user' => array(
-			'label'   => __( 'User', 'lastimosa' ),
-			'type'    => 'select',
+			'label'   => __( '', 'lastimosa' ),
+			'type'    => 'select-multiple',
 			'value'   => '',
-			'desc'    => __( '','unyson' ),
-			'choices' => array(
-				'' => __( 'Always Shown', 'lastimosa' ),
-				'logged-in' => __( 'Visible only for logged in user', 'lastimosa' ),
-				'logged-out' => __( 'Visible only for logged out user', 'lastimosa' ),
-				'hidden' => __( 'Hidden', 'lastimosa' ),
+			'desc'    => __( 'User Visibility','lastimosa' ),
+			'choices' => $user_choices,
+			'help' 	=> sprintf( "%s",
+				__( 'Ctrl + Click to select multiple choices.','lastimosa' )
 			),
 		),
 	);
+}
+endif;
+
+
+if(! function_exists('lastimosa_options_get_user_visibility')) :
+/**
+ *  Get Visibility Options
+ */
+function lastimosa_options_get_user_visibility($atts) {
+	
+	if(!empty($atts['visibility']['user'])) {
+		if(!empty($atts['visibility']['user'][0])) {
+
+			$wp_roles = wp_roles();
+			$roles = $wp_roles->get_names();
+			$current_user_roles = wp_get_current_user()->roles;
+			if(
+				( in_array( 'logged-in', $atts['visibility']['user']) && is_user_logged_in() ) || 
+				( in_array( 'logged-out', $atts['visibility']['user']) && !is_user_logged_in() ) ||
+				( in_array( 'hidden', $atts['visibility']['user']) && !is_user_logged_in() )
+			){
+			}else{
+				if(!empty($current_user_roles)) {
+					foreach($roles as $key => $role) {
+						foreach($current_user_roles as $current_user_role) {
+							$check = 'visible-'.$current_user_role;
+							if(!in_array( $check, $atts['visibility']['user'])) {
+								$set_visible = true;
+							}
+						}
+					}
+					if(isset($set_visible)) return true;
+				}else{
+					return true;
+				}
+				
+				
+			}
+		}		
+	}
 }
 endif;
 
@@ -1363,3 +1298,95 @@ function lastimosa_get_shortcode_attr($atts) {
 	return $attr;
 }
 endif;
+
+
+if(!function_exists('lastimosa_options_box')) :
+/**
+ * Margin, Padding & Border Options
+ */
+function lastimosa_options_box($label,$top='0',$right='0',$bottom='0',$left='0') {
+	return array(
+		'type' => 'fw-multi-inline',
+		'label' => __($label, 'lastimosa'),
+		//'desc' => __('', 'lastimosa'),
+		'value' => array(
+			'top' 	=>$top,
+			'right' =>$right,
+			'bottom' =>$bottom,
+			'left' 	=>$left,	
+		),
+		'fw_multi_options' => array(
+			'top' => array(
+				'type' =>'short-text',
+				'title' => __('Top', 'lastimosa'),
+			),
+			'right' => array(
+				'type' =>'short-text',
+				'title' => __('Right', 'lastimosa'),
+			),
+			'bottom' => array(
+				'type' =>'short-text',
+				'title' => __('Bottom', 'lastimosa'),
+			),
+			'left' => array(
+				'type' =>'short-text',
+				'title' => __('Left', 'lastimosa'),
+			),
+		)
+	);
+}
+endif; 
+
+
+// This function is deprecated
+if(! function_exists('get_css_box_measurements')){
+	function get_css_box_measurements($side_size) {
+		if($side_size['select'] == 'custom'):
+			return 'unquote("'.$side_size['custom']['size'].'")';
+		else:
+			return $side_size['select'];
+		endif;
+	}
+}
+
+
+if(! function_exists('lastimosa_options_custom_id')) :
+/**
+ * Custom ID
+ */
+function lastimosa_options_custom_id() {
+	return array(
+		'label'   => __('CSS ID', 'lastimosa'),
+		'desc'    => false,
+		'type'    => 'text'
+	);
+}
+endif;
+
+
+if(! function_exists('lastimosa_options_class')) :
+/**
+* Class
+*/
+function lastimosa_options_class() {
+	return array(
+		'label'   => __('CSS Class', 'lastimosa'),
+		'desc'    => false,
+		'type'    => 'text'
+	);
+}
+endif;
+
+
+/**
+ * Get the ID
+ */
+if(! function_exists('lastimosa_options_get_id')){
+	function lastimosa_options_get_id($shortcode,$id,$custom_id) {
+		if (!empty($custom_id)) : 
+			return $custom_id;
+		else :
+			return substr($shortcode, 0, 3).'-'.substr($id, 0, 10);
+		endif;
+	}
+}

@@ -4,7 +4,7 @@
  */
 
 <?php // Footer Widgets 
-$footer_widgets = c_get_option('footer_widgets');
+$footer_widgets = lastimosa_get_option('footer_widgets');
 $footer_widgets = $footer_widgets['yes']; ?>;
 	$footer_widgets_heading_typography_size: 	<?php echo $footer_widgets['heading_typography']['size']; ?>;
 	$footer_widgets_heading_typography_family: 	<?php echo $footer_widgets['heading_typography']['family']; ?>;
@@ -31,15 +31,14 @@ $footer_widgets = $footer_widgets['yes']; ?>;
 	$footer_widgets_overlay_color_opacity: 		<?php echo $footer_widgets['overlay_options']['yes']['overlay_color_opacity']; ?>;
 	
 <?php // Footer Menu
-$footer_menu = c_get_option('footer_menu');
-$footer_menu_typography = $footer_menu['yes']['typography']; ?>;
-	$footer_menu_typography_size: 				<?php echo $footer_menu_typography['size']; ?>;
-	$footer_menu_typography_family: 			<?php echo $footer_menu_typography['family']; ?>;
-	$footer_menu_typography_style: 				<?php echo $footer_menu_typography['style']; ?>;
-	$footer_menu_typography_color: 				<?php echo $footer_menu_typography['color']; ?>;
+$footer_menu = lastimosa_get_option('footer_menu'); ?>;
+	$footer_menu_typography_size: 				<?php echo $footer_menu['typography']['size']; ?>;
+	$footer_menu_typography_family: 			<?php echo $footer_menu['typography']['family']; ?>;
+	$footer_menu_typography_style: 				<?php echo $footer_menu['typography']['style']; ?>;
+	$footer_menu_typography_color: 				<?php echo $footer_menu['typography']['color']; ?>;
 	
-	$footer_menu_active_color: 					<?php echo $footer_menu['yes']['active_color']; ?>;
-	$footer_menu_hover_color: 					<?php echo $footer_menu['yes']['hover_color']; ?>;
+	$footer_menu_active_color: 					<?php echo $footer_menu['active_color']; ?>;
+	$footer_menu_hover_color: 					<?php echo $footer_menu['hover_color']; ?>;
 
 <?php // Footer Copyright
 $footer_copyright = c_get_option('footer_copyright');	?>

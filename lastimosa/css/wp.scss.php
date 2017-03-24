@@ -13,7 +13,7 @@ body {
 /* End of enable sticky footer code */
 
 <?php 
-	$theme_layout = c_get_option('theme_layout');		
+	$theme_layout = lastimosa_get_option('theme_layout');		
 	$body_bg_atts = $theme_layout['body'];
 ?>
 
@@ -67,7 +67,7 @@ $boxed_bg_size: <?php echo $boxed_bg_atts['background']['size']; ?>;
 
 <?php 
 // Display the color set
-$theme_colors = c_get_option('theme_colors');
+$theme_colors = lastimosa_get_option('theme_colors');
 
 for ($i = 0; $i < count($theme_colors); $i++) {
     echo '.text-' . sanitize_title_with_dashes($theme_colors[$i]['text']).', 

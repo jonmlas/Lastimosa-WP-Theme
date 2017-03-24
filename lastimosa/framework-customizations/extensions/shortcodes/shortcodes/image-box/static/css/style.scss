@@ -1,0 +1,13 @@
+.image-box {
+	margin: 20px 0;
+	.content {
+		display:table-cell;
+	}
+	h3 {
+		font-size:24px;
+		color:#00baff;
+		font-weight:bold;
+		text-transform:uppercase;
+		clear:none;
+	}
+}

@@ -1,6 +1,5 @@
-<?php if ( ! defined( 'FW' ) ) {
-	die( 'Forbidden' );
-}
+<?php if ( ! defined( 'ABSPATH' ) ) die( 'Direct access forbidden.' );
+
 // Main Menu
 $header_menu = c_get_option('header_menu'); ?>
 <?php if(!empty($header_menu['background_color'])) { ?>    

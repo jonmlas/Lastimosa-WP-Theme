@@ -31,7 +31,7 @@
 	<?php wp_head(); ?>
 </head>
 <?php
-if(fw_ext_page_builder_is_builder_post($post->ID)): 
+if(lastimosa_ext_page_builder_is_builder_post($post->ID)): 
 // Add specific Body CSS class by filter.
 	add_filter( 'body_class', function( $classes ) {
     return array_merge( $classes, array( 'unyson page-builder' ) );

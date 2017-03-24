@@ -159,7 +159,6 @@ if(! function_exists('lastimosa_main_menu')){
 		wp_nav_menu( array(
 			'menu'              => 'main',
 			'theme_location'    => 'main',
-			'depth'             => 2,
 			'container' 		=> 'ul', 
 			'menu_class'        => join( ' ', $menu_class ),
 			'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
@@ -174,7 +173,7 @@ if(! function_exists('lastimosa_main_menu')){
 }
 
 
-if(! function_exists('lastimosa_inline_info') ) :
+if(! function_exists('lastimosa_entry_title') ) :
 /**
  * Featured Image
  */

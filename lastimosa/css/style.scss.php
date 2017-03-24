@@ -18,7 +18,7 @@ include 'footer.scss.php'; ?>
 @import "hover.scss";
 @import "effects/imagehover.min.scss";
 @import "effects/animate.scss";
-<?php include 'comments.scss.php';
+<?php include 'comments/comments-style-1.scss.php';
 
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/section/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/column/static/css/style.scss.php');

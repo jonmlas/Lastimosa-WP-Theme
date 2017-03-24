@@ -6,8 +6,11 @@
 <div class="site-info">
 	<div class="container">
         <div>
-		<?php if ($menu_atts['selected_value'] == 'yes') : ?>
-            <?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_class' => 'nav '. $menu_atts['yes']['alignment'] ) ); ?>
+		<?php if ( has_nav_menu( 'footer' ) ) : ?>
+            <?php wp_nav_menu( array( 
+				'menu'              => 'footer',
+				'theme_location' => 'footer', 
+				'menu_class' => 'nav '. $menu_atts['yes']['alignment'] ) ); ?>
         <?php endif; ?>
         
         <?php if(!empty($menu_atts['social_profiles'])): ?>

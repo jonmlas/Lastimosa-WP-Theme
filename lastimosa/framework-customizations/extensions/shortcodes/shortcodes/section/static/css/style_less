@@ -1,0 +1,91 @@
+section.small {
+    padding: 30px 0;
+}
+
+section.medium {
+    padding: 60px 0;
+}
+
+section.large {
+    padding: 90px 0;
+}
+
+.fw-main-row.background-video .fw-container,
+.fw-main-row.background-video .fw-container-fluid {
+	z-index: 1;
+}
+
+section {
+	&.full-border {
+	  border-top:1px solid #ccc;
+	  border-bottom:1px solid #ccc;
+	  border-left:1px solid #ccc;
+	  border-right:1px solid #ccc;
+	}
+	&.top-bottom-border {
+	  border-top:1px solid #ccc;
+	  border-bottom:1px solid #ccc;
+	}
+	&.left-right-border {
+	  border-left:1px solid #ccc;
+	  border-right:1px solid #ccc;
+	}
+	&.top-border {
+	  border-top:1px solid #ccc;
+	}
+	&.bottom-border {
+	  border-bottom:1px solid #ccc;
+	}
+	&.left-border {
+	  border-left:1px solid #ccc;
+	}
+	&.right-border {
+	  border-right:1px solid #ccc;
+	}
+}
+
+
+.two-thirds-vh {
+	min-height: 75%;  /* Fallback for vh unit */
+  	height: 75vh;
+}
+
+.half-vh {
+	min-height: 50%;  /* Fallback for vh unit */
+  	height: 50vh;
+}
+
+.quarter-vh {
+	min-height: 25%;  /* Fallback for vh unit */
+  	height: 25vh;
+}
+
+.vertical-center {
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+  
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+  
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+  
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
+}

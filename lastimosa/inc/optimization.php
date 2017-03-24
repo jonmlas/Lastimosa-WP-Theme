@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) { die( 'Forbidden' ); }
+<?php if ( ! defined( 'ABSPATH' ) ) die( 'Direct access forbidden.' );
 
 /////////////////////////////////////////////////////////////////////////
 // Speed Performance Improvements                                      //
