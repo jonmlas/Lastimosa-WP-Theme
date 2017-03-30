@@ -15,9 +15,6 @@ if($atts['custom_id']) {
 	$attr = array('class' => $class, $data_name_attr => $bg_video_data_attr);
 }
 
-
-
-	
 $wrapper_class = join(' ', $wrapper_class);
 $wrapper_attr = array('class' => $wrapper_class);
 

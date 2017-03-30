@@ -12,16 +12,9 @@ $container_class = ( empty( $atts['width']['fluid']['content_width'] ) ) ? 'cont
 $class = array();
 $class[] = 'main-row';
 $class[] = (empty($atts['width']['select'])) ? 'container' : '';
-if (!empty($atts['class'])) : 
-	$class[] = $atts['class'];
-endif;
-if (!empty($atts['border'])) :
-	$class[] =$atts['border'];
-endif;
-if (!empty($atts['visibility']['responsive'])) :
-	$class[] = join(' ', $atts['visibility']['responsive']);
-endif;
-
+if (!empty($atts['border'])) $class[] =$atts['border'];
+if (!empty($atts['visibility']['responsive'])) $class[] = join(' ', $atts['visibility']['responsive']);
+if (!empty($atts['class'])) $class[] = $atts['class'];
 
 //Wrapper Classes
 $wrapper_class = array();

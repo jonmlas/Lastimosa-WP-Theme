@@ -1,3 +1,7 @@
+/*
+ * Start of wp.scss.php
+ */
+
 /* start of enable sticky footer code */
 /*html {
   height: 100%;
@@ -102,10 +106,6 @@ for ($i = 0; $i < count($theme_colors); $i++) {
     display: block;
     clear: both;
     margin-bottom: 30px;
-}
-
-.container article {
-    padding-right: 50px;
 }
 
 article header.entry-header {

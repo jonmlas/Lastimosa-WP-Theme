@@ -225,17 +225,3 @@ function lastimosa_post_thumbnail() {
 	<?php endif; // End is_singular()
 }
 endif;
-
-if(!function_exists('page_builder_container')):
-/**
- * Check if the page is using Unyson page builder
- */
-function page_builder_container() {
-	global $post;
-	if(fw_ext_page_builder_is_builder_post($post->ID)): 
-		return 'container-fluid'; 
-	else: 
-		return 'container'; 
-	endif;
-}
-endif;

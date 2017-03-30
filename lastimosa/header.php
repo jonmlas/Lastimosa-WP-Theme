@@ -38,18 +38,23 @@ if(lastimosa_ext_page_builder_is_builder_post($post->ID)):
 } );
 endif; ?>
 <body <?php body_class(); ?>>
-<?php $theme_layout = lastimosa_get_option('theme_layout'); ?>
-<div id="page" class="hfeed <?php echo $theme_layout['site-layout']['layout']; ?>">
+<?php $theme_layout = lastimosa_get_option('theme_layout'); 
+	$page_class = array('hfeed');
+	if(!empty($theme_layout['site-layout']['layout'])){
+		$page_class[] = $theme_layout['site-layout']['layout'];
+	}
+	$page_class = join(' ', $page_class);	
+?>
+
+<div <?php echo lastimosa_attr_to_html(array('id'=>'page','class'=>$page_class)) ?>>
 	
     <?php do_action( 'lastimosa_before_header' ); ?>
     
-	<?php 	$header_class = array();
-			$header_class[] = 'site-header';
+	<?php 	$header_class = array('site-header');
 			$header_class[] = get_post_meta(get_the_ID(), 'header-options', true); 
-			
 			$header_layout = lastimosa_get_option('header_layout'); 
 			$header_class[] = $header_layout['selected'];
-			$header_class = join( ' ', $header_class );	
+			$header_class = join(' ', $header_class);	
 	?>
 	<header id="masthead" class="<?php echo $header_class; ?>" role="banner">
 		<?php get_template_part( 'template-parts/header', 'topbar' ); ?>
@@ -63,5 +68,4 @@ endif; ?>
 	</header><!-- #masthead -->
     
 	<?php do_action( 'lastimosa_after_header' ); ?>
-    <?php //fw_print(lastimosa_get_option('header_layout')); fw_print(lastimosa_get_option('header_menu')); ?>
 	<div id="main" class="site-main">

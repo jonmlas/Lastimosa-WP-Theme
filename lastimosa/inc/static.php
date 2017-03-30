@@ -6,26 +6,8 @@ if ( is_admin() ) {
 	return;
 }
 
-/**
- * Load Bootstrap CDN with local fallback
- */
-$get_the_url = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
-$cdnIsUp = get_transient( 'cnd_is_up' );
-if ( $cdnIsUp ) {
-    $bootstrap_url = $get_the_url;
-	$bootstrap_js_url = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js';
-} else {
-    $cdn_response = wp_remote_get( $get_the_url );
-    if( is_wp_error( $cdn_response ) || wp_remote_retrieve_response_code($cdn_response) != '200' ) {
-        $bootstrap_url = get_template_directory_uri() . '/css/bootstrap/css/bootstrap.css';
-		$bootstrap_js_url = get_template_directory_uri() . '/css/bootstrap/js/bootstrap.min.js';
-    }
-    else {
-        $cdnIsUp = set_transient( 'cnd_is_up', true, MINUTE_IN_SECONDS * 20 );
-        $bootstrap_url = $get_the_url;
-		$bootstrap_js_url = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js';
-    }
-}
+$bootstrap_url = lastimosa_cdn_fallback('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',get_template_directory_uri().'/css/bootstrap/css/bootstrap.css');
+$bootstrap_js_url = lastimosa_cdn_fallback('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',get_template_directory_uri().'/css/bootstrap/js/bootstrap.min.js');
 
 wp_enqueue_style(
 	'bootstrap',

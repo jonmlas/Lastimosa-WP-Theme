@@ -29,15 +29,13 @@ $options = array(
 						'type'    => 'select',
 						'value'    => 'full',
 						'choices' => array(
-							'container-fluid'  => __( 'Full Width', 'unyson' ),
+							''  => __( 'Full Width', 'unyson' ),
 							'container' => __( 'Boxed', 'unyson' )
 						),
 						'desc'    => __( '', 'unyson' ),
 					)
 				),
 				'choices'      => array(
-					'container-fluid'  => array(
-					),
 					'container' => array(
 						'bg_group' => array(
 							'type' => 'group',

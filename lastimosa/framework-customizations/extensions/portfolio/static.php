@@ -27,7 +27,7 @@ if ( ! is_admin() ) {
 		);
 	}
 	if ( is_singular( 'fw-portfolio' ) ) {
-		wp_enqueue_style(
+		/*wp_enqueue_style(
 			'lightbox-1',
 			get_template_directory_uri() . '/css/lightbox-1.css',
 			array(),
@@ -47,6 +47,29 @@ if ( ! is_admin() ) {
 			  "wrapAround": true,
 			  "fitImagesInViewport": true,
 			})
-		');	
+		');	*/
+		
+		//http://sachinchoolur.github.io/lightGallery/docs/
+		wp_enqueue_style(
+			'lightgallery',
+			get_template_directory_uri() . '/css/lightbox-1.css',
+			array(),
+			'1.0'
+		);
+		wp_enqueue_script(
+			'lightgallery',
+			//'https://cdn.jsdelivr.net/jquery.typeit/4.3.0/typeit.min.js',
+			get_template_directory_uri() . '/js/lightbox-1.js',
+			array(),
+			'2.9',
+			true
+		);
+		wp_add_inline_script( 'lightgallery', '
+			lightbox.option({
+			  "resizeDuration": 200,
+			  "wrapAround": true,
+			  "fitImagesInViewport": true,
+			})
+		');
 	}	
 }

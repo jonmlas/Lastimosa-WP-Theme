@@ -72,9 +72,8 @@ class Theme_Includes
 			add_action('wp_enqueue_scripts', array(__CLASS__, '_action_enqueue_scripts'),
 				20 // Include later to be able to make wp_dequeue_style|script()
 			);
-			
 		}else{
-			add_action('admin_enqueue_scripts', array(__CLASS__, '_action_enqueue_scripts_admin'), 20);
+			self::include_child_first('/static-admin.php');
 		}
 	}
 
@@ -164,13 +163,6 @@ class Theme_Includes
 		self::include_child_first('/static.php');
 	}
 	
-	/**
-	 * @internal
-	 */
-	public static function _action_enqueue_scripts_admin()
-	{
-		self::include_child_first('/static-admin.php');
-	}
 
 	/**
 	 * @internal

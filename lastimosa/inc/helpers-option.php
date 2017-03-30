@@ -1,6 +1,54 @@
 <?php if ( ! defined( 'ABSPATH' ) ) die( 'Direct access forbidden.' );
 
 /**
+ * Color Picker
+ */
+if(! function_exists('lastimosa_options_color_picker')):
+	function lastimosa_options_color_picker($label = NULL, $default = '#fff') {
+		$theme_colors = lastimosa_get_option('theme_colors');
+		$predefined_colors = array();
+		foreach($theme_colors as $theme_color) {
+		  $predefined_colors[$theme_color['text']] = $theme_color['color'];
+		}
+		$option = array(
+			'type' => 'predefined-colors-color-picker',
+			'label' => __($label, 'lastimosa'),
+			'value' => array(
+				'predefined' => $default, // you can set default value
+				'custom' => '' // or default value for picker
+			),
+			'colors' => array(
+				'predefined' => array(
+					'type' =>'predefined',
+					'choices' => $predefined_colors,
+				),
+				'custom' => array(
+					'type' =>'custom',
+					'picker' => 'color-picker', // color-picker|rgba-color-picker
+				),
+			),
+			'help'  => __('Set your predefined color swatches in <a href="'.admin_url().'themes.php?page=fw-settings#fw-options-tab-tab_colors" target="_blank">here</a>', 'lastimosa')
+		);
+		return $option; 
+	}
+endif;
+
+
+/**
+ * Get Color Picker
+ */
+if(! function_exists('lastimosa_options_get_color_picker')):
+	function lastimosa_options_get_color_picker($atts) {
+		if(!empty($atts['predefined'])) {
+			return $atts['predefined'];
+		}else{
+			return $atts['custom'];
+		}
+	}
+endif;	
+
+
+/**
  * Text Transformation
  */
 if(! function_exists('options_transformation')){
@@ -551,7 +599,7 @@ if(! function_exists('lastimosa_options_get_shortcode_css')) {
 
 		// Get the Grid Gutter Width
 		if($atts['shortcode'] == 'section' && $atts['grid_gutter_width'] != '30px') {
-			$gutter = ((preg_replace("/[^0-9]/","", $atts['grid_gutter_width'])) / 2).'px';
+			$gutter = (str_replace('px','', $atts['grid_gutter_width']) / 2).'px';
 			$shortcode_atts[] = '
 									.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' .fw-row { 
 										margin-right:-'.$gutter.';
@@ -1377,16 +1425,50 @@ function lastimosa_options_class() {
 }
 endif;
 
-
+if(! function_exists('lastimosa_options_get_id')) :
 /**
  * Get the ID
  */
-if(! function_exists('lastimosa_options_get_id')){
-	function lastimosa_options_get_id($shortcode,$id,$custom_id) {
-		if (!empty($custom_id)) : 
-			return $custom_id;
-		else :
-			return substr($shortcode, 0, 3).'-'.substr($id, 0, 10);
-		endif;
-	}
+function lastimosa_options_get_id($shortcode,$id,$custom_id) {
+	if (!empty($custom_id)) : 
+		return $custom_id;
+	else :
+		return substr($shortcode, 0, 3).'-'.substr($id, 0, 10);
+	endif;
 }
+endif;
+
+
+if(! function_exists('lastimosa_options_add_scss')) :
+/**
+ * Get the ID
+ */
+function lastimosa_options_add_scss($atts,$scss) {
+	$shortcode_style = '';
+	foreach ($scss as $key => $value){
+		$shortcode_style .= $value;
+	}
+			
+	if( !get_option( $atts['shortcode'].'_style' ) ) {
+		$shortcode_styles = array();
+		$shortcode_styles[get_the_ID()][$atts['id']] = $shortcode_style;		
+		add_option( $atts['shortcode'].'_style', $shortcode_styles, '', 'yes' );
+	} else {
+		$shortcode_styles = get_option( $atts['shortcode'].'_style' );		
+		$shortcode_styles[get_the_ID()][$atts['id']] = $shortcode_style;
+		update_option( $atts['shortcode'].'_style', $shortcode_styles, 'yes' );
+	}	
+	
+	if( !get_option( $atts['shortcode'].'_style_temp' ) ) {
+		$shortcode_styles_temp = array();
+		$shortcode_styles_temp[$atts['id']] = $shortcode_style;		
+		add_option( $atts['shortcode'].'_style_temp', $shortcode_styles_temp, '', 'yes' );
+	} else {	
+		$shortcode_styles_temp = get_option( $atts['shortcode'].'_style_temp');	
+		$shortcode_styles_temp[$atts['id']] = $shortcode_style;
+		update_option( $atts['shortcode'].'_style_temp', $shortcode_styles_temp, 'yes' );
+	}	
+	$shortcode_styles[get_the_ID()] = array_intersect_key($shortcode_styles[get_the_ID()], $shortcode_styles_temp);
+	update_option( $atts['shortcode'].'_style', $shortcode_styles, 'yes' );
+}
+endif;

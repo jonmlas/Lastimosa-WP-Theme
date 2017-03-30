@@ -275,19 +275,42 @@ endif;
 add_action('lastimosa_entry_footer','lastimosa_tags_list');
 
 
-// Add Author Info Box 
+if (!function_exists('lastimosa_cdn_fallback')):
+/**
+ *  Load CDN with local fallback
+ */
+function lastimosa_cdn_fallback($cdn_url,$local_url) {
+	$cdnIsUp = get_transient( 'cnd_is_up' );
+	if ( $cdnIsUp ) {
+		return $cdn_url;
+	} else {
+		$cdn_response = wp_remote_get( $cdn_url );
+		if( is_wp_error( $cdn_response ) || wp_remote_retrieve_response_code($cdn_response) != '200' ) {
+			return $local_url;
+		}
+		else {
+			$cdnIsUp = set_transient( 'cnd_is_up', true, MINUTE_IN_SECONDS * 20 );
+			return $cdn_url;
+		}
+	}
+}
+endif;
+
+
+if (!function_exists('lastimosa_author_info_box')):
+/**
+ *  Add Author Info Box 
+ */
 function lastimosa_author_info_box() {
-	
-	$content_posts = c_get_option('content_posts');
+	$content_posts = lastimosa_get_option('content_posts');
 	if(!$content_posts['author-box']) {
 		return;
 	}
-	
 	global $post;
 	
 	// Detect if it is a single post with a post author
 	if ( is_single() && isset( $post->post_author ) ) {
-	
+		
 	// Get author's display name 
 	$display_name = get_the_author_meta( 'display_name', $post->post_author );
 	
@@ -340,6 +363,7 @@ add_action( 'lastimosa_entry_footer', 'lastimosa_author_info_box' );
 
 // Allow HTML in author bio section 
 remove_filter('pre_user_description', 'wp_filter_kses');
+endif;
 
 
 if ( ! function_exists( 'fw_theme_posted_on' ) ) : /**

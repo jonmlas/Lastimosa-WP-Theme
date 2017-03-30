@@ -8,42 +8,40 @@
  */
 
 get_header(); ?>
-<div id="main-content" class="<?php echo page_builder_container(); ?>">
 
 <?php
-	if ( is_front_page() && fw_theme_has_featured_posts() ) {
-		// Include the featured content template.
-		get_template_part( 'featured-content' );
-	}
+if ( is_front_page() && fw_theme_has_featured_posts() ) {
+	// Include the featured content template.
+	get_template_part( 'featured-content' );
+}
 ?>
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+<div id="primary" class="content-area">
+	<div id="content" class="site-content" role="main">
 
-			<?php
-				// Start the Loop.
-				while ( have_posts() ) : the_post();
+		<?php
+			// Start the Loop.
+			while ( have_posts() ) : the_post();
 
-					// Include the page content template.
-					get_template_part( 'template-parts/content', 'page' );
-					
-					// Checks if blog-post shortcode is used. 
-					if(!function_exists('blog_post_check')):
-						function blog_post_check() {
-							return 'no';
-						}
-					endif;
-
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( (comments_open() || get_comments_number()) && (blog_post_check() == 'no') ) {
-						comments_template();
+				// Include the page content template.
+				get_template_part( 'template-parts/content', 'page' );
+				
+				// Checks if blog-post shortcode is used. 
+				if(!function_exists('blog_post_check')):
+					function blog_post_check() {
+						return 'no';
 					}
-				endwhile;
-			?>
+				endif;
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
-	<?php //get_sidebar( 'content' ); ?>
-</div><!-- #main-content -->
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( (comments_open() || get_comments_number()) && (blog_post_check() == 'no') ) {
+					comments_template();
+				}
+			endwhile;
+		?>
+
+	</div><!-- #content -->
+</div><!-- #primary -->
+<?php //get_sidebar( 'content' ); ?>
 
 <?php
 //get_sidebar();

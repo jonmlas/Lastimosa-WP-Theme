@@ -222,7 +222,7 @@ $header_menu_hover_background_color: <?php echo $header_menu[$header_menu['selec
 		font: normal 8px/1 Genericons;
 		position: absolute;
 		right: 12px;
-		top: 16px;
+		top: 20px;
 		vertical-align: text-bottom;
 	}
 

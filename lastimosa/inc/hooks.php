@@ -573,5 +573,28 @@ endif;
 /** @internal */
 function lastimosa_include_custom_option_types() {
     require_once dirname(__FILE__) . '/includes/option-types/fw-multi-inline/class-fw-option-type-fw-multi-inline.php';
+	require_once dirname(__FILE__) . '/includes/option-types/predefined-colors/class-fw-option-type-predefined-colors.php';
+    require_once dirname(__FILE__) . '/includes/option-types/predefined-colors-color-picker/class-fw-option-type-predefined-colors-color-picker.php';
 }
 add_action('fw_option_types_init', 'lastimosa_include_custom_option_types');
+
+
+// This will force deactivate Styling extension because I don't need it.
+add_action('admin_footer', '_action_theme_disable_fw_styling');
+function _action_theme_disable_fw_styling() {
+    if (fw()->extensions->manager->can_activate() && fw_ext('styling')) {
+        fw()->extensions->manager->deactivate_extensions(array('styling' => array()));
+    }
+}
+// And this will hide the Styling extension activator in the Unyson dashboard
+if (defined('FW')):
+    /** @internal */
+    function _action_hide_extensions_from_the_list() {
+        //global $current_screen; fw_print($current_screen); // debug
+
+        if (fw_current_screen_match(array('only' => array('id' => 'toplevel_page_fw-extensions')))) {
+            echo '<style type="text/css"> #fw-ext-styling { display: none; } </style>';
+        }
+    }
+    add_action('admin_print_scripts', '_action_hide_extensions_from_the_list');
+endif;
