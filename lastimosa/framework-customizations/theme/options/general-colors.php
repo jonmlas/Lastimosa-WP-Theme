@@ -63,7 +63,7 @@ $values = array(
 		'text'  =>'Brown',
 		'color' =>'#795548'),
 	array(
-		'text'  =>'Glue Gray',
+		'text'  =>'Blue Gray',
 		'color' =>'#607d8b'),
 );
 $options = array(

@@ -1,6 +1,5 @@
-<?php if ( ! defined( 'FW' ) ) {
-	die( 'Forbidden' );
-}
+<?php if (!defined('FW')) die('Forbidden');
+
 //fw_print($atts); 
 // Checks if it has user visibility defined.
 if(lastimosa_options_get_user_visibility($atts)) return;

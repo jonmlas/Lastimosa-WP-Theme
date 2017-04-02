@@ -558,3 +558,17 @@ function get_image_height( $size ) {
 	return false;
 }
 endif;
+
+
+if(!function_exists('page_builder_container')):
+/**
+ * Check if the page is using Unyson page builder
+ */
+function page_builder_container() {
+	if(fw_ext_page_builder_is_builder_post(get_the_ID())): 
+		return 'container-fluid'; 
+	else: 
+		return 'container'; 
+	endif;
+}
+endif;

@@ -1,6 +1,11 @@
 /*
  * Start of bootstrap-customs.scss
  */
+ 
+.navbar.navbar-default {
+    background: no-repeat;
+    border: none;
+}
 
 /*Bootstrap 3 no padding*/
 @media only screen and (max-width : 768px) {
@@ -44,7 +49,7 @@
     }
 }
 
-.site-main.container {
+.site-main.container-fluid {
     padding: 0;
 }
 

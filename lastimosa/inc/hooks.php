@@ -598,3 +598,38 @@ if (defined('FW')):
     }
     add_action('admin_print_scripts', '_action_hide_extensions_from_the_list');
 endif;
+
+
+if (! function_exists('lastimosa_check_layerslider_shortcode')) :
+/**
+ * Load LayerSlider Scripts only when shortcode is present
+ * https://codex.wordpress.org/Function_Reference/has_shortcode
+ */
+function lastimosa_check_layerslider_shortcode() {
+    global $post;
+    //Check content for layerslider shortcode
+	if( (!fw_ext_page_builder_is_builder_post($post->ID) && !has_shortcode( $post->post_content, 'layerslider')) || // If post is not using Unyson Page Builder and has no layerslider shortcode
+	    (fw_ext_page_builder_is_builder_post($post->ID) && (strpos($post->post_content, '&#91;layerslider id=') == false)) // If post is using Unyson Page Builder and no '[layerslider id=' code
+       ) {//no shortcode so run deenqueue function
+        add_action('wp_print_scripts', 'lastimosa_layerslider_deenqueue_scripts', 99999);
+        add_action('wp_print_styles', 'lastimosa_layerslider_deenqueue_scripts', 99999);
+    }
+}
+add_action('wp_enqueue_scripts', 'lastimosa_check_layerslider_shortcode');
+endif; 
+
+if (! function_exists('lastimosa_layerslider_deenqueue_scripts')) :
+/**
+ * Removes LayerSlider scripts
+ */
+function lastimosa_layerslider_deenqueue_scripts() {
+    wp_dequeue_script('greensock');
+    wp_deregister_script('greensock');
+    wp_dequeue_script('layerslider');
+    wp_deregister_script('layerslider');
+    wp_dequeue_script('layerslider-transitions');
+    wp_deregister_script('layerslider-transitions');
+    wp_dequeue_style('layerslider');
+    wp_deregister_style('layerslider');
+}
+endif;

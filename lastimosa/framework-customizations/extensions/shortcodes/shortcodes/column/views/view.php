@@ -1,11 +1,15 @@
 <?php if (!defined('FW')) die('Forbidden');
 
+// Checks if it has user visibility defined.
+if(lastimosa_options_get_user_visibility($atts)) return;
+
 // Column Classes
 $class = array();
 $class[] = fw_ext_builder_get_item_width('page-builder', $atts['width'] . '/frontend_class'); // The Front End class
 if (!empty($atts['class'])) : 
 	$class[] = $atts['class'];
 endif;
+if (!empty($atts['visibility']['responsive'])) $class[] = join(' ', $atts['visibility']['responsive']);
 $class = join(' ', $class);
 	
 if($atts['custom_id']) {

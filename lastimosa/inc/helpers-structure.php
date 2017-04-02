@@ -8,36 +8,35 @@ if(! function_exists('lastimosa_logo')){
 		$logo_class		= array();
 		$logo_class[] 	= 'navbar-header pull-left';
 		$logo_class 	= join( ' ', $logo_class );
+			
 		?>		
 		<div <?php echo lastimosa_attr_to_html(array('class' => $logo_class)) ?>>
         	<?php $header_logo = c_get_option('header_logo'); ?>
 
             	<?php if ( is_front_page() || is_home() ) : ?>
-                	<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                	
                 	<?php if( empty( $header_logo['image'] ) ) : ?>
-                    	<?php bloginfo( 'name' ); ?>
+                    	<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                        <?php $description = get_bloginfo( 'description', 'display' );
+						if ( $description || is_customize_preview() ) : ?>
+							<p class="site-description"><?php echo $description; ?></p><?php
+						endif; ?>
                     <?php else : ?>
                     	<?php $attachment_meta = wp_prepare_attachment_for_js($header_logo['image']['attachment_id']); ?>
-                        <img src="<?php echo $header_logo['image']['url']; ?>" alt="<?php echo $header_logo['name']; ?>" class="site-logo" width="<?php echo $attachment_meta['width']; ?>" height="<?php echo $attachment_meta['height']; ?>"/>
+                        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo $header_logo['image']['url']; ?>" alt="<?php echo $header_logo['name']; ?>" class="site-logo img-responsive" width="<?php echo $attachment_meta['width']; ?>" height="<?php echo $attachment_meta['height']; ?>"/></a></h1>
                     <?php endif; ?>
-                    </a></h1>
-                    
                 <?php else : ?>
-                	<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
                 	<?php if( empty( $header_logo['image'] ) ) : ?>
-                    	<?php bloginfo( 'name' ); ?>
+                    	<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                        <?php $description = get_bloginfo( 'description', 'display' );
+						if ( $description || is_customize_preview() ) : ?>
+							<p class="site-description"><?php echo $description; ?></p><?php
+						endif; ?>
                     <?php else : ?>
                     	<?php $attachment_meta = wp_prepare_attachment_for_js($header_logo['image']['attachment_id']); ?>
-                        <img src="<?php echo $header_logo['image']['url']; ?>" alt="<?php echo $header_logo['name']; ?>" class="site-logo" width="<?php echo $attachment_meta['width']; ?>" height="<?php echo $attachment_meta['height']; ?>"/>
+                        <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo $header_logo['image']['url']; ?>" alt="<?php echo $header_logo['name']; ?>" class="site-logo img-responsive" width="<?php echo $attachment_meta['width']; ?>" height="<?php echo $attachment_meta['height']; ?>"/></a></p>
                     <?php endif; ?> 
-                    </a></p>
-                    
                 <?php endif; ?>
-                
-                <?php $description = get_bloginfo( 'description', 'display' );
-				if ( $description || is_customize_preview() ) : ?>
-					<p class="site-description"><?php echo $description; ?></p><?php
-				endif; ?>
 		</div> <?php
 	}
 	add_action('lastimosa_header_logo','lastimosa_logo');

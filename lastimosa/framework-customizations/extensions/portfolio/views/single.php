@@ -1,13 +1,13 @@
 <?php
 /**
  * The template for displaying all pages
- *
+ * http://manual.unyson.io/en/latest/extension/portfolio/index.html#content
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages and that
  * other 'pages' on your WordPress site will use a different template.
  */
 
-$fw_ext_projects_gallery_image = fw()->extensions->get( 'portfolio' )->get_config( 'image_sizes' );
+$fw_ext_projects_gallery_image = fw()->extensions->get( 'portfolio' )->get_config( 'image_sizes' ); 
 $fw_ext_projects_gallery_image = $fw_ext_projects_gallery_image['gallery-image'];
 
 get_header(); ?>
@@ -45,16 +45,14 @@ if ( is_front_page() && fw_theme_has_featured_posts() ) {
 				<div class="entry-content">
 					<?php
 					$thumbnails = fw_ext_portfolio_get_gallery_images();
-
 					$captions = array();
 					if ( ! empty( $thumbnails ) ) :
 						?>
-						<section class="wrap-nivoslider theme-default">
+                        <section class="wrap-nivoslider theme-default">
 							<div id="slider" class="nivoslider">
 								<?php foreach ( $thumbnails as $thumbnail ) :
 									$attachment = get_post( $thumbnail['attachment_id'] );
 									$captions[ $thumbnail['attachment_id'] ] = $attachment->post_title;
-
 									$image = fw_resize( $thumbnail['attachment_id'], $fw_ext_projects_gallery_image['width'], $fw_ext_projects_gallery_image['height'], $fw_ext_projects_gallery_image['crop'] );
 									?>
 									<a href="<?php echo $attachment->guid; ?>" data-lightbox="gallery" data-title="<?php echo $attachment->post_title; ?>">

@@ -49,32 +49,21 @@ $options = array(
 						'style'  => 'normal',
 						'color'  => '#000000'
 					),
+					'components' => array(
+						'color'  => false
+					),
 				),
-				'background_color' => array(
+				/*'background_color' => array(
 					'label' => __( 'Background Color', 'unyson' ),
 					'type'  => 'rgba-color-picker',
 					'value' => 'rgba(255, 255, 255, .0)',
-				),
-				'hover_color'              => array(
-					'label' => __( 'Hover Color', 'unyson' ),
-					'type'  => 'color-picker',
-					'value' => '#f5f5f5',
-				),
-				'hover_background_color'              => array(
-					'label' => __( 'Hover Background Color', 'unyson' ),
-					'type'  => 'color-picker',
-					'value' => '#666666',
-				),
-				'active_color'  => array(
-					'label' => __( 'Active Color', 'unyson' ),
-					'type'  => 'color-picker',
-					'value' => '#f5f5f5',
-				),
-				'active_background_color'  => array(
-					'label' => __( 'Active Background Color', 'unyson' ),
-					'type'  => 'color-picker',
-					'value' => '#666666',
-				),
+				),*/
+				'color' => lastimosa_options_color_picker('Font Color','#000000'),
+				'background_color' => lastimosa_options_color_picker('Background Color','#eeeeee','rgba'),
+				'hover_color' => lastimosa_options_color_picker('Hover Color','#f5f5f5'),
+				'hover_background_color' => lastimosa_options_color_picker('Hover Background Color','#666666','rgba'),
+				'active_color'  => lastimosa_options_color_picker('Active Color','#f5f5f5'),
+				'active_background_color'  => lastimosa_options_color_picker('Active Background Color','#666666','rgba'),
 				'transformation' => options_transformation(),
 			),
 			'style_2'  => array(

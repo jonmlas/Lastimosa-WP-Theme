@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Lastimosa theme header
@@ -68,4 +69,4 @@ endif; ?>
 	</header><!-- #masthead -->
     
 	<?php do_action( 'lastimosa_after_header' ); ?>
-	<div id="main" class="site-main">
+	<div id="main" class="site-main <?php echo page_builder_container(); ?>">

@@ -14,3 +14,6 @@
 	margin: -5px 10px 0 !important;
 }
 
+input.fw-option-type-rgba-color-picker {
+    width: 70px !important;
+}

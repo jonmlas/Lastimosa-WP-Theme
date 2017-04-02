@@ -13,7 +13,7 @@ function lastimosa_load_custom_wp_admin_style($hook) {
 		if($hook == 'post.php' || $hook == 'post-new.php') {
             wp_enqueue_style(
 				'bootstrap-grid',
-				get_template_directory_uri() . '/css/bootstrap/css/bootstrap-grid.min.css',
+				get_template_directory_uri() . '/css/admin/bootstrap-grid.min.css',
 				array(),
 				'1.0'
 			);

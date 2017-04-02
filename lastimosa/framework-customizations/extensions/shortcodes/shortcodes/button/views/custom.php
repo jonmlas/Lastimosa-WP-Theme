@@ -18,10 +18,10 @@ $btn_attr['href'] = $link['url'];
 $btn_attr['class'] ='btn';
 
 if($atts['link'][$atts['link']['selected']]['target'] == 'modal') {
-	$attr['data-toggle'] = 'modal';
-	$attr['data-target'] = '#btnModal-'.substr($atts['id'], 0, 10);
+	$btn_attr['data-toggle'] = 'modal';
+	$btn_attr['data-target'] = '#btnModal-'.substr($atts['id'], 0, 10);
 }else{
-	$attr['target'] = $atts['link'][$atts['link']['selected']]['target'];
+	$btn_attr['target'] = $atts['link'][$atts['link']['selected']]['target'];
 }
 
 if (isset($atts['design']['custom']['icon']) && $atts['design']['custom']['icon_position'] == 'left') { 
@@ -31,7 +31,7 @@ if (isset($atts['design']['custom']['icon']) && $atts['design']['custom']['icon_
 }
 
 //$predefined_btns = lastimosa_get_option('predefined_buttons');
-		//fw_print($predefined_btns);
+		//fw_print($atts);
 ?>
 
 <div <?php echo lastimosa_attr_to_html($attr); ?>>

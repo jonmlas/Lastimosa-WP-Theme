@@ -4,11 +4,16 @@
  * Color Picker
  */
 if(! function_exists('lastimosa_options_color_picker')):
-	function lastimosa_options_color_picker($label = NULL, $default = '#fff') {
+	function lastimosa_options_color_picker($label = NULL, $default = '#fff', $picker = NULL) {
 		$theme_colors = lastimosa_get_option('theme_colors');
 		$predefined_colors = array();
 		foreach($theme_colors as $theme_color) {
 		  $predefined_colors[$theme_color['text']] = $theme_color['color'];
+		}
+		if($picker == 'rgba') {
+			$picker = 'rgba-color-picker';
+		}else{
+			$picker = 'color-picker';
 		}
 		$option = array(
 			'type' => 'predefined-colors-color-picker',
@@ -24,7 +29,7 @@ if(! function_exists('lastimosa_options_color_picker')):
 				),
 				'custom' => array(
 					'type' =>'custom',
-					'picker' => 'color-picker', // color-picker|rgba-color-picker
+					'picker' => $picker, // color-picker|rgba-color-picker
 				),
 			),
 			'help'  => __('Set your predefined color swatches in <a href="'.admin_url().'themes.php?page=fw-settings#fw-options-tab-tab_colors" target="_blank">here</a>', 'lastimosa')
@@ -546,8 +551,9 @@ if(! function_exists('lastimosa_options_get_shortcode_css')) {
 		$post_slug = $post->post_name;
 
 		$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-		
+		if($atts['margin'] != lastimosa_options_box_defaults())
 		$shortcode_atts[] = 'margin:unquote("'.join( ' ', $atts['margin'] ).'"); ';
+		if($atts['padding'] != lastimosa_options_box_defaults())
 		$shortcode_atts[] = 'padding:unquote("'.join( ' ', $atts['padding'] ).'"); ';	
 		
 		if($atts['shortcode'] == 'section') {
@@ -1306,7 +1312,7 @@ if(! function_exists('lastimosa_get_shortcode_attr')) :
 function lastimosa_get_shortcode_attr($atts) {
 	//The classes for the block
 	$class = array();
-	$class[] = $atts['shortcode'];
+	if(!empty($atts['shortcode'])) $class[] = $atts['shortcode'];
 	if(!empty($atts['animate']['animation'])) {
 		$class[] = 'wow';
 		$class[] = $atts['animate']['animation'];
@@ -1314,20 +1320,21 @@ function lastimosa_get_shortcode_attr($atts) {
 	if(!empty($atts['visibility']['responsive'])) {
 		$class[] = $atts['visibility']['responsive'];
 	}
+/*	to be deleted
 	if(!empty($atts['visibility']['user'])) {
 		if(( $atts['visibility']['user'] == 'logged-in') && !is_user_logged_in() ||
 			($atts['visibility']['user'] == 'logged-out') && is_user_logged_in() ||
 			($atts['visibility']['user'] == 'hidden')){
 			$class[] = 'hidden';
 		}
-	}
+	}*/
 	if(!empty($atts['class'])) {
 		$class[] = $atts['class'];
 	}
 	$class = join( ' ', $class );
 	
 	//The attributes for the block
-	$attr['class'] = $class;
+	if(!empty($class)) $attr['class'] = $class;
 	if(!empty($atts['custom_id'])){
 		$attr['id'] = $atts['custom_id'];
 	}
@@ -1343,10 +1350,17 @@ function lastimosa_get_shortcode_attr($atts) {
 	if(!empty($atts['animate']['iteration'])){
 		$attr['data-wow-iteration'] = $atts['animate']['iteration'];
 	}
-	return $attr;
+	if(!empty($attr)) {
+		return $attr;
+	}else{ 
+		return;
+	}
 }
 endif;
 
+function lastimosa_options_box_defaults(){
+	return array('top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0');
+}
 
 if(!function_exists('lastimosa_options_box')) :
 /**
@@ -1472,3 +1486,36 @@ function lastimosa_options_add_scss($atts,$scss) {
 	update_option( $atts['shortcode'].'_style', $shortcode_styles, 'yes' );
 }
 endif;
+
+
+// TO BE ADDED
+if(!function_exists('lastimosa_find_layersliders'))
+{
+	function lastimosa_find_layersliders($names_only = false)
+	{
+		// Get WPDB Object
+	    global $wpdb;
+
+	    // Table name
+	    $table_name = $wpdb->prefix . "layerslider";
+	 
+	    // Get sliders
+	    $sliders = $wpdb->get_results( "SELECT * FROM $table_name WHERE flag_hidden = '0' AND flag_deleted = '0' ORDER BY date_c ASC LIMIT 300" );
+	 	fw_print($sliders);
+	 	if(empty($sliders)) return;
+	 	
+	 	if($names_only)
+	 	{
+	 		$new = array();
+	 		foreach($sliders as $key => $item) 
+		    {
+		    	if(empty($item->name)) $item->name = __("(Unnamed Slider)","avia_framework");
+		       $new[$item->name] = $item->id;
+		    }
+		    
+		    return $new;
+	 	}
+	 	
+	 	return $sliders;
+	}
+}

@@ -37,7 +37,7 @@ $header_menu_hover_background_color: <?php echo $header_menu[$header_menu['selec
 	color: $header_menu_color;
     font-family: $header_menu_font_family;
     font-size: $header_menu_font_size + px;
-    font-style: $header_menu_font_style;
+    font-weight: $header_menu_font_style;
 	display: block;
 }
 

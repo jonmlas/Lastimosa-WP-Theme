@@ -5,11 +5,11 @@ include 'typography.scss.php';
 include 'wp.scss.php';
 //include 'header.scss.php'; 
 
-$header_layout 	= c_get_option('header_layout');
+$header_layout 	= lastimosa_get_option('header_layout');
 include 'header/'.$header_layout['selected'].'.scss.php';
 
 //include 'menu.scss.php';
-$header_menu 	= c_get_option('header_menu');
+$header_menu 	= lastimosa_get_option('header_menu');
 include 'menu/'.str_replace('_', '-', $header_menu['selected']).'.scss.php';
 
 include 'forms/forms-style-1.scss.php';
@@ -22,6 +22,7 @@ include 'footer.scss.php'; ?>
 
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/section/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/column/static/css/style.scss.php');
+include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/contact-form-7/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/button/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/testimonials/static/css/style.scss.php'); ?>
 
