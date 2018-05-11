@@ -1,0 +1,1 @@
+[03-May-2018 02:56:58 UTC] PHP Fatal error:  Call to undefined function lastimosa_get_option() in /home/lastimos/public_html/.theme/wp-content/themes/lastimosa/css/admin/post-editor.scss.php on line 97
