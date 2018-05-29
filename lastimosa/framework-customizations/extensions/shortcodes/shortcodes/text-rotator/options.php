@@ -119,7 +119,7 @@ $options = array(
 						'type'  => 'text',
 						'label' => __( 'cursorChar', 'lastimosa' ),
 						'desc'  => __( 'The character used for the cursor. HTML works too!', 'lastimosa' ),
-						'value'	=> 'pipe',
+						'value'	=> '',
 					),
 					'breakLines'    => array(
 						'type'  => 'switch',
