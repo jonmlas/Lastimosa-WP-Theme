@@ -12,14 +12,14 @@ $options = array(
 			'class' => '',
 		),*/
 		'inner-options' => array(
-			'copyright' => array(
-				'label' => __( 'Copyright', 'unyson' ),
-				'desc'  => __( 'Enter the copyright text', 'unyson' ),
+			'text' => array(
+				'label' => __( 'Copyright', 'lastimosa' ),
+				'desc'  => __( 'Enter the copyright text', 'lastimosa' ),
 				'type'  => 'text',
 				'value' => '© Copyright 2018 <a href="http://theme.lastimosa.com.ph">Lastimosa Theme</a>',
 			),
 			'typography'=> array(
-				'label' => __( 'Typography', 'unyson' ),
+				'label' => __( 'Typography', 'lastimosa' ),
 				'type'  => 'typography',
 				'value' => array(
 					'size'   => 14,
@@ -29,8 +29,8 @@ $options = array(
 				),
 			),
 			'alignment' => array(
-				'label' => __( 'Alignment', 'fw' ),
-				'desc'  => __( 'Choose button alignment', 'fw' ),
+				'label' => __( 'Alignment', 'lastimosa' ),
+				'desc'  => __( 'Choose button alignment', 'lastimosa' ),
 				'type'  => 'image-picker',
 				'value' => '',
 				'choices' => array(
@@ -38,39 +38,39 @@ $options = array(
 						'small' => array(
 							'height' => 50,
 							'src' => $uri .'/images/image-picker/no-align.jpg',
-							'title' => __('None','fw')
+							'title' => __('None','lastimosa')
 						),
 					),
 					'pull-left' => array(
 						'small' => array(
 							'height' => 50,
 							'src' => $uri .'/images/image-picker/left-position.jpg',
-							'title' => __('Left','fw')
+							'title' => __('Left','lastimosa')
 						),
 					),
 					'text-center' => array(
 						'small' => array(
 							'height' => 50,
 							'src' => $uri .'/images/image-picker/center-position.jpg',
-							'title' => __('Center','fw')
+							'title' => __('Center','lastimosa')
 						),
 					),
 					'pull-right' => array(
 						'small' => array(
 							'height' => 50,
 							'src' => $uri .'/images/image-picker/right-position.jpg',
-							'title' => __('Right','fw')
+							'title' => __('Right','lastimosa')
 						),
 					),
 				),
 			),
 			'link_color'    => array(
-				'label' => __( 'Link Color', 'unyson' ),
+				'label' => __( 'Link Color', 'lastimosa' ),
 				'type'  => 'color-picker',
 				'value' => '#fff',
 			),
 			'bg_color'    => array(
-				'label' => __( 'Background Color', 'unyson' ),
+				'label' => __( 'Background Color', 'lastimosa' ),
 				'type'  => 'color-picker',
 				'value' => '#000',
 			),

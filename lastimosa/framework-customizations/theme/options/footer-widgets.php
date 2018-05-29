@@ -40,6 +40,7 @@ $options = array(
 									'type'    => 'select',
 									'value'   => 'col-md-4',
 									'choices' => array(
+										'col-md-12' => __('1 column', 'lastimosa'),
 										'col-md-6' 	=> __('2 equal columns', 'lastimosa'),
 										'col-md-6-a'=> __('2 columns (2/3 + 1/3)', 'lastimosa'),
 										'col-md-6-b'=> __('2 columns (1/3 + 2/3)', 'lastimosa'),
@@ -121,8 +122,8 @@ $options = array(
 								'color'  => '#000'
 							),
 						),
-						'link_color'   			=> lastimosa_option_color_picker('','#cccccc', 'Widget link color'),
-						'link_hover_color'	=> lastimosa_option_color_picker('','#999999', 'Widget link hover color'),
+						'link_color'   			=> lastimosa_option_color_picker('','#333', 'Widget link color'),
+						'link_hover_color'	=> lastimosa_option_color_picker('','#666', 'Widget link hover color'),
 					),
 				),
 				'bg_group' => array(

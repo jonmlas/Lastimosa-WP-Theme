@@ -66,6 +66,14 @@ endif;
 add_action( 'init', '_action_theme_setup' );
 
 
+if( ! function_exists('lastimosa_upload_filter') ) :
+	function lastimosa_upload_filter( $file ){
+			$file['name'] = ucwords(str_replace( '-', ' ', $file['name']));
+			return $file;
+	}
+	add_filter('wp_handle_upload_prefilter', 'lastimosa_upload_filter' );
+endif;
+
 if( ! function_exists('lastimosa_move_jquery_scripts') ) :
 	/**
 	 * Move jQuery to the footer. 
@@ -165,13 +173,15 @@ if ( ! function_exists( 'lastimosa_theme_widgets_init' ) ) :
 		register_sidebar(array('name' => __('Footer Column 1','lastimosa'), 'id' => 'footer-1', 'before_widget' => $beforeWidget, 'after_widget' => $afterWidget, 'before_title' => $beforeTitle, 'after_title' => $afterTitle, 'description' => ''));
 		register_sidebar(array('name' => __('Footer Column 2','lastimosa'), 'id' => 'footer-2', 'before_widget' => $beforeWidget, 'after_widget' => $afterWidget, 'before_title' => $beforeTitle, 'after_title' => $afterTitle, 'description' => ''));
 		register_sidebar(array('name' => __('Footer Column 3','lastimosa'), 'id' => 'footer-3', 'before_widget' => $beforeWidget, 'after_widget' => $afterWidget, 'before_title' => $beforeTitle, 'after_title' => $afterTitle, 'description' => ''));
-		register_sidebar(array('name' => __('Footer Column 4','lastimosa'), 'id' => 'footer-4', 'before_widget' => $beforeWidget, 'after_widget' => $afterWidget, 'before_title' => $beforeTitle, 'after_title' => $afterTitle, 'description' => ''));
 		$footer_widgets = lastimosa_get_option('footer_widgets');
 		if($footer_widgets['enabled'] == 'yes') : 
 		$footer_widgets = $footer_widgets['yes'];
 			if(isset($footer_widgets['style']['selected'])){
 				$column_count = $footer_widgets['style']['selected'];
 			}
+			if( $column_count == 'col-md-3' || $column_count == 'col-md-15' ):
+				register_sidebar(array('name' => __('Footer Column 4','lastimosa'), 'id' => 'footer-4', 'before_widget' => $beforeWidget, 'after_widget' => $afterWidget, 'before_title' => $beforeTitle, 'after_title' => $afterTitle, 'description' => ''));
+			endif;
 			if($column_count == 'col-md-15'):
 				register_sidebar(array('name' => __('Footer Column 5','lastimosa'), 'id' => 'footer-5', 'before_widget' => $beforeWidget, 'after_widget' => $afterWidget, 'before_title' => $beforeTitle, 'after_title' => $afterTitle, 'description' => ''));
 			endif;
@@ -268,7 +278,7 @@ if(is_admin() && ( ! function_exists('add_custom_editor_styles'))){
 add_filter('fw_google_fonts', '_filter_theme_add_roboto_google_font');*/
 
 
-if( !function_exists('lastimosa_excerpt') ) :
+if( !function_exists('lastimosa_add_slug_body_class') ) :
 	/**
 	 * Page Slug Body Class
 	 */
@@ -282,21 +292,15 @@ if( !function_exists('lastimosa_excerpt') ) :
 	add_filter( 'body_class', 'lastimosa_add_slug_body_class' );
 endif;
 
-if( !function_exists('lastimosa_excerpt') ) :
-	function lastimosa_excerpt($limit) {
-		$limit++;
-		$excerpt = preg_replace('|<img (.+?)>|i', '', get_the_excerpt());
-		$excerpt = preg_replace('|<div id="attachment_(.+?)" class="wp-caption(.+?)<\/div>|i', '', $excerpt);
-		$excerpt = explode(' ', $excerpt, $limit);
-		if (count($excerpt)>=$limit) {
-		array_pop($excerpt);
-		$excerpt = implode(" ",$excerpt).'...';
-		} else {
-		$excerpt = implode(" ",$excerpt);
-		}	
-		$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
-		return $excerpt;
+
+if( !function_exists('lastimosa_excerpt_more') ) :
+	/**
+	 * Change […] on excerpts
+	 */
+	function lastimosa_excerpt_more( $more ) {
+		return '...';
 	}
+	add_filter('excerpt_more', 'lastimosa_excerpt_more');
 endif;
 
 
@@ -378,6 +382,73 @@ class T5_Richtext_Excerpt
 }
 
 
+if ( !function_exists('lastimosa_mime_types') ) :
+	/**
+	 * Allow upload of SVG files on media uploader
+	 */
+	function lastimosa_mime_types($mimes) {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
+	}
+	add_filter('upload_mimes', 'lastimosa_mime_types');
+endif;
+
+
+if ( !function_exists('lastimosa_mime_types') ) :
+	/**
+	 * Not seems to work. To be checked again. Supposedly this will show thumbnails of svg uploads in the Media Library.
+	 * https://www.sitepoint.com/wordpress-svg/
+	 */ 
+	//called via AJAX. returns the full URL of a media attachment (SVG) 
+	function lastimosa_get_attachment_url_media_library(){
+			$url = '';
+			$attachmentID = isset($_REQUEST['attachmentID']) ? $_REQUEST['attachmentID'] : '';
+			if($attachmentID){
+					$url = wp_get_attachment_url($attachmentID);
+			}
+			echo $url;
+			die();
+	}
+	//call our function when initiated from JavaScript
+	//add_action('wp_AJAX_svg_get_attachment_url', 'lastimosa_get_attachment_url_media_library');
+endif;
+
+
+if( ! function_exists( 'lastimosa_widget_form_extend' ) ) :
+	/**
+	 * Add class field to WP Widget and placed last on the bottom
+	 */
+	function lastimosa_widget_form_extend( $widget, $return, $instance ) {
+		if ( !isset($instance['classes']) )
+			$instance['classes'] = null;
+			$row = "<p><label for='widget-{$widget->id_base}-{$widget->number}-classes'>Class:</label>\n";
+			$row .= "<input type='text' name='widget-{$widget->id_base}[{$widget->number}][classes]' id='widget-{$widget->id_base}-{$widget->number}-classes' class='widefat' value='{$instance['classes']}'/></p>";
+			echo $row;
+		return $return;
+	}
+	add_action('in_widget_form', 'lastimosa_widget_form_extend', 10, 3);
+
+	function lastimosa_widget_update( $instance, $new_instance ) {
+		$instance['classes'] = $new_instance['classes'];
+	return $instance;
+	}
+	add_filter( 'widget_update_callback', 'lastimosa_widget_update', 10, 2 );
+
+	function lastimosa_dynamic_sidebar_params( $params ) {
+		global $wp_registered_widgets;
+		$widget_id  = $params[0]['widget_id'];
+		$widget_obj = $wp_registered_widgets[$widget_id];
+		$widget_opt = get_option($widget_obj['callback'][0]->option_name);
+		$widget_num = $widget_obj['params'][0]['number'];
+
+		if ( isset($widget_opt[$widget_num]['classes']) && !empty($widget_opt[$widget_num]['classes']) )
+			$params[0]['before_widget'] = preg_replace( '/class="/', "class=\"{$widget_opt[$widget_num]['classes']} ", $params[0]['before_widget'], 1 );
+		return $params;
+	}
+	add_filter( 'dynamic_sidebar_params', 'lastimosa_dynamic_sidebar_params' );
+endif;
+
+
 if ( !function_exists('lastimosa_print_smooth_scroll') ) :
 	/**
 	 * Smooth Scroll
@@ -403,7 +474,7 @@ if ( !function_exists('lastimosa_print_smooth_scroll') ) :
 		</script>
 		<?php
 	}
-	add_action( 'wp_footer', 'lastimosa_print_smooth_scroll', 30 );
+	//add_action( 'wp_footer', 'lastimosa_print_smooth_scroll', 30 );
 endif;
 
 

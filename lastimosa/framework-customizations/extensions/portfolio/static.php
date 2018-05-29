@@ -9,7 +9,7 @@ fw_include_file_isolated( $ext_instance->get_path( '/static.php' ) );
 if ( ! is_admin() ) {
 
 	$settings = $ext_instance->get_settings();
-
+//fw_print($settings);
 	if ( is_tax( $settings['taxonomy_name'] ) || is_post_type_archive( $settings['post_type'] ) ) {
 		wp_enqueue_script(
 			'fw-extension-' . $ext_instance->get_name() . '-mixitup',
@@ -52,24 +52,29 @@ if ( ! is_admin() ) {
 		//http://sachinchoolur.github.io/lightGallery/docs/
 		wp_enqueue_style(
 			'lightgallery',
-			get_template_directory_uri() . '/css/lightbox-1.css',
+			get_template_directory_uri() . '/css/lib/lightGallery/css/lightgallery.min.css',
 			array(),
 			'1.0'
 		);
 		wp_enqueue_script(
 			'lightgallery',
-			//'https://cdn.jsdelivr.net/jquery.typeit/4.3.0/typeit.min.js',
-			get_template_directory_uri() . '/js/lightbox-1.js',
+			get_template_directory_uri() . '/js/lightgallery.js',
 			array(),
 			'2.9',
 			true
 		);
 		wp_add_inline_script( 'lightgallery', '
-			lightbox.option({
-			  "resizeDuration": 200,
-			  "wrapAround": true,
-			  "fitImagesInViewport": true,
-			})
+			jQuery(document).ready(function () {
+				jQuery(\'#portfolio-gallery\').lightGallery();
+			});
+
 		');
+		wp_enqueue_script(
+			'mousewheel',
+			get_template_directory_uri() . '/js/jquery.mousewheel.min.js',
+			array(),
+			'2.9',
+			true
+		);
 	}	
 }

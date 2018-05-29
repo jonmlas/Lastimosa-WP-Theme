@@ -69,18 +69,17 @@ if ( ! function_exists( 'lastimosa_get_option_star_rating' )) :
  *  Star Rating
  */
 	function lastimosa_get_option_star_rating( $rating ) {
-		$star[] = '<div class="rating">';
+		$star[] = '<span class="rating">';
  		for( $i = 0; $i < 5; $i++ ) {
 			if( ($rating - $i) == 0.5 ){
-				$star[] = '<span class="fa fa-star half"></span>';
-				$star[] = '<span class="fa fa-star"></span>';
+				$star[] = '<span class="fa fa-star"><span class="fa fa-star half"></span></span>';
 			}elseif( $rating > $i ) {
 				$star[] = '<span class="fa fa-star checked"></span>';
 			}else{
 				$star[] = '<span class="fa fa-star"></span>';
 			}
 		}
-		$star[] = '</div>';
+		$star[] = '</span>';
 		return join( '', $star );
 	}
 endif;
@@ -231,6 +230,17 @@ if( !function_exists('lastimosa_get_option_advanced_class') ) :
 	 */
 	function lastimosa_get_option_advanced_class( $atts ) {
 		$advanced_class = array();
+		
+		// Get Hover Class
+		if( isset( $atts['hover'] ) ) {
+			if( !empty( $atts['hover']['2d'] ) )																								$advanced_class[] = $atts['hover']['2d'];
+			if( !empty( $atts['hover']['background'] ) )																				$advanced_class[] = $atts['hover']['background'];
+			if( !empty( $atts['hover']['border'] ) )																						$advanced_class[] = $atts['hover']['border'];
+			if( !empty( $atts['hover']['shadow'] ) )																						$advanced_class[] = $atts['hover']['shadow'];
+			if( !empty( $atts['hover']['speech_bubbles'] ) )																		$advanced_class[] = $atts['hover']['speech_bubbles'];
+			if( !empty( $atts['hover']['curls'] ) )																							$advanced_class[] = $atts['hover']['curls'];
+		}
+		
 		// Get border class
 		if( isset($atts['border']) ) {
 			if ( array_filter($atts['border']['side'])) 																				$advanced_class[] = lastimosa_get_options_box_border($atts['border']);
@@ -261,11 +271,11 @@ if( !function_exists('lastimosa_get_option_advanced_class') ) :
 endif;
 
 
-if( !function_exists('lastimosa_get_option_spacing_css') ) :
+if( !function_exists('lastimosa_get_option_spacing_css_property') ) :
 	/**
 	 * Get Advanced Classes
 	 */
-	function lastimosa_get_option_spacing_css( $atts, $spacing, $property ) { 
+	function lastimosa_get_option_spacing_css_property( $atts, $spacing, $property ) { 
 		$output = NULL;
 		if( $spacing == 'mall' || $spacing == 'pall' ){
 			$custom = $atts['spacing']['custom'];
@@ -295,42 +305,58 @@ if( !function_exists('lastimosa_get_option_spacing_css') ) :
 endif;
 
 
-if( !function_exists('lastimosa_get_option_spacing_breakpoints_css') ) :
+if( !function_exists('lastimosa_get_option_spacing_css') ) :
 	/**
 	 * Spacing Breakpoints CSS
 	 */
-	function lastimosa_get_option_spacing_breakpoints_css( $atts ) {
+	function lastimosa_get_option_spacing_css( $atts ) {
 		$shortcode_atts = array();
+		if( $atts['shortcode'] 	== 'column' ) {
+			$colwrap = ' .col-wrap';
+		}else{
+			$colwrap = '';
+		}
 		global $post;
-		if( (null !== lastimosa_get_option_spacing_css( $atts, 'msm', 'margin') ) || (null !== lastimosa_get_option_spacing_css( $atts, 'psm', 'padding' )) ) {
+		
+		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mall', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'pall', 'padding' )) ) {
+			$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+				if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mall', 'margin' ) )			$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mall', 'margin' );
+				if( null !== lastimosa_get_option_spacing_css_property( $atts, 'pall', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'pall', 'padding' );
+			$shortcode_atts[] = '}';
+		}
+		
+		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'msm', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'psm', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 576px) {';
-				$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'msm', 'margin' ) )			$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'msm', 'margin' );
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'psm', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'psm', 'padding' );
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'msm', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'msm', 'margin' );
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'psm', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'psm', 'padding' );
 				$shortcode_atts[] = '}';
 			$shortcode_atts[] = '}';
 		}
-		if( (null !== lastimosa_get_option_spacing_css( $atts, 'mmd', 'margin') ) || (null !== lastimosa_get_option_spacing_css( $atts, 'pmd', 'padding' )) ) {
+		
+		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mmd', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'pmd', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 768px) {';
-				$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'mmd', 'margin' ) )			$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'mmd', 'margin' );
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'pmd', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'pmd', 'padding' );
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mmd', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mmd', 'margin' );
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'pmd', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'pmd', 'padding' );
 				$shortcode_atts[] = '}';
 			$shortcode_atts[] = '}';
 		}
-		if( (null !== lastimosa_get_option_spacing_css( $atts, 'mlg', 'margin') ) || (null !== lastimosa_get_option_spacing_css( $atts, 'plg', 'padding' )) ) {
+		
+		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mlg', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'plg', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 992px) {';
-				$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'mlg', 'margin' ) )			$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'mlg', 'margin' );
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'plg', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'plg', 'padding' );
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mlg', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mlg', 'margin' );
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'plg', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'plg', 'padding' );
 				$shortcode_atts[] = '}';
 			$shortcode_atts[] = '}';
 		}
-		if( (null !== lastimosa_get_option_spacing_css( $atts, 'mxl', 'margin') ) || (null !== lastimosa_get_option_spacing_css( $atts, 'pxl', 'padding' )) ) {
+		
+		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mxl', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'pxl', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 1200px) {';
-				$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'mxl', 'margin' ) )			$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'mxl', 'margin' );
-					if( null !== lastimosa_get_option_spacing_css( $atts, 'pxl', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'pxl', 'padding' );
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . '-'.$atts['id'] . $colwrap . ' { ';
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mxl', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mxl', 'margin' );
+					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'pxl', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'pxl', 'padding' );
 				$shortcode_atts[] = '}';
 			$shortcode_atts[] = '}';
 		}
@@ -344,7 +370,7 @@ if( !function_exists('lastimosa_get_option_enqueue_wow') ) :
 	 * Enqueue WOW Animate Script
 	 */
 	function lastimosa_get_option_enqueue_wow( $atts ) {
-		if( !is_admin() && isset($atts['animate']) && !empty($atts['animate']['animation']) ) {
+		if( !is_admin() && !empty( $atts['animate']['animation'] ) ) {
 			wp_enqueue_script(
 				'wow',
 				get_template_directory_uri() . '/js/wow.min.js',

@@ -1,6 +1,4 @@
-<?php if ( ! defined( 'ABSPATH' ) ) {
-	die( 'Direct access forbidden.' );
-}
+<?php if ( ! defined( 'ABSPATH' ) ) {	die( 'Direct access forbidden.' );}
 
 if ( defined( 'FW' ) && function_exists( 'fw_ext_social_twitter_get_connection' ) && function_exists( 'curl_exec' ) ) {
 

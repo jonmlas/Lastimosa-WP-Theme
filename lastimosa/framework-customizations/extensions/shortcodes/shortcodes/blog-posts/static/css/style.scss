@@ -1,15 +1,16 @@
 /* Blog Pages */
 .blog-list {
 	.content {
-    	overflow: hidden;
+    overflow: hidden;
 	}
 	.thumbnail {
-		box-shadow: unset;
-		padding: 0;
+		box-shadow: unset;		
 	}
 	.thumbnail img {
-    width: 100%;
+		min-width: 100%;
+		max-width: 100%;
     height: auto;
+		padding: 0 0 rem(8px) 0;
 	}
 	.btn.btn-default {
 		background: #2189a5;
@@ -28,19 +29,97 @@
 		clear:both;
 		display:block;
 	}
-	article:last-child:after {
+	article:last-of-type:after {
 		content: "";
 		border-bottom: none;
 		padding-top: 0;
 	}
+	.pagination {
+		display: block;
+		.page-numbers {
+			display: none;
+		}
+		.prev.page-numbers, .next.page-numbers {
+   		display: block;
+		}
+		.prev {
+			float: right;
+		}
+		.next {
+			float: left;
+		}
+	}
+	.numeric-pagination {
+    display: block;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+		ul.page-numbers {
+			padding: 0;
+			margin: 0;
+		}
+		ul li {
+			display: inline-block;
+		}
+		.page-numbers {
+			position: relative;
+			padding: .5rem .75rem;
+			display: inline-block;
+			margin: -3px;
+			line-height: 1.25;
+			color: #007bff;
+			background-color: #fff;
+			border: 1px solid #dee2e6;
+					border-top-color: rgb(222, 226, 230);
+					border-right-color: rgb(222, 226, 230);
+					border-bottom-color: rgb(222, 226, 230);
+					border-left-color: rgb(222, 226, 230);
+
+			&:hover, &.current {
+				color: #0056b3;
+				text-decoration: none;
+				background-color: #e9ecef;
+				border-color: #dee2e6;
+			}
+
+			&:focus {
+				z-index: 2;
+				outline: 0;
+				box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+			}
+
+			// Opinionated: add "hand" cursor to non-disabled .page-link elements
+			&:not(:disabled):not(.disabled) {
+				cursor: pointer;
+			}
+		}
+
+
+	}
 }
 
 @media (min-width: 768px) {
-	.thumbnail img {
-    width: auto;
-	}
 	article:after {
 		margin: rem(30px) 0 rem(50px);
+	}
+	.blog-list {
+		.thumbnail img {
+			min-width: 0;
+			min-height: 100%;
+		}
+		.offset-1-5 {
+			margin-left: 20%;
+		}
+		.col-md-6 .alignleft, .col-md-6 .alignright {
+			margin: 0;
+		}
+		article:after {
+			content: "";
+			border-bottom: none;
+		}
+		.thumbnail img.aligncenter {
+				min-width: 0;
+		}
 	}
 }
 

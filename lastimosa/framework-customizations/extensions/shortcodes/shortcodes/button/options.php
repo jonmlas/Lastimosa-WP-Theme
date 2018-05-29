@@ -150,72 +150,9 @@ $options = array(
 		'title'   => __( 'Advanced', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
-			'margin' 	=> array(
-				'type'         => 'multi-picker',
-				'label'        => false,
-				'desc'         => false,
-				'value'        => array(
-					'selected' => 'bootstrap',
-					'bootstrap' => null,
-				),
-				'picker'       => array(
-					'selected' => array(
-						'label'   => __( 'Spacing', 'lastimosa' ),
-						'type'    => 'select',
-						'choices' => array(
-							'bootstrap' => __( 'Bootstrap margins (Recommended)', 'lastimosa' ),
-							'custom' 		=> __( 'Custom margins', 'lastimosa' )
-						),
-						'desc'    => __( 'Select spacing method.', 'lastimosa' ),
-						'help'    => __( 'Using custom method will add new CSS classes for each element.', 'lastimosa' ),
-					)
-				),
-				'choices'      => array(
-					'bootstrap'  => array(
-						'all'   => lastimosa_option_bs_margin( '' ),
-						'responsive' => array(
-							'type' => 'popup',
-							'value' => array(
-							),
-							'label' 		=> __('', 'lastimosa'),
-							'desc'  		=> __( '', 'lastimosa' ),
-							'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
-							'button' 		=> __('Responsive Breakpoints', 'lastimosa'),
-							'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
-							'size' 			=> 'medium', // small, medium, large
-							'popup-options' => array(
-								'sm'		=> lastimosa_option_bs_margin( 'sm' ),
-								'md'  	=> lastimosa_option_bs_margin( 'md' ),
-								'lg'  	=> lastimosa_option_bs_margin( 'lg' ),
-								'xl'  	=> lastimosa_option_bs_margin( 'xl' ),
-							),
-						),
-					),
-					'custom' => array(
-						'mall'	=> lastimosa_option_box( '', 'Margin for all devices' ),
-						'responsive' => array(
-							'type' => 'popup',
-							'value' => array(
-							),
-							'label' 		=> __('', 'lastimosa'),
-							'desc'  		=> __( '', 'lastimosa' ),
-							'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
-							'button' 		=> __('Responsive Breakpoints', 'lastimosa'),
-							'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
-							'size' 			=> 'medium', // small, medium, large
-							'popup-options' => array(
-								'msm'		=> lastimosa_option_box( 'Phones', 'Margin for small devices (landscape phones, <strong>576px</strong> and up)' ),
-								'mmd'		=> lastimosa_option_box( 'Tablets', 'Margin for medium devices (tablets  phones, <strong>768px</strong> and up)' ),
-								'mlg'		=> lastimosa_option_box( 'Desktops', 'Margin for large devices (desktops, <strong>992px</strong> and up)' ),
-								'mxl'		=> lastimosa_option_box( 'Large Desktops', 'Margin for extra large devices (large desktops, <strong>1200px</strong> and up)' ),
-							),
-						),
-					),
-				),
-				'show_borders' => false,
-			),
+			'spacing'   => lastimosa_option_spacing(),
 			'visibility'=> lastimosa_option_visibility(),
-			'class' 	=> lastimosa_option_class(),
+			'class' 		=> lastimosa_option_class(),
 		),
 	),
 );

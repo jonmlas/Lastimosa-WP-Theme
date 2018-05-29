@@ -12,8 +12,6 @@ get_header(); ?>
 	<div class="row">
 		<main id="main" class="site-main content-area col-md" role="main">
 		<?php
-			$review = fw_get_db_post_option();
-			fw_print($review);
 		while ( have_posts() ) : the_post();
 
 			do_action( 'lastimosa_before_entry' ); 
@@ -30,7 +28,9 @@ get_header(); ?>
 		endwhile; // End of the loop.
 		?>
 		</main><!-- #main -->
+		
 		<?php get_sidebar(); ?>
+		
 	</div>
 </div>
 <?php	get_footer();

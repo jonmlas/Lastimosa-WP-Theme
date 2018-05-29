@@ -82,15 +82,9 @@ $options = array(
 		'title'   => __( 'Advanced', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
-				'advanced_group' => array(
-				'title'   => __( 'Advance', 'lastimosa' ),
-				'type'    => 'group',
-				'options' => array(
-					'spacing'   => lastimosa_option_spacing(),
-					'visibility'=> lastimosa_option_visibility(),
-					'class' 		=> lastimosa_option_class(),
-				),
-			),
+			'spacing'   => lastimosa_option_spacing(),
+			'visibility'=> lastimosa_option_visibility(),
+			'class' 		=> lastimosa_option_class(),
 		),
-	),
+	),		
 );

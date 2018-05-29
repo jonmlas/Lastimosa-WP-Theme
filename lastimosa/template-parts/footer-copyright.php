@@ -1,15 +1,15 @@
-<?php $atts = lastimosa_get_option('footer_copyright');
-//fw_print($atts); 
+<?php $footer_copyright = lastimosa_get_option('footer_copyright');
 	  $menu_atts = lastimosa_get_option('footer_menu');
- // fw_print($menu_atts); 
 ?>
+<?php if( empty($footer_copyright['text']) && !has_nav_menu( 'footer' ) ) return; ?>
 <div class="site-info">
 	<div class="container">
 		<div>
 			<?php if ( has_nav_menu( 'footer' ) ) : ?>
 				<?php wp_nav_menu( array( 
 				'menu'           => 'footer',
-				'theme_location' => 'footer', 
+				'theme_location' => 'footer',
+				'item_spacing'   => 'discard',
 				'menu_class'		 => 'nav '. $menu_atts['yes']['alignment'] ) ); ?>
 			<?php endif; ?>
 
@@ -26,6 +26,6 @@
 				</ul><br>
 			<?php endif; ?>
 		</div>
-		<p class="<?php echo $atts['alignment']; ?>"><?php echo $atts['copyright']; ?></p>
+		<p class="<?php echo $footer_copyright['alignment']; ?>"><?php echo $footer_copyright['text']; ?></p>
 	</div>
 </div><!-- .site-info -->

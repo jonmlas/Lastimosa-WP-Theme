@@ -7,12 +7,12 @@ $cfg = array();
 $cfg['image_sizes'] = array(
 	'featured-image' => array(
 		'width'  => 440,
-		'height' => 275,
+		'height' => 280,
 		'crop'   => true
 	),
 	'gallery-image'  => array(
-		'width'  => 1280,
-		'height' => 600,
+		'width'  => 300,
+		'height' => 200,
 		'crop'   => true
 	)
 );

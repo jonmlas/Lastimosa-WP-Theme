@@ -99,13 +99,13 @@ if(! function_exists( 'lastimosa_option_color_select' )) :
 	/**
 	*  Color Swatch Options
 	*/
-	function lastimosa_option_color_select($label) {
+	function lastimosa_option_color_select( $label, $color = 'text' ) {
 		$color_palette = array(
 			''  =>'Default');
 		$theme_colors = lastimosa_option_color_palette();
 		//$color_palette[''] = __( 'Default' , 'lastimosa');
 		foreach($theme_colors as $key => $value) {
-			$color_palette[sanitize_title_with_dashes($label) . '-'.sanitize_title_with_dashes($key)] = __( $key , 'lastimosa');
+			$color_palette[sanitize_title_with_dashes( $color ) . '-'.sanitize_title_with_dashes( $key )] = __( $key , 'lastimosa');
 		}
 		return array(
 			'label'   => __( '', 'lastimosa' ),
@@ -710,6 +710,197 @@ if(! function_exists('lastimosa_option_float')) :
 						'float-xl-none' 	=> __( 'Don\'t float', 'lastimosa' ),
 					),
 				),
+			),
+		);
+	}
+endif;
+
+
+if(! function_exists('lastimosa_option_hover_2d')) :
+	/**
+	 * 2D Hover Option
+	 */
+	function lastimosa_option_hover_2d() {
+		return array(
+			'type'    => 'select',
+			'label'   => __( '2d Transition', 'lastimosa' ),
+			'desc'		=> __( '', 'lastimosa' ),
+			'value' => '',
+			'choices' => array(
+				'' 				=> __( 'None', 'lastimosa'),
+				'hvr-grow' 				=> __( 'Grow', 'lastimosa' ),
+				'hvr-shrink' 			=> __( 'Shrink', 'lastimosa' ),
+				'hvr-pulse' 			=> __( 'Pulse', 'lastimosa' ),
+				'hvr-pulse-grow' 	=> __( 'Pulse Grow', 'lastimosa' ),
+				'hvr-pulse-shrink'=> __( 'Pulse Shrink', 'lastimosa' ),
+				'hvr-push' 				=> __( 'Push', 'lastimosa' ),
+				'hvr-pop' 				=> __( 'Pop', 'lastimosa' ),
+				'hvr-bounce-in' 	=> __( 'Bounce In', 'lastimosa' ),
+				'hvr-bounce-out' 	=> __( 'Bounce Out', 'lastimosa' ),
+				'hvr-rotate' 			=> __( 'Rotate', 'lastimosa' ),
+				'hvr-grow-rotate' => __( 'Grow Rotate', 'lastimosa' ),
+				'hvr-float' 			=> __( 'Float', 'lastimosa' ),
+				'hvr-sink' 				=> __( 'Sink', 'lastimosa' ),
+				'hvr-bob' 				=> __( 'Bob', 'lastimosa' ),
+				'hvr-hang' 				=> __( 'Hang', 'lastimosa' ),
+				'hvr-skew' 				=> __( 'Skew', 'lastimosa' ),
+				'hvr-skew-forward' 	=> __( 'Skew Forward', 'lastimosa' ),
+				'hvr-skew-backward' => __( 'Skew Backward', 'lastimosa' ),
+				'hvr-wobble-horizontal' => __( 'Wobble Horizontal', 'lastimosa' ),
+				'hvr-wobble-vertical' 	=> __( 'Wobble Vertical', 'lastimosa' ),
+				'hvr-wobble-to-bottom-right'=> __( 'Wobble To Bottom Right', 'lastimosa' ),
+				'hvr-wobble-to-top-right' 	=> __( 'Wobble To Top Right', 'lastimosa' ),
+				'hvr-wobble-top' 	=> __( 'Wobble Top', 'lastimosa' ),
+				'hvr-wobble-bottom' => __( 'Wobble Bottom', 'lastimosa' ),
+				'hvr-wobble-skew' => __( 'Wobble Skew', 'lastimosa' ),
+				'hvr-buzz' 				=> __( 'Buzz', 'lastimosa' ),
+				'hvr-buzz-out' 		=> __( 'Buzz Out', 'lastimosa' ),
+				'hvr-forward' 		=> __( 'Forward', 'lastimosa' ),
+				'hvr-backward' 		=> __( 'Backward', 'lastimosa' ),
+			),
+		);
+	}
+endif;
+
+
+if(! function_exists('lastimosa_option_hover_background')) :
+	/**
+	 * Background Hover Option
+	 */
+	function lastimosa_option_hover_background() {
+		return array(
+			'type'    => 'select',
+			'label'   => __( 'Background Transition', 'lastimosa' ),
+			'desc'		=> __( '', 'lastimosa' ),
+			'value' => '',
+			'choices' => array(
+				'' 				=> __( 'None', 'lastimosa'),
+				'hvr-fade' => __( 'Fade', 'lastimosa' ),
+				'hvr-back-pulse' => __( 'Back Pulse', 'lastimosa' ),
+				'hvr-sweep-to-right' => __( 'Sweep To Right', 'lastimosa' ),
+				'hvr-sweep-to-left' => __( 'Sweep To Left', 'lastimosa' ),
+				'hvr-sweep-to-bottom' => __( 'Sweep To Bottom', 'lastimosa' ),
+				'hvr-sweep-to-top' => __( 'Sweep To Top', 'lastimosa' ),
+				'hvr-bounce-to-right' => __( 'Bounce To Right', 'lastimosa' ),
+				'hvr-bounce-to-left' => __( 'Bounce To Left', 'lastimosa' ),
+				'hvr-bounce-to-bottom' => __( 'Bounce To Bottom', 'lastimosa' ),
+				'hvr-bounce-to-top' => __( 'Bounce To Top', 'lastimosa' ),
+				'hvr-radial-out' => __( 'Radial Out', 'lastimosa' ),
+				'hvr-radial-in' => __( 'Radial In', 'lastimosa' ),
+				'hvr-rectangle-in' => __( 'Rectangle In', 'lastimosa' ),
+				'hvr-rectangle-out' => __( 'Rectangle Out', 'lastimosa' ),
+				'hvr-shutter-in-horizontal' => __( 'Shutter In Horizontal', 'lastimosa' ),
+				'hvr-shutter-out-horizontal' => __( 'Shutter Out Horizontal', 'lastimosa' ),
+				'hvr-shutter-in-vertical' => __( 'Shutter In Vertical', 'lastimosa' ),
+				'hvr-shutter-out-vertical' => __( 'Shutter Out Vertical', 'lastimosa' ),
+			),
+		);
+	}
+endif;
+
+
+if(! function_exists('lastimosa_option_hover_border')) :
+	/**
+	 * Border Hover Option
+	 */
+	function lastimosa_option_hover_border() {
+		return array(
+			'type'    => 'select',
+			'label'   => __( 'Border Transition', 'lastimosa' ),
+			'desc'		=> __( '', 'lastimosa' ),
+			'value' => '',
+			'choices' => array(
+				'' 				=> __( 'None', 'lastimosa'),
+				'hvr-border-fade' => __( 'Border Fade', 'lastimosa' ),
+				'hvr-hollow' => __( 'Hollow', 'lastimosa' ),
+				'hvr-trim' => __( 'Trim', 'lastimosa' ),
+				'hvr-ripple-out' => __( 'Ripple Out', 'lastimosa' ),
+				'hvr-ripple-in' => __( 'Ripple In', 'lastimosa' ),
+				'hvr-outline-out' => __( 'Outline Out', 'lastimosa' ),
+				'hvr-outline-in' => __( 'Outline In', 'lastimosa' ),
+				'hvr-round-corners' => __( 'Round Corners', 'lastimosa' ),
+				'hvr-underline-from-left' => __( 'Underline From Left', 'lastimosa' ),
+				'hvr-underline-from-center' => __( 'Underline From Center', 'lastimosa' ),
+				'hvr-underline-from-right' => __( 'Underline From Right', 'lastimosa' ),
+				'hvr-reveal' => __( 'Reveal', 'lastimosa' ),
+				'hvr-underline-reveal' => __( 'Underline Reveal', 'lastimosa' ),
+				'hvr-overline-reveal' => __( 'Overline Reveal', 'lastimosa' ),
+				'hvr-overline-from-left' => __( 'Overline From Left', 'lastimosa' ),
+				'hvr-overline-from-center' => __( 'Overline From Center', 'lastimosa' ),
+				'hvr-overline-from-right' => __( 'Overline From Right', 'lastimosa' ),
+			),
+		);
+	}
+endif;
+
+
+if(! function_exists('lastimosa_option_hover_shadow')) :
+	/**
+	 * Shadow and Glow Hover Option
+	 */
+	function lastimosa_option_hover_shadow() {
+		return array(
+			'type'    => 'select',
+			'label'   => __( 'Shadow and Glow Transition', 'lastimosa' ),
+			'desc'		=> __( '', 'lastimosa' ),
+			'value' => '',
+			'choices' => array(
+				'' 				=> __( 'None', 'lastimosa'),
+				'hvr-shadow' => __( 'Shadow', 'lastimosa' ),
+				'hvr-grow-shadow' => __( 'Grow Shadow', 'lastimosa' ),
+				'hvr-float-shadow' => __( 'Float Shadow', 'lastimosa' ),
+				'hvr-glow' => __( 'Glow', 'lastimosa' ),
+				'hvr-shadow-radial' => __( 'Shadow Radial', 'lastimosa' ),
+				'hvr-box-shadow-outset' => __( 'Box Shadow Outset', 'lastimosa' ),
+				'hvr-box-shadow-inset' => __( 'Box Shadow Inset', 'lastimosa' ),
+			),
+		);
+	}
+endif;
+
+
+if(! function_exists('lastimosa_option_hover_speech_bubbles')) :
+	/**
+	 * Speech Bubbles Hover Option
+	 */
+	function lastimosa_option_hover_speech_bubbles() {
+		return array(
+			'type'    => 'select',
+			'label'   => __( 'Speech Bubbles', 'lastimosa' ),
+			'desc'		=> __( '', 'lastimosa' ),
+			'value' => '',
+			'choices' => array(
+				'' 				=> __( 'None', 'lastimosa'),
+				'hvr-bubble-top' => __( 'Bubble Top', 'lastimosa' ),
+				'hvr-bubble-right' => __( 'Bubble Right', 'lastimosa' ),
+				'hvr-bubble-bottom' => __( 'Bubble Bottom', 'lastimosa' ),
+				'hvr-bubble-left' => __( 'Bubble Left', 'lastimosa' ),
+				'hvr-bubble-float-top' => __( 'Bubble Float Top', 'lastimosa' ),
+				'hvr-bubble-float-right' => __( 'Bubble Float Right', 'lastimosa' ),
+				'hvr-bubble-float-bottom' => __( 'Bubble Float Bottom', 'lastimosa' ),
+				'hvr-bubble-float-left' => __( 'Bubble Float Left', 'lastimosa' ),
+			),
+		);
+	}
+endif;
+
+
+if(! function_exists('lastimosa_option_hover_curls')) :
+	/**
+	 * Curls Hover Option
+	 */
+	function lastimosa_option_hover_curls() {
+		return array(
+			'type'    => 'select',
+			'label'   => __( 'Curls', 'lastimosa' ),
+			'desc'		=> __( '', 'lastimosa' ),
+			'value' => '',
+			'choices' => array(
+				'' 				=> __( 'None', 'lastimosa'),
+				'hvr-curl-top-left' => __( 'Curl Top Left', 'lastimosa' ),
+				'hvr-curl-top-right' => __( 'Curl Top Right', 'lastimosa' ),
+				'hvr-curl-bottom-right' => __( 'Curl Bottom Right', 'lastimosa' ),
+				'hvr-curl-bottom-left' => __( 'Curl Bottom Left', 'lastimosa' ),
 			),
 		);
 	}
@@ -1599,6 +1790,80 @@ if(!function_exists('lastimosa_option_bs_spacing_size_choices')) :
 		);
 	}
 endif;
+
+
+if(!function_exists('lastimosa_option_margin')) :
+	/**
+	 * Margin & Padding Options
+	 */
+	function lastimosa_option_margin() {
+		return array(
+			'type'         => 'multi-picker',
+			'label'        => false,
+			'desc'         => false,
+			'value'        => array(
+				'selected' => 'bootstrap',
+				'bootstrap' => null,
+			),
+			'picker'       => array(
+				'selected' => array(
+					'label'   => __( 'Spacing', 'lastimosa' ),
+					'type'    => 'select',
+					'choices' => array(
+						'bootstrap' => __( 'Bootstrap margins (Recommended)', 'lastimosa' ),
+						'custom' 		=> __( 'Custom margins', 'lastimosa' )
+					),
+					'desc'    => __( 'Select spacing method.', 'lastimosa' ),
+					'help'    => __( 'Using custom method will add new CSS classes for each element.', 'lastimosa' ),
+				)
+			),
+			'choices'      => array(
+				'bootstrap'  => array(
+					'all'   => lastimosa_option_bs_margin( '' ),
+					'responsive' => array(
+						'type' => 'popup',
+						'value' => array(
+						),
+						'label' 		=> __('', 'lastimosa'),
+						'desc'  		=> __( '', 'lastimosa' ),
+						'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
+						'button' 		=> __('Responsive Breakpoints', 'lastimosa'),
+						'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
+						'size' 			=> 'medium', // small, medium, large
+						'popup-options' => array(
+							'sm'		=> lastimosa_option_bs_margin( 'sm' ),
+							'md'  	=> lastimosa_option_bs_margin( 'md' ),
+							'lg'  	=> lastimosa_option_bs_margin( 'lg' ),
+							'xl'  	=> lastimosa_option_bs_margin( 'xl' ),
+						),
+					),
+				),
+				'custom' => array(
+					'mall'	=> lastimosa_option_box( '', 'Margin for all devices' ),
+					'responsive' => array(
+						'type' => 'popup',
+						'value' => array(
+						),
+						'label' 		=> __('', 'lastimosa'),
+						'desc'  		=> __( '', 'lastimosa' ),
+						'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
+						'button' 		=> __('Responsive Breakpoints', 'lastimosa'),
+						'popup-title' => __('Responsive Breakpoints', 'lastimosa'),
+						'size' 			=> 'medium', // small, medium, large
+						'popup-options' => array(
+							'msm'		=> lastimosa_option_box( 'Phones', 'Margin for small devices (landscape phones, <strong>576px</strong> and up)' ),
+							'mmd'		=> lastimosa_option_box( 'Tablets', 'Margin for medium devices (tablets  phones, <strong>768px</strong> and up)' ),
+							'mlg'		=> lastimosa_option_box( 'Desktops', 'Margin for large devices (desktops, <strong>992px</strong> and up)' ),
+							'mxl'		=> lastimosa_option_box( 'Large Desktops', 'Margin for extra large devices (large desktops, <strong>1200px</strong> and up)' ),
+						),
+					),
+				),
+			),
+			'show_borders' => false,
+		);
+	}
+endif;
+
 
 
 if(!function_exists('lastimosa_option_box')) :

@@ -1,5 +1,18 @@
 <?php if (!defined('FW')) die('Forbidden');
 
+if ( ! function_exists( 'delete_shortcode_blog_posts_style_temp' ) ) :
+	/**
+	 * Resets the blog-posts-style-temp to null on page load
+	 * which means it will remove the css style of any deleted shortcode
+	 */
+	function delete_shortcode_blog_posts_style_temp() {
+		delete_option( 'blog-posts-style-temp' );	
+	}
+	if( get_option( 'blog-posts-style-temp' ) ) {
+		delete_shortcode_blog_posts_style_temp();
+	}
+endif;
+
 if (!function_exists('_action_theme_shortcode_blog_posts_enqueue_dynamic_css')):
 
 	/**
@@ -25,7 +38,12 @@ if (!function_exists('_action_theme_shortcode_blog_posts_enqueue_dynamic_css')):
 				'1.0',
 				true
 			);
-		}	
+		}
+		
+		lastimosa_get_option_enqueue_wow( $atts );
+		$css = lastimosa_get_option_spacing_css( $atts );
+		
+		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 add_action(

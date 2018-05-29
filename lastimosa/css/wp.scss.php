@@ -2,24 +2,14 @@
  * Start of wp.scss.php
  */
 
-/* start of enable sticky footer code */
-/*html {
-  height: 100%;
-  box-sizing: border-box;
-}
-
-body {
-  position: relative;
-  margin: 0;
-  padding-bottom: 6rem;
-  min-height: 100%;
-}*/
-/* End of enable sticky footer code */
-
 <?php 
 	$theme_layout = lastimosa_get_option('theme_layout');		
 	$body_bg_atts = $theme_layout['body'];
 ?>
+
+body {
+	<?php echo join( ' ', lastimosa_get_options_background_css( $body_bg_atts ) ); ?>
+}
 
 <?php if($theme_layout['layout']['selected'] == 'container') { ?>
 <?php $boxed_bg_atts = $theme_layout['layout']['container']; ?>
@@ -39,16 +29,12 @@ article.post-password-required {
   max-width:$content-width;
 }
 
-#main {
-    min-height: 50vh;
+.site-main.container {
+  padding: 0;
+	min-height: 50vh;
 }
-
 article.post-password-required {
 	margin:0 auto;
-}
-
-body {
-	<?php echo join( ' ', lastimosa_get_options_background_css( $body_bg_atts ) ); ?>
 }
 
 <?php 
@@ -129,6 +115,41 @@ if(!empty($button_sizes)) {
 
 
 /*--------------------------------------------------------------
+## Widgets
+--------------------------------------------------------------*/
+#sidebar .widget {
+    margin-bottom: 2rem;
+}
+
+/* Social Media */
+.social-media ul li {
+    list-style: none;
+    display: inline-block;
+}
+.social-media ul {
+    padding-left: 0 !important;
+}
+
+/* Entypo fix */
+ul.social-media li [class^="entypo-"], ul.social-media li [class*=" entypo-"] {
+    width: auto;
+    margin-right: 0;
+}
+
+/* Search */
+.search-form {
+	position: relative;
+}
+.search-form .search-submit {
+	padding: 0.15em .7em;
+	position: absolute;
+	right: 0;
+	font-size: 20px;
+	margin: 3px;
+}
+
+
+/*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
@@ -166,6 +187,7 @@ if(!empty($button_sizes)) {
 #content[tabindex="-1"]:focus {
   outline: 0;
 }
+
 
 /*--------------------------------------------------------------
 # Alignments
@@ -223,6 +245,7 @@ a img.aligncenter {
 
 }
 
+
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
@@ -254,11 +277,35 @@ a img.aligncenter {
 
 
 /*--------------------------------------------------------------
+# Offsets for 5 columns
+--------------------------------------------------------------*/
+.offset-md-2-4 {
+	margin-left: 20%;
+}
+
+.offset-md-4-8 {
+	margin-left: 40%;
+}
+
+.offset-md-7-2 {
+	margin-left: 60%;
+}
+
+.offset-md-9-6 {
+	margin-left: 80%;
+}
+
+
+/*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+article {
+	margin-bottom: 2rem;
+}
+
 #content.site-content {
   padding-bottom: 3.75rem;
   padding-top: 4.125rem;
@@ -303,6 +350,64 @@ a img.aligncenter {
 .entry-title > a {
   color: inherit;
 }
+
+/* Post Meta */
+.post-meta > span {
+	padding: 0 5px;
+	border-right: 1px solid;
+}
+.post-meta > span:first-child {
+  padding-left: 0;
+}
+.post-meta > span:last-child {
+  padding-right: 0;
+	border-right: none;
+}
+
+
+/*--------------------------------------------------------------
+## Pagination
+--------------------------------------------------------------*/
+.paging-navigation {
+	display: block;
+	padding-left: 0;
+	list-style: none;
+	border-radius: .25rem;
+	margin-bottom: 3rem;
+	.page-numbers {
+		position: relative;
+		padding: .5rem .75rem;
+		display: inline-block;
+		margin: -3px;
+		line-height: 1.25;
+		color: #007bff;
+		background-color: #fff;
+		border: 1px solid #dee2e6;
+			border-top-color: rgb(222, 226, 230);
+			border-right-color: rgb(222, 226, 230);
+			border-bottom-color: rgb(222, 226, 230);
+			border-left-color: rgb(222, 226, 230);
+
+		&:hover, &.current {
+			color: #0056b3;
+			text-decoration: none;
+			background-color: #e9ecef;
+			border-color: #dee2e6;
+		}
+
+		&:focus {
+			z-index: 2;
+			outline: 0;
+			box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+		}
+
+		// Opinionated: add "hand" cursor to non-disabled .page-link elements
+		&:not(:disabled):not(.disabled) {
+			cursor: pointer;
+		}
+	}
+}
+
 
 /*--------------------------------------------------------------
 ## Font Icons Overrides
@@ -365,6 +470,7 @@ a img.aligncenter {
   display: block;
 }
 
+
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
@@ -383,6 +489,7 @@ iframe,
 object {
   max-width: 100%;
 }
+
 
 /*--------------------------------------------------------------
 ## Captions
@@ -412,6 +519,7 @@ object {
 .wp-caption-text {
   text-align: center;
 }
+
 
 /*--------------------------------------------------------------
 ## Galleries
@@ -456,6 +564,63 @@ object {
 }
 
 /*--------------------------------------------------------------
+## LightGallery
+--------------------------------------------------------------*/
+.admin-bar .lg-outer {
+	top: 2.875rem;
+	height: unquote( "calc( 100% - 2.875rem )" );
+}
+.lg-sub-html h4, .lg-sub-html p {
+	color: #EEE;
+}
+
+$lightgallery_gutter: 8px;
+.lightgallery .row { 
+	margin-right: rem( -$lightgallery_gutter );
+	margin-left: rem( -$lightgallery_gutter );
+}
+
+.lightgallery .row > [class*='col-'] { 
+	padding-right: rem( $lightgallery_gutter );
+	padding-left: rem( $lightgallery_gutter );
+}
+
+@media (min-width: 768px) {
+	.admin-bar .lg-outer {
+		top: 2rem;
+		height: unquote( "calc( 100% - 2rem )" );
+	}
+}
+
+
+/*--------------------------------------------------------------
+## 5 Star Rating
+--------------------------------------------------------------*/
+.rating {
+	position: relative;
+}
+.fa.fa-star {
+	color: #bdc3c7;
+}
+.fa.fa-star.checked {
+	color: #e67e22;
+}
+.fa.fa-star.half {
+	position:absolute;
+	color: #e67e22;
+	z-index: 9;
+	bottom: 0.14em;
+	margin-left: -0.92em;
+}
+.fa.fa-star.half:before {
+  position: relative;
+  width: 50%;
+  display: block;
+  overflow: hidden;
+}
+
+
+/*--------------------------------------------------------------
 # Plugin Compatibility
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -474,37 +639,6 @@ object {
   max-width: 100%;
 }
 
-/*--------------------------------------------------------------
-## Elementor
---------------------------------------------------------------*/
-.elementor-page article .entry-footer {
-  display: none;
-}
-
-.elementor-page.page-template-fullwidth #content.site-content {
-  padding-bottom: 0;
-  padding-top: 0;
-}
-
-.elementor-page .entry-content {
-  margin-top: 0;
-}
-
-/*--------------------------------------------------------------
-## Visual Composer
---------------------------------------------------------------*/
-.vc_desktop article .entry-footer {
-  display: none;
-}
-
-.vc_desktop #content.site-content {
-  padding-bottom: 0;
-  padding-top: 0;
-}
-
-.vc_desktop .entry-content {
-  margin-top: 0;
-}
 
 /*--------------------------------------------------------------
 # Footer
@@ -529,3 +663,37 @@ body:not(.theme-preset-active) footer#colophon {
   color: inherit;
 }
 
+
+/*--------------------------------------------------------------
+# Back to top button 
+--------------------------------------------------------------*/
+#scroll-top {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	margin: 0;
+	text-decoration: none;
+	z-index: 999;
+}
+#scroll-top button {
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	outline: none;
+	cursor: pointer;
+	border-radius: 100%;
+	border: solid 5px #FFEBEE;
+	background-color: #F44336;
+	color: #fff;
+	box-shadow: 0 0 1px #333;
+	display: block;
+	font-family: tahoma;
+	font-size: 11px;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#scroll-top button:hover {
+	background-color: #B71C1C;
+	border-color: #F44336;
+}

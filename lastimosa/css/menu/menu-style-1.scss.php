@@ -9,8 +9,8 @@ $submenu 	= $header_menu[$header_menu['selected']]['submenu'];
 $megamenu = $header_menu[$header_menu['selected']]['megamenu']; 
 ?>
 
-$menu_bg_color: 		<?php echo $menu['bg_color']; ?>;
-$menu_divider: lighten( <?php echo $menu['bg_color']; ?>, 5% );
+$menu_bg_color: 		<?php if(!empty($menu['bg_color'])) echo $menu['bg_color']; ?>;
+$menu_divider: <?php if(!empty($menu['bg_color'])) echo 'lighten(' . $menu['bg_color'] . ', 5%' ?> );
 $menu_active_color:	<?php echo lastimosa_get_option_color_picker($menu['active_color']); ?>;
 $menu_active_bg_color: <?php echo lastimosa_get_option_color_picker($menu['active_bg_color']); ?>;
 $menu_hover_color: 	<?php echo lastimosa_get_option_color_picker($menu['hover_color']); ?>;
@@ -65,7 +65,7 @@ a.meanmenu-reveal {
 	background: #0c1923;
 	padding: 4px 0 0;
 	min-height: 42px;
-	z-index: 999999;
+	z-index: 9;
 	margin-bottom: rem(16px);
 }
 
@@ -268,7 +268,7 @@ a.meanmenu-reveal {
 .site-navigation .current-menu-parent > a,
 .site-navigation .current-menu-ancestor > a {
 	color: $menu_active_color;
-  background-color: $menu_active_bg_color;
+  background-color:  <?php echo lastimosa_get_option_color_picker($menu['active_bg_color']); ?>;
 }
 
 .site-navigation a:hover {

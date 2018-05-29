@@ -5,9 +5,9 @@
 // This will erase the css after you remove the button
 if (!function_exists('delete_shortcode_button_style_temp')):
 	function delete_shortcode_button_style_temp() {
-			delete_option( 'btn_style_temp' );	
+			delete_option( 'btn-style_temp' );	
 	}
-	if( get_option( 'btn_style_temp' ) ) {
+	if( get_option( 'btn-style_temp' ) ) {
 		delete_shortcode_button_style_temp();
 	}
 endif;
@@ -24,8 +24,7 @@ if (!function_exists('_action_theme_shortcode_button_enqueue_dynamic_css')):
 		$atts = fw_ext_shortcodes_decode_attr($atts, $shortcode, $data['post']->ID);
 		$atts['shortcode'] 	= $shortcode;
 		global $post;
-		$shortcode_atts = array();
-		$atts['id'] = substr($atts['id'], 0, 10);
+		$atts['id'] = 'btn' . substr($atts['id'], 0, 10);
 		$post_slug = $post->post_name;
 		
 		lastimosa_get_option_enqueue_wow( $atts );
@@ -34,13 +33,10 @@ if (!function_exists('_action_theme_shortcode_button_enqueue_dynamic_css')):
 			fw()->backend->option_type('icon-v2')->packs_loader->enqueue_frontend_css();
 		}
 
-		$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .btn-' . $atts['id'] . ' { ';
-		if( null !== lastimosa_get_option_spacing_css( $atts, 'mall', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'mall', 'margin' );
-		$shortcode_atts[] = '}';
+		lastimosa_get_option_enqueue_wow( $atts );
+		$css = lastimosa_get_option_spacing_css( $atts );
 		
-		$shortcode_atts = array_merge($shortcode_atts, lastimosa_get_option_spacing_breakpoints_css( $atts ));
-
-		lastimosa_options_get_shortcode_css($atts,$shortcode_atts);
+		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 add_action(

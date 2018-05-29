@@ -8,9 +8,9 @@
  */
 
 get_header(); ?>
-
-	<section id="primary" class="content-area col-sm-12 col-lg-8">
-		<main id="main" class="site-main" role="main">
+<div class="container">
+	<div class="row">
+		<main id="main" class="site-main content-area col-md" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
@@ -32,7 +32,7 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			lastimosa_paging_nav();
 
 		else :
 
@@ -41,8 +41,8 @@ get_header(); ?>
 		endif; ?>
 
 		</main><!-- #main -->
-	</section><!-- #primary -->
-
+		<?php get_sidebar(); ?>
+	</div>
+</div>
 <?php
-get_sidebar();
 get_footer();

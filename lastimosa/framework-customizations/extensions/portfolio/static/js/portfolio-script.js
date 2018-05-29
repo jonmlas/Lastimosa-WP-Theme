@@ -1,6 +1,2 @@
-jQuery(document).ready(function ( $ ) {
-	$('#Container').mixItUp();
-	$('.wrapp-categories-portfolio .categories-item a').click(function (e) {
-		e.preventDefault();
-	});
-});
+var containerEl = document.querySelector('#portfolio');
+var mixer = mixitup(containerEl);

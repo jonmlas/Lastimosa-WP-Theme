@@ -34,7 +34,7 @@ $cfg['grid.columns'] = array(
 	'1_4' => array(
 		'title'          => '1/4',
 		'backend_class'  => 'col-sm-3',
-		'frontend_class' => 'col-12 col-sm-3',
+		'frontend_class' => 'col-12 col-sm-6 col-md-3',
 	),
 	'1_3' => array(
 		'title'          => '1/3',

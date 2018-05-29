@@ -1,10 +1,8 @@
 <?php if ( ! defined( 'FW' ) ) { die( 'Forbidden' ); }
 
-//fw_print($atts);
-
 $class = array();
 $atts['id'] = 'text-block-'.substr($atts['id'], 0, 10);
-if(! empty($atts['text']['color']) )					$class[] = $atts['text']['color'];
+if(! empty($atts['color']) )					$class[] = $atts['color'];
 if( $atts['show_more']['enable'] ) {
 	$class[] = 'panel';
 	$btn[] = lastimosa_html_tag( 'a', array(
@@ -30,15 +28,15 @@ if( !empty($class) ) {
 		<div class="show-more">
 			<?php echo join( ' ', $btn ); ?>
 			<div <?php echo lastimosa_attr_to_html($attr); ?>>
-				<?php echo do_shortcode($atts['text']['content']); ?>
+				<?php echo do_shortcode($atts['text']); ?>
 			</div>
 		</div>
 	<?php } else { ?>
 		<div <?php echo lastimosa_attr_to_html($attr); ?>>
-			<?php echo do_shortcode($atts['text']['content']); ?>
+			<?php echo do_shortcode($atts['text']); ?>
 		</div>
 	<?php } ?>		
 
 <?php } else { ?>
-		<?php echo do_shortcode($atts['text']['content']); ?>
+		<?php echo do_shortcode($atts['text']); ?>
 <?php }

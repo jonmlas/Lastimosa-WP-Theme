@@ -16,6 +16,7 @@ $base-font-size: 16px;
 }
 
 @import "bootstrap";
+@import "social-icons";
 
 <?php
 include 'wp.scss.php';
@@ -31,19 +32,21 @@ include 'menu/menu-'.$header_menu['selected'].'.scss.php';
 
 include 'forms/forms-style-1.scss.php';
 include 'footer.scss.php'; ?>
-@import "hover.scss";
-@import "effects/imagehover.min.scss";
-@import "effects/animate.scss";
+@import "lib/hover.scss";
+@import "lib/imagehover.min.scss";
+@import "lib/animate.scss";
 <?php include 'comments/comments-style-1.scss.php';
 
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/section/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/column/static/css/style.scss.php');
+include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/accordion/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/text-block/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/button/static/css/style.scss.php');
 include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/icon/static/css/style.scss.php');
 //include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/testimonials/static/css/style.scss.php'); ?>
-@import "../framework-customizations/extensions/shortcodes/shortcodes/blog-posts/static/css/style.scss";
+@import "../framework-customizations/extensions/portfolio/static/css/style.scss";
 
+@import "../framework-customizations/extensions/shortcodes/shortcodes/special-heading/static/css/style.scss";
 
 @import "../framework-customizations/extensions/shortcodes/shortcodes/special-heading/static/css/style.scss";
 @import "../framework-customizations/extensions/shortcodes/shortcodes/team-member-custom/static/css/style.scss";

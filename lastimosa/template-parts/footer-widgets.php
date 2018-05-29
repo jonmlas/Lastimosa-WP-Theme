@@ -15,8 +15,11 @@ if(empty($hide_footer_widgets))	{
 			<div class="row">
 				<?php
 				switch ($column_count) {
+					case 'col-md-12':
+							$column 	 = array_fill(0, 1, 'col-md-12');
+							break;
 					case 'col-md-6':
-							$column 	 = array_fill(0, 2, 'col-md');
+							$column 	 = array_fill(0, 2, 'col-md-6');
 							break;
 					case 'col-md-6-a':
 							$column[] = 'col-md-8';
@@ -48,7 +51,7 @@ if(empty($hide_footer_widgets))	{
 							$column 	 = array_fill(0, 5, 'col-md');
 							break;
 					default:
-							$column 	 = array_fill(0, 4, 'col-md');
+							$column 	 = array_fill(0, 4, 'col-md-3');
 							break;
 				}  
 				for( $i = 0; $i < count($column); $i++ ) : ?>

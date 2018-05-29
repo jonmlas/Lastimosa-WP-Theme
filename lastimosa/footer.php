@@ -3,13 +3,13 @@
  * The template for displaying the footer
  */ 
 ?>
+	<?php do_action( 'lastimosa_before_footer' ); ?>
 	<footer id="colophon" class="footer" role="content-info">
 		<?php	get_template_part( 'template-parts/footer', 'widgets' ); ?>
 		<?php get_template_part( 'template-parts/footer', 'copyright' ); ?>
 	</footer><!-- #colophon -->
-	
+	<?php do_action( 'lastimosa_after_footer' ); ?>
 	<?php echo get_theme_mod( 'box_container_end' ); ?>
-
   <?php 
 /*	global $wp_query;
     $page_id = $wp_query->post->ID;

@@ -1,3 +1,4 @@
+/* Start of Header 1 CSS */
 <?php 
 $header_layout  = lastimosa_get_option('header_layout');
 $header_logo		= lastimosa_get_option('header_logo');
@@ -6,10 +7,11 @@ $header_layout_bg_color: <?php echo $header_layout['background_color']; ?>;
 $header_logo_color: <?php echo !empty($header_logo['color']) ? $header_logo['color'] : ''; ?>;
 .site-header {
 	background: $header_layout_bg_color;
+	transition: all 0.5s ease;
 }
 .header-main {
-  padding-top: rem(15px);
-	padding-bottom: rem(15px);
+  padding-top: rem(8px);
+	padding-bottom: rem(8px);
 }
 .site-header .row {
     display: block;
@@ -24,7 +26,9 @@ $header_logo_color: <?php echo !empty($header_logo['color']) ? $header_logo['col
   	color:$header_logo_color;
   }' : ''; ?>
 }
-
+.site-header img.site-logo {
+	transition: all 0.5s ease;
+}
 .site-description {
 	margin:0;
     <?php echo !empty($header_logo['color']) ? '
@@ -32,11 +36,31 @@ $header_logo_color: <?php echo !empty($header_logo['color']) ? $header_logo['col
 	text-align: center;
 }
 
+/* Header 1 Responsiveness */
 @media (min-width: 768px) {
 	.site-title, .site-description {
 		text-align:left;
 	}
 	.site-header .row {
     display: flex;
+	}
+
+	/* Sticky Header 1 */
+	.sticky-header .site-header {
+			height: 3.5rem;
+			background-color: rgba(255, 255, 255, 0.9);
+			position: fixed;
+			width: 100%;
+			z-index: 9999;
+	}
+	.sticky-header .site-header .header-main {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.sticky-header .site-header img.site-logo {
+		transform: translateY(-5px) scale(.6);
+	}
+	.sticky-header .site-main {
+		padding-top: 7rem;
 	}
 }

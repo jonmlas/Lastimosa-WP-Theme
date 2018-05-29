@@ -18,7 +18,7 @@ $options = array(
 				'inner-options' => array(
 					'text'    => array(
 						'type'  => 'text',
-						'label' => __( 'Heading', 'fw' ),
+						'label' => __( 'Heading', 'lastimosa' ),
 						// 'attr'  => array('class' => 'no-bottom-border'), // not working... tba
 					),
 					'css_tag' => lastimosa_option_css_tag( '', 'CSS Tag' ),
@@ -88,17 +88,9 @@ $options = array(
 		'title'   => __( 'Advanced', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
-				'advanced_group' => array(
-				'title'   => __( 'Advance', 'lastimosa' ),
-				'type'    => 'group',
-				'options' => array(
-					//'margin' 	=> lastimosa_option_box('Margin'),
-					//'padding' 	=> lastimosa_option_box('Padding'),
-					'visibility'=> lastimosa_option_visibility(),
-					'custom_id' => lastimosa_option_custom_id(),
-					'class' 		=> lastimosa_option_class(),
-				),
-			),
+			'spacing'   => lastimosa_option_spacing(),
+			'visibility'=> lastimosa_option_visibility(),
+			'class' 		=> lastimosa_option_class(),
 		),
-	),
+	),		
 );

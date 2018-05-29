@@ -8,16 +8,20 @@
     fw_ext('shortcodes')->locate_URI('/shortcodes/section/static/css/style.css')
 );*/
 
-if (!function_exists('delete_shortcode_section_style_temp')):
+if ( ! function_exists('delete_shortcode_section_style_temp') ) :
+	/**
+	 * Resets the section-style-temp to null on page load
+	 * which means it will remove the css style of any deleted shortcode
+	 */
 	function delete_shortcode_section_style_temp() {
-		delete_option( 'section_style_temp' );	
+		delete_option( 'section-style-temp' );	
 	}
-	if( get_option( 'section_style_temp' ) ) {
+	if( get_option( 'section-style-temp' ) ) {
 		delete_shortcode_section_style_temp();
 	}
 endif;
 
-if (!function_exists('_action_theme_shortcode_section_enqueue_dynamic_css')):
+if ( ! function_exists( '_action_theme_shortcode_section_enqueue_dynamic_css' ) ) :
 
 	/**
 	 * @internal
@@ -27,7 +31,7 @@ if (!function_exists('_action_theme_shortcode_section_enqueue_dynamic_css')):
 		$shortcode = 'section';
 		$atts = shortcode_parse_atts( $data['atts_string'] );
 		$atts = fw_ext_shortcodes_decode_attr($atts, $shortcode, $data['post']->ID);
-		$uri = fw_get_template_customizations_directory_uri('/extensions/shortcodes/shortcodes/section');
+		$uri 	= fw_get_template_customizations_directory_uri('/extensions/shortcodes/shortcodes/section');
 		
 		lastimosa_get_option_enqueue_wow( $atts );
 		
@@ -154,13 +158,12 @@ if (!function_exists('_action_theme_shortcode_section_enqueue_dynamic_css')):
 		}	
 
 		$atts['shortcode'] 	= $shortcode;
-		$atts['container-class'] = ( empty( $atts['width']['fluid']['content_width'] ) ) ? 'container' : 'container-fluid'; // Not sure if this is still used. Needs recheck
+
+		$atts['id'] = substr( $shortcode, 0, 3 ) . '-' . substr($atts['id'], 0, 10);
 		
 		global $post;
-		$shortcode_atts = array();
-		$atts['id'] = substr($atts['id'], 0, 10);
-		$post_slug = $post->post_name;
-		$colwrap = ' .'.$atts['width'];
+		$post_slug 	= $post->post_name;
+		$colwrap 		= $atts['width'];
 		/*if(in_array($atts['style']['selected'], array('default','parallax'))) {
 			// We'll have to move the section's background array.
 			$atts['background'] = $atts['style'][$atts['style']['selected']]['background'];
@@ -168,46 +171,48 @@ if (!function_exists('_action_theme_shortcode_section_enqueue_dynamic_css')):
 		}*/
 		$atts['background'] = $atts['style'][$atts['style']['selected']]['background'];
 		
+		$css = array();
 		// Section atts
-		$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-		if( null !== lastimosa_get_option_spacing_css( $atts, 'mall', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'mall', 'margin' );
-		if( null !== lastimosa_get_option_spacing_css( $atts, 'pall', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'pall', 'padding' );
-		if(!in_array($atts['style']['selected'], array('parallax'))) 			$shortcode_atts = array_merge($shortcode_atts, lastimosa_get_options_background_css($atts));
-		$shortcode_atts[] = '}';
+		if( !in_array($atts['style']['selected'], array('parallax')) ) {
+			$css[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' { ';
+			$css 	 = array_merge($css, lastimosa_get_options_background_css($atts));
+			$css[] = '}';
+		}
 		
 		// Wrapper atts
-		$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].$colwrap.' { ';
-		if(in_array($atts['style']['selected'], array('parallax'))) 			$shortcode_atts = array_merge($shortcode_atts, lastimosa_get_options_background_css($atts));
-		$shortcode_atts[] = '}';
+		if( in_array($atts['style']['selected'], array('parallax')) ) {
+			$css[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' { ';
+			$css 	 = array_merge($css, lastimosa_get_options_background_css($atts));
+			$css[] = '}';
+		}
 		
-		if($atts['height']['select'] == 'custom') {
-			$shortcode_atts[]	= '@media (min-width: 768px) {';
-			$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].$colwrap.' { ';
-			$shortcode_atts[] = 'min-height:'.$atts['height']['custom']['height'] . ';';
-			$shortcode_atts[] = '}';
-			$shortcode_atts[] = '}';
+		if( $atts['height']['select'] == 'custom' ) {
+			$css[]	= '@media (min-width: 768px) {';
+			$css[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' .' . $colwrap . ' { ';
+			$css[] = 'min-height:'.$atts['height']['custom']['height'] . ';';
+			$css[] = '}';
+			$css[] = '}';
 		}
 
 		// Get the Grid Gutter Width
-		if($atts['grid_gutter_width'] != '30px') {
-			$gutter = (str_replace('px','', $atts['grid_gutter_width']) / 2).'px';
-			$shortcode_atts[] = '
-				.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' .row { 
-					margin-right:-'.$gutter.';
-					margin-left:-'.$gutter.';
+		$gutter = ( preg_replace('/[^0-9]/', '', $atts['grid_gutter_width']) ) / 2 . 'px';
+		if( $gutter != '15px' ) {
+			$css[] = '
+				.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' .row { 
+					margin-right: rem(-' . $gutter . ');
+					margin-left: rem(-' . $gutter . ');
 				}
 
-				.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' .'.$atts['container-class'].',
-				.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' .row > [class*=\'col-\']{ 
-					padding-right:'.$gutter.';
-					padding-left:'.$gutter.';
+				.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' .row > [class*=\'col-\'] { 
+					padding-right: rem(' . $gutter . ');
+					padding-left: rem(' . $gutter . ');
 				}
 			';
 		}
 		
-		$shortcode_atts = array_merge($shortcode_atts, lastimosa_get_option_spacing_breakpoints_css( $atts ));
+		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
 
-		lastimosa_options_get_shortcode_css($atts,$shortcode_atts);
+		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 add_action(

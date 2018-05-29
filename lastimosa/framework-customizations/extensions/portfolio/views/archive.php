@@ -17,63 +17,67 @@ $loop_data       = array(
 	'listing_classes' => $listing_classes
 );
 set_query_var( 'fw_portfolio_loop_data', $loop_data );
+
 ?>
-	<div class="content-area">
-		<section id="primary" class="site-content portfolio-content">
-			<div id="content" role="main">
-				<header class="entry-header">
-					<?php //fw_print($backup); fw_print($categories);fw_print($listing_classes);
-					if ( ! empty( $term ) ) {
-						echo '<h1 class="entry-title">' . $term->name . '</h1>';
-					} else {
-						echo '<h1 class="entry-title">' . __( 'Portfolios', 'unyson' ) . '</h1>';
-					}
-					?>
+<main id="main" class="site-main container" role="main">
+	<section id="portfolio">
+		<header class="entry-header">
+			<?php //fw_print($backup); fw_print($categories);fw_print($listing_classes);
+			if ( ! empty( $term ) ) {
+				echo '<h1 class="entry-title">' . $term->name . '</h1>';
+			} else {
+				echo '<h1 class="entry-title">' . __( 'Portfolios', 'unyson' ) . '</h1>';
+			}
+			?>
 
-					<?php
-					if( function_exists('fw_ext_breadcrumbs') ) {
-						fw_ext_breadcrumbs();
-					}
-					?>
+			<?php
+			if( function_exists('fw_ext_breadcrumbs') ) {
+				fw_ext_breadcrumbs();
+			}
+			?>
 
-					<?php if ( ! empty( $categories ) ) : ?>
-						<div class="wrapp-categories-portfolio">
-							<ul id="categories-portfolio" class="portfolio-categories">
-								<li class="filter categories-item" data-filter=".category_all"><a
-										href='#'><?php _e( 'All', 'unyson' ); ?></a></li>
-								<?php foreach ( $categories as $category ) : ?>
-									<span class="separator">/</span>
-									<li class="filter categories-item"
-									    data-filter=".category_<?php echo $category->term_id ?>"><a
-											href='#'><?php echo $category->name; ?></a></li>
-								<?php endforeach; ?>
-							</ul>
-						</div>
-					<?php endif ?>
-				</header>
-				<div class="entry-content">
-					<section class="portfolio" id="Container">
-						<?php if ( have_posts() ) : ?>
-							<ul id="portfolio-list" class="portfolio-list">
-								<?php
-								while ( have_posts() ) : the_post();
-									include(  fw()->extensions->get( 'portfolio' )->locate_view_path('loop-item') );
-								endwhile;
-								?>
-							</ul>
-						<?php else : ?>
-							<?php get_template_part( 'content', 'none' ); ?>
-						<?php endif; ?>
-						<div class="clear"></div>
-					</section>
+			<?php if ( ! empty( $categories ) ) : ?>
+
+				<div class="wrapp-categories-portfolio">
+					<ul id="categories-portfolio" class="portfolio-categories">
+						<li class="filter categories-item" data-filter=".category_all"><a
+								href='#'><?php _e( 'All', 'unyson' ); ?></a></li>
+						<?php foreach ( $categories as $category ) : ?>
+							<span class="separator">/</span>
+							<li class="filter categories-item"
+									data-filter=".category_<?php echo $category->term_id ?>"><a
+									href='#'><?php echo $category->name; ?></a></li>
+
+						<?php endforeach; ?>
+					</ul>
 				</div>
-			</div>
-		</section>
-	</div>
-<?php
+			<?php endif ?>
+		</header>
+		<div class="entry-content">
+
+				<?php if ( have_posts() ) : ?>
+
+					<ul class="portfolio-list row">
+						<?php
+						while ( have_posts() ) : the_post();
+
+							include(  fw()->extensions->get( 'portfolio' )->locate_view_path('loop-item') );
+
+						endwhile;
+						?>
+					</ul>
+
+				<?php else : ?>
+
+					<?php get_template_part( 'content', 'none' ); ?>
+
+				<?php endif; ?>
+				<div class="clearfix"></div>
+		</div>
+	</section>
+</main>
+<?php	
 unset( $ext_portfolio_instance );
 unset( $ext_portfolio_settings );
 set_query_var( 'fw_portfolio_loop_data', '' );
-get_sidebar( 'content' );
-get_sidebar();
 get_footer();

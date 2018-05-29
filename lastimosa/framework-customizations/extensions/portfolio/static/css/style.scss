@@ -1,0 +1,36 @@
+$lightgallery_gutter: 8px;
+
+ul.portfolio-categories {
+	padding: 0;
+	li {
+		display: inline-block;
+		margin: 0 20px;
+		&:first-child {
+			margin-left: 0;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+.portfolio-list {
+	padding: 0;
+	&.row { 
+		margin-right: rem( -$lightgallery_gutter );
+		margin-left: rem( -$lightgallery_gutter );
+	}
+
+	&.row > [class*='col-'] { 
+		padding-right: rem( $lightgallery_gutter );
+		padding-left: rem( $lightgallery_gutter );
+	}
+	li {
+		list-style: none;
+		margin-bottom: .65rem;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+}

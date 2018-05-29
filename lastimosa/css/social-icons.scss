@@ -1,0 +1,120 @@
+/*Change icons circle size and color here*/
+.social-icons i {
+	font-size: 1rem;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+	text-align: center;
+	color: #FFF;
+	color: rgba(255, 255, 255, 0.8);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.social-icons.icon-circle i{ 
+	border-radius: 50%;
+}
+.social-icons.icon-rounded i{
+	border-radius:5px;
+}
+.social-icons.icon-flat i{
+	border-radius: 0;
+}
+
+.social-icons i:hover, .social-icons i:active {
+	color: #FFF;
+	-webkit-box-shadow: 1px 1px 3px #333;
+	-moz-box-shadow: 1px 1px 3px #333;
+	box-shadow: 1px 1px 3px #333; 
+}
+.social-icons.icon-zoom i:hover, .social-icons.icon-zoom i:active { 
+ 	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1); 
+}
+.social-icons.icon-rotate i:hover, .social-icons.icon-rotate i:active { 
+	-webkit-transform: scale(1.1) rotate(360deg);
+	-moz-transform: scale(1.1) rotate(360deg);
+	-ms-transform: scale(1.1) rotate(360deg);
+	-o-transform: scale(1.1) rotate(360deg);
+	transform: scale(1.1) rotate(360deg);
+}
+ 
+.social-icons [class$="-adn"], .social-icons [class*="-adn "] {
+	background-color:#504e54;
+} 
+.social-icons [class$="-apple"], .social-icons [class*="-apple "] {background-color:#aeb5c5;} 
+.social-icons [class$="-android"], .social-icons [class*="-android "] {background-color:#A5C63B;}  
+.social-icons [class$="-bitbucket"], .social-icons [class*="-bitbucket "], 
+.social-icons [class$="-bitbucket-square"], .social-icons [class*="-bitbucket-square "] {
+	background-color:#003366;
+} 
+.social-icons [class$="-bitcoin"], .social-icons [class*="-bitcoin "],
+.social-icons [class$="-btc"], .social-icons [class*="-btc "] {
+	background-color:#F7931A;
+} 
+.social-icons [class$="-css3"], .social-icons [class*="-css3 "] {background-color:#1572B7;} 
+.social-icons [class$="-dribbble"], .social-icons [class*="-dribbble "] {background-color:#F46899;}  
+.social-icons [class$="-dropbox"], .social-icons [class*="-dropbox "] {background-color:#018BD3;}
+.social-icons [class$="-facebook"], .social-icons [class*="-facebook "],
+.social-icons [class$="-facebook-square"], .social-icons [class*="-facebook-square "] {
+	background-color:#3C599F;
+}  
+.social-icons [class$="-flickr"], .social-icons [class*="-flickr "] {background-color:#FF0084;}
+.social-icons [class$="-foursquare"], .social-icons [class*="-foursquare "] {background-color:#0086BE;}
+.social-icons [class$="-github"], .social-icons [class*="-github "],
+.social-icons [class$="-github-alt"], .social-icons [class*="-github-alt "],
+.social-icons [class$="-github-square"], .social-icons [class*="-github-square "] {
+	background-color:#070709;
+} 
+.social-icons [class$="-googleplus"], .social-icons [class*="-googleplus "],
+.social-icons [class$="-google-plus"], .social-icons [class*="-google-plus "],
+.social-icons [class$="-google-plus-square"], .social-icons [class*="-google-plus-square "] {
+	background-color:#CF3D2E;
+} 
+.social-icons [class$="-html5"], .social-icons [class*="-html5 "] {background-color:#E54D26;}
+.social-icons [class$="-instagram"], .social-icons [class*="-instagram "],
+.social-icons [class$="-instagrem"], .social-icons [class*="-instagrem "] {
+	background-color:#A1755C;
+}
+.social-icons [class$="-linkedin"], .social-icons [class*="-linkedin "],
+.social-icons [class$="-linkedin-square"], .social-icons [class*="-linkedin-square "] {
+	background-color:#0085AE;
+} 
+.social-icons [class$="-linux"], .social-icons [class*="-linux "] {background-color:#FBC002;color:#333;}
+.social-icons [class$="-maxcdn"], .social-icons [class*="-maxcdn "] {background-color:#F6AE1C;}
+.social-icons [class$="-pagelines"], .social-icons [class*="-pagelines "] { background-color:#241E20;color:#3984EA; }
+.social-icons [class$="-pinterest"], .social-icons [class*="-pinterest "],
+.social-icons [class$="-pinterest-square"], .social-icons [class*="-pinterest-square "] {
+	background-color:#CC2127;
+} 
+.social-icons [class$="-renren"], .social-icons [class*="-renren "] {background-color:#025DAC;}
+.social-icons [class$="-skype"], .social-icons [class*="-skype "] {background-color:#01AEF2;}
+.social-icons [class$="-stack-exchange"], .social-icons [class*="-stack-exchange "] {background-color:#245590;}
+.social-icons [class$="-stack-overflow"], .social-icons [class*="-stack-overflow "] {background-color:#FF7300;}
+.social-icons [class$="-trello"], .social-icons [class*="-trello "] {background-color:#265A7F;}
+.social-icons [class$="-tumblr"], .social-icons [class*="-tumblr "],
+.social-icons [class$="-tumblr-square"], .social-icons [class*="-tumblr-square "] {
+	background-color:#314E6C;
+} 
+.social-icons [class$="-twitter"], .social-icons [class*="-twitter "],.social-icons [class$="-twitter-square"], .social-icons [class*="-twitter-square "] {
+	background-color:#32CCFE;
+} 
+.social-icons [class$="-vimeo-square"], .social-icons [class*="-vimeo-square "] {background-color:#229ACC;}
+.social-icons [class$="-vk"], .social-icons [class*="-vk "] {background-color:#375474;}
+.social-icons [class$="-weibo"], .social-icons [class*="-weibo "] {background-color:#D72B2B;}
+.social-icons [class$="-windows"], .social-icons [class*="-windows "] {background-color:#12B6F3;}
+.social-icons [class$="-xing"], .social-icons [class*="-xing "],
+.social-icons [class$="-xing-square"], .social-icons [class*="-xing-square "] {
+	background-color:#00555C;
+} 
+.social-icons [class$="-youtube"], .social-icons [class*="-youtube "],
+.social-icons [class$="-youtube-play"], .social-icons [class*="-youtube-play "],
+.social-icons [class$="-youtube-square"], .social-icons [class*="-youtube-square "] {
+	background-color:#C52F30;
+}

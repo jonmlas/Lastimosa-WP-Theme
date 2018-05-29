@@ -93,6 +93,26 @@ $options = array(
 			'background' => lastimosa_option_bg_atts('Column')
 		),
 	),
+	'tab_hover' => array(
+		'title'   => __( 'Hover', 'lastimosa' ),
+		'type'    => 'tab',
+		'options' => array(
+			'hover'  => array(
+				'label'  => false,
+				'type'   => 'multi',
+				'value'  => array(),
+				'desc'   => false,
+				'inner-options' => array(
+					'2d' 						=> lastimosa_option_hover_2d(),
+					'background' 		=> lastimosa_option_hover_background(),
+					'border'				=> lastimosa_option_hover_border(),
+					'shadow'				=> lastimosa_option_hover_shadow(),
+					'speech_bubbles'	=> lastimosa_option_hover_speech_bubbles(),
+					'curls'					=> lastimosa_option_hover_curls(),
+				),
+			),
+		),
+	),
 	'tab_animate' => array(
 		'title'   => __( 'Animation', 'lastimosa' ),
 		'type'    => 'tab',

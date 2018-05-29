@@ -105,11 +105,6 @@ if(! function_exists('lastimosa_action_theme_register_required_plugins')) :
 				'slug'      => 'duplicate-post',
 				'required'  => false,
 			),
-			array(
-				'name'      => 'Black Studio TinyMCE Widget',
-				'slug'      => 'black-studio-tinymce-widget',
-				'required'  => false,
-			),
 		) );
 
 	}
@@ -130,96 +125,97 @@ endif;
 
 if(!function_exists('_action_theme_process_google_fonts')) {
 	/**
-	 * Embed Google Font 
-	 */
-    function _action_theme_process_google_fonts()
-    {
-			$include_from_google = array();
-			$google_fonts = fw_get_google_fonts();
-			//$google_fonts = fw_get_google_fonts_v2();
+	* Embed Google Font 
+	*/
+	function _action_theme_process_google_fonts()
+	{
+		$include_from_google = array();
+		$google_fonts = fw_get_google_fonts();
+		//$google_fonts = fw_get_google_fonts_v2();
 
-			$typographys = lastimosa_get_option('typography');
-			$body = $typographys['body'];
-			$h1 = $typographys['h1'];
-			$h2 = $typographys['h2'];
-			$h3 = $typographys['h3'];
-			$h4 = $typographys['h4'];
-			$h5 = $typographys['h5'];
-			$h6 = $typographys['h6'];
-			if( isset($google_fonts[$body['family']]) )		   	$include_from_google[$body['family']] = $google_fonts[$body['family']];
-			if( isset($google_fonts[$h1['family']]) )		    	$include_from_google[$h1['family']] = $google_fonts[$h1['family']];
-			if( isset($google_fonts[$h2['family']]) )		    	$include_from_google[$h2['family']] = $google_fonts[$h2['family']];
-			if( isset($google_fonts[$h3['family']]) )		    	$include_from_google[$h3['family']] = $google_fonts[$h3['family']];		
-			if( isset($google_fonts[$h4['family']]) )			   	$include_from_google[$h4['family']] = $google_fonts[$h4['family']];		
-			if( isset($google_fonts[$h5['family']]) )		    	$include_from_google[$h5['family']] = $google_fonts[$h5['family']];	
-			if( isset($google_fonts[$h6['family']]) )		    	$include_from_google[$h6['family']] = $google_fonts[$h6['family']];
-			
-			$header_menu = lastimosa_get_option('header_menu');
-			$menu 		= $header_menu[$header_menu['selected']]['menu']['typography'];
-			$submenu 	= $header_menu[$header_menu['selected']]['submenu']['typography'];
-			$megamenu_header = $header_menu[$header_menu['selected']]['megamenu']['heading_typography'];
-			$megamenu = $header_menu[$header_menu['selected']]['megamenu']['typography'];
-			if( isset($google_fonts[$menu['family']]) )								$include_from_google[$menu['family']] = $google_fonts[$menu['family']];
-			if( isset($google_fonts[$submenu['family']]) )						$include_from_google[$submenu['family']] = $google_fonts[$submenu['family']];
-			if( isset($google_fonts[$megamenu_header['family']]) )		$include_from_google[$megamenu_header['family']] = $google_fonts[$megamenu_header['family']];
-			if( isset($google_fonts[$megamenu['family']]) )						$include_from_google[$megamenu['family']] = $google_fonts[$megamenu['family']];
-			
-			$footer_widgets = lastimosa_get_option('footer_widgets');
-			$footer_widgets_heading_typography = $footer_widgets['yes']['heading_typography'];
-			$footer_widgets_typography = $footer_widgets['yes']['typography'];
-			if( isset($google_fonts[$footer_widgets_heading_typography['family']]) )				$include_from_google[$footer_widgets_heading_typography['family']] = $google_fonts[$footer_widgets_heading_typography['family']];
-			if( isset($google_fonts[$footer_widgets_typography['family']]) )								$include_from_google[$footer_widgets_typography['family']] = $google_fonts[$footer_widgets_typography['family']];
-			
-			$footer_menu = lastimosa_get_option('footer_menu');
-			if( isset($google_fonts[$footer_menu['family']]) )															$include_from_google[$footer_menu['family']] = $google_fonts[$footer_menu['family']];
-			
-			$footer_copyright = lastimosa_get_option('footer_copyright');
-			if( isset($google_fonts[$footer_copyright['family']]) )													$include_from_google[$footer_copyright['family']] = $google_fonts[$footer_copyright['family']];
-		 /* if( isset($google_fonts[$your_typography_option_1['family']]) ){
-					$include_from_google[$your_typography_option_2['family']] =   $google_fonts[$your_typography_option_2['family']];
-			}*/
+		$typographys = lastimosa_get_option('typography');
+		$body = $typographys['body'];
+		$h1 = $typographys['h1'];
+		$h2 = $typographys['h2'];
+		$h3 = $typographys['h3'];
+		$h4 = $typographys['h4'];
+		$h5 = $typographys['h5'];
+		$h6 = $typographys['h6'];
+		if( isset($google_fonts[$body['family']]) )		   	$include_from_google[$body['family']] = $google_fonts[$body['family']];
+		if( isset($google_fonts[$h1['family']]) )		    	$include_from_google[$h1['family']] = $google_fonts[$h1['family']];
+		if( isset($google_fonts[$h2['family']]) )		    	$include_from_google[$h2['family']] = $google_fonts[$h2['family']];
+		if( isset($google_fonts[$h3['family']]) )		    	$include_from_google[$h3['family']] = $google_fonts[$h3['family']];		
+		if( isset($google_fonts[$h4['family']]) )			   	$include_from_google[$h4['family']] = $google_fonts[$h4['family']];		
+		if( isset($google_fonts[$h5['family']]) )		    	$include_from_google[$h5['family']] = $google_fonts[$h5['family']];	
+		if( isset($google_fonts[$h6['family']]) )		    	$include_from_google[$h6['family']] = $google_fonts[$h6['family']];
 
-			$google_fonts_links = fw_theme_get_remote_fonts($include_from_google);
-			// set a option in db for save google fonts link
-			update_option( 'fw_theme_google_fonts_link', $google_fonts_links );
-    }
-    add_action('fw_settings_form_saved', '_action_theme_process_google_fonts', 999, 2);
+		$header_menu = lastimosa_get_option('header_menu');
+		$menu 		= $header_menu[$header_menu['selected']]['menu']['typography'];
+		$submenu 	= $header_menu[$header_menu['selected']]['submenu']['typography'];
+		$megamenu_header = $header_menu[$header_menu['selected']]['megamenu']['heading_typography'];
+		$megamenu = $header_menu[$header_menu['selected']]['megamenu']['typography'];
+		if( isset($google_fonts[$menu['family']]) )								$include_from_google[$menu['family']] = $google_fonts[$menu['family']];
+		if( isset($google_fonts[$submenu['family']]) )						$include_from_google[$submenu['family']] = $google_fonts[$submenu['family']];
+		if( isset($google_fonts[$megamenu_header['family']]) )		$include_from_google[$megamenu_header['family']] = $google_fonts[$megamenu_header['family']];
+		if( isset($google_fonts[$megamenu['family']]) )						$include_from_google[$megamenu['family']] = $google_fonts[$megamenu['family']];
+
+		$footer_widgets = lastimosa_get_option('footer_widgets');
+		$footer_widgets_heading_typography = $footer_widgets['yes']['heading_typography'];
+		$footer_widgets_typography = $footer_widgets['yes']['typography'];
+		if( isset($google_fonts[$footer_widgets_heading_typography['family']]) )				$include_from_google[$footer_widgets_heading_typography['family']] = $google_fonts[$footer_widgets_heading_typography['family']];
+		if( isset($google_fonts[$footer_widgets_typography['family']]) )								$include_from_google[$footer_widgets_typography['family']] = $google_fonts[$footer_widgets_typography['family']];
+
+		$footer_menu = lastimosa_get_option('footer_menu');
+		if( isset($google_fonts[$footer_menu['family']]) )															$include_from_google[$footer_menu['family']] = $google_fonts[$footer_menu['family']];
+
+		$footer_copyright = lastimosa_get_option('footer_copyright');
+		if( isset($google_fonts[$footer_copyright['family']]) )													$include_from_google[$footer_copyright['family']] = $google_fonts[$footer_copyright['family']];
+	 /* if( isset($google_fonts[$your_typography_option_1['family']]) ){
+				$include_from_google[$your_typography_option_2['family']] =   $google_fonts[$your_typography_option_2['family']];
+		}*/
+
+		$google_fonts_links = fw_theme_get_remote_fonts($include_from_google);
+		// set a option in db for save google fonts link
+		update_option( 'fw_theme_google_fonts_link', $google_fonts_links );
+	}
+	add_action('fw_settings_form_saved', '_action_theme_process_google_fonts', 999, 2);
 }
 
 if (!function_exists('fw_theme_get_remote_fonts')) :
-    function fw_theme_get_remote_fonts($include_from_google) {
-        /**
-         * Get remote fonts
-         * @param array $include_from_google
-         */
-        if ( ! sizeof( $include_from_google ) ) {
-            return '';
-        }
+	/**
+	 * Get remote fonts
+	 * @param array $include_from_google
+	 */
+	function fw_theme_get_remote_fonts($include_from_google) {
+		if ( ! sizeof( $include_from_google ) ) {
+				return '';
+		}
 
-        $html = "<link href='http://fonts.googleapis.com/css?family=";
+		$html = "<link href='http://fonts.googleapis.com/css?family=";
 
-        foreach ( $include_from_google as $font => $styles ) {
-            $html .= str_replace( ' ', '+', $font ) . ':' . implode( ',', $styles['variants'] ) . '|';
-        }
+		foreach ( $include_from_google as $font => $styles ) {
+				$html .= str_replace( ' ', '+', $font ) . ':' . implode( ',', $styles['variants'] ) . '|';
+		}
 
-        $html = substr( $html, 0, - 1 );
-        $html .= "' rel='stylesheet' type='text/css'>";
+		$html = substr( $html, 0, - 1 );
+		$html .= "' rel='stylesheet' type='text/css'>";
 
-        return $html;
-    }
+		return $html;
+	}
 endif;
 
+
 if (!function_exists('_action_theme_print_google_fonts_link')) :
-    function _action_theme_print_google_fonts_link() {
-        /**
-         * Print google fonts link
-         */
-        $google_fonts_link = get_option('fw_theme_google_fonts_link', '');
-        if($google_fonts_link != ''){
-            echo $google_fonts_link;
-        }
-    }
-    add_action('wp_head', '_action_theme_print_google_fonts_link');
+	/**
+	 * Print google fonts link
+	 */
+	function _action_theme_print_google_fonts_link() {
+		$google_fonts_link = get_option('fw_theme_google_fonts_link', '');
+		if($google_fonts_link != ''){
+				echo $google_fonts_link;
+		}
+	}
+	add_action('wp_head', '_action_theme_print_google_fonts_link');
 endif;
 
 
@@ -236,7 +232,7 @@ function wpb_mce_buttons_2($buttons) {
 * Callback function to filter the MCE settings
 */
  
-function my_mce_before_init_insert_formats( $init_array ) {  
+function lastimosa_tinymce_insert_formats( $init_array ) {  
  
 // Define the style_formats array
  
@@ -276,4 +272,4 @@ function my_mce_before_init_insert_formats( $init_array ) {
    
 } 
 // Attach callback to 'tiny_mce_before_init' 
-// add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
+// add_filter( 'tiny_mce_before_init', 'lastimosa_tinymce_insert_formats' ); 

@@ -4,7 +4,7 @@
 
 $options = array(
 	'tab_layout' => array(
-		'title'   => __( 'Layout', 'unyson' ),
+		'title'   => __( 'Layout', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
 			'layout_group' => array(
@@ -15,18 +15,18 @@ $options = array(
 					),
 					'custom_id' => lastimosa_option_custom_id('Section Name','This will be the Section\'s ID'),
 					'width'   => array(
-						'label'        => __( 'Content Width', 'unyson' ),
+						'label'        => __( 'Content Width', 'lastimosa' ),
 						'type'         => 'switch',
 						'left-choice'  => array(
 							'value' => 'container',
-							'label' => __( 'Fixed Width', 'unyson' )
+							'label' => __( 'Fixed Width', 'lastimosa' )
 						),
 						'right-choice' => array(
 							'value' => 'container-fluid',
-							'label' => __( 'Full Width', 'unyson' )
+							'label' => __( 'Full Width', 'lastimosa' )
 						),
 						'value'        => '',
-						'desc'    => __( 'Defines the width of the content area.','unyson' ),
+						'desc'    => __( 'Defines the width of the content area.','lastimosa' ),
 					),
 					'height' => array(
 						'type'    	=> 'multi-picker',
@@ -34,26 +34,26 @@ $options = array(
 						'desc'      => false,
 						'picker'    => array(
 							'select' => array(
-								'label'   => __('Height', 'unyson'),
+								'label'   => __('Height', 'lastimosa'),
 								'type'    => 'select',
 								'value'   => '',
 								'choices' => array(
 									''  => 'auto',
-									'full-vh' 		=> __( 'full screen (100% monitor height)', 'unyson' ),
-									'two-thirds-vh' => __( 'two thirds screen (75% monitor height)', 'unyson' ),
-									'half-vh'		=> __( 'half screen (50% monitor height)', 'unyson' ),
-									'quarter-vh' 	=> __( 'quarter screen (25% monitor height)', 'unyson' ),
-									'custom' 		=> __( 'custom', 'unyson' ),
+									'full-vh' 		=> __( 'full screen (100% monitor height)', 'lastimosa' ),
+									'two-thirds-vh' => __( 'two thirds screen (75% monitor height)', 'lastimosa' ),
+									'half-vh'		=> __( 'half screen (50% monitor height)', 'lastimosa' ),
+									'quarter-vh' 	=> __( 'quarter screen (25% monitor height)', 'lastimosa' ),
+									'custom' 		=> __( 'custom', 'lastimosa' ),
 								),
-								'desc'    => __( 'Set the height for this section', 'unyson' ),
+								'desc'    => __( 'Set the height for this section', 'lastimosa' ),
 							)
 						),
 						'choices' => array(
 							/*'parallax'    => array(
 								'height'  => array(
 									'type'  => 'text',
-									'label' => __( 'Height', 'unyson' ),
-									'help'  => __('In pixels or in percentage. E.g.: \'80px\' or  \'25%\'', 'unyson'),
+									'label' => __( 'Height', 'lastimosa' ),
+									'help'  => __('In pixels or in percentage. E.g.: \'80px\' or  \'25%\'', 'lastimosa'),
 								),
 							),*/
 							'custom'    => array(
@@ -67,22 +67,23 @@ $options = array(
 						'show_borders' => false,
 					),
 					'grid_gutter_width'                => array(
-						'label' => __( 'Column Gutter Size', 'unyson' ),
+						'label' => __( 'Column Gutter Size', 'lastimosa' ),
 						'type'  => 'short-text',
-						'value' => '30px',
-						'desc'  => __( 'The space(grid gutter width) between the columns. Default(Bootstrap) is 30px.','unyson' ),
+						'value' => '30',
+						'desc'  => __( 'The space(grid gutter width) between the columns. Default for Bootstrap is 30px.', 'lastimosa' ),
+						'help'  => __( 'Enter the value withouth the \'px\' unit. i.e.: \'45\'.', 'lastimosa' )
 					),
 					'is_vertical_center' => array(
 						'label'        => __('Vertical Center', 'fw'),
 						'type'         => 'switch',
-						'desc'    => __( 'Vertically center contents regardless of the height.', 'unyson' ),
+						'desc'    => __( 'Vertically center contents regardless of the height.', 'lastimosa' ),
 					),
 				),
 			),
 		),
 	),
 	'tab_bg' => array(
-		'title'   => __( 'Background', 'unyson' ),
+		'title'   => __( 'Background', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
 			'style' => array(
@@ -91,13 +92,13 @@ $options = array(
 				'desc'      => false,
 				'picker'    => array(
 					'selected' => array(
-						'label'   => __('Style', 'unyson'),
+						'label'   => __('Style', 'lastimosa'),
 						'type'    => 'select',
 						'value'   => 'default',
 						'choices' => array(
-							'default'  	=> __( 'Default', 'unyson' ),
-							'parallax' 	=> __( 'Parallax', 'unyson' ),
-							'video' 	=> __( 'Video', 'unyson' )
+							'default'  	=> __( 'Default', 'lastimosa' ),
+							'parallax' 	=> __( 'Parallax', 'lastimosa' ),
+							'video' 	=> __( 'Video', 'lastimosa' )
 						),
 					)
 				),
@@ -134,11 +135,11 @@ $options = array(
 		),
 	),
 	'tab_advanced' => array(
-		'title'   => __( 'Advanced', 'unyson' ),
+		'title'   => __( 'Advanced', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
 			'advanced_group' => array(
-				'title'   => __( 'Advance', 'unyson' ),
+				'title'   => __( 'Advance', 'lastimosa' ),
 				'type'    => 'group',
 				'options' => array(
 					'spacing'   => lastimosa_option_spacing(/* array(	'md' => array( 'value' => 'py-md-5' ) ) */),

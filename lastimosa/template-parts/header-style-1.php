@@ -13,10 +13,10 @@
 
 	<div <?php echo lastimosa_attr_to_html($attr); ?>>
 		<div class="row">
-			<div class="col-md align-self-start">
+			<div class="align-self-center col-md align-self-start">
 				<?php lastimosa_logo(); ?>
 			</div>
-			<div class="col-md align-self-center align-self-end">
+			<div class="align-self-center align-self-end text-md-right">
 				<?php lastimosa_nav_menu( 'primary' ); ?>
 			</div>
 		</div>

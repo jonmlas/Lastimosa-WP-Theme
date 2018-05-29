@@ -1,9 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) die( 'Direct access forbidden.' );
 
-/**
- * Social Profiles
- */
 if(! function_exists('lastimosa_social_profiles')){
+	/**
+	 * Social Profiles
+	 */
 	function lastimosa_social_profiles() { ?>
 		<?php if(empty($menu_atts['social_profiles'])): ?>
 		<ul class="social-profiles nav navbar-nav navbar-right">
@@ -40,7 +40,7 @@ function your_custom_menu_item ( $items, $args ) {
 
 if(! function_exists('lastimosa_header_info')){
 	function lastimosa_header_info() { ?>
-    	<?php $header_info = c_get_option('header_info'); 
+    	<?php $header_info = lastimosa_get_option('header_info'); 
 		if ($header_info['content']):?>
 		<div class="float-lg-right"><?php 
 			echo $header_info['content']; ?>
@@ -48,6 +48,7 @@ if(! function_exists('lastimosa_header_info')){
 	endif;
 	}
 }
+
 
 if(! function_exists('lastimosa_inline_info')) :
 /**
@@ -65,29 +66,30 @@ function lastimosa_inline_info() {
 //add_action('lastimosa_menu','lastimosa_inline_info');
 endif;
 
+
 if(! function_exists('lastimosa_entry_title') ) :
-/**
- * Featured Image
- */
-function lastimosa_entry_title() {
-	$hide_page_title = get_post_meta(get_the_ID(), 'hide-page-title', true);
-	if(empty($hide_page_title)):
-		the_title( '<h1 class="entry-title">', '</h1><!-- .entry-header -->' );
-	endif; 
-}
-add_action('lastimosa_entry_header','lastimosa_entry_title');
+	/**
+	 * Featured Image
+	 */
+	function lastimosa_entry_title() {
+		$hide_page_title = get_post_meta(get_the_ID(), 'hide-page-title', true);
+		if(empty($hide_page_title)):
+			the_title( '<h1 class="entry-title">', '</h1><!-- .entry-header -->' );
+		endif; 
+	}
+	add_action('lastimosa_entry_header','lastimosa_entry_title');
 endif;
 
 if(! function_exists('lastimosa_breadcrumbs') ) :
-/**
- * Breadcrumbs
- */
-function lastimosa_breadcrumbs() {
-	if( !is_front_page() && function_exists('fw_ext_breadcrumbs') && is_page() ) {
-		fw_ext_breadcrumbs();
+	/**
+	 * Breadcrumbs
+	 */
+	function lastimosa_breadcrumbs() {
+		if( !is_front_page() && function_exists('fw_ext_breadcrumbs') && is_page() ) {
+			fw_ext_breadcrumbs();
+		}
 	}
-}
-add_action('lastimosa_entry_header','lastimosa_breadcrumbs');
+	add_action('lastimosa_entry_header','lastimosa_breadcrumbs');
 endif;
 
 
@@ -117,6 +119,17 @@ function lastimosa_post_thumbnail() {
 
 	<?php endif; // End is_singular()
 }
+endif;
+
+
+if(! function_exists('lastimosa_back_to_top') ) :
+	/**
+	 * Back to top button
+	 */
+	function lastimosa_back_to_top() {
+		echo '<a id="scroll-top" href="#top"><button>Top</button></a>';
+	}
+	add_action('lastimosa_after_footer','lastimosa_back_to_top');
 endif;
 
 

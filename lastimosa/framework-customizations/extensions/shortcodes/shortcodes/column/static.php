@@ -7,13 +7,16 @@
     'theme-shortcode-column',
     fw_ext('shortcodes')->locate_URI('/shortcodes/column/static/css/style.css')
 );*/
-/* This resets the shortcode_column_style_temp to null on page load*/
 
-if (!function_exists('delete_shortcode_column_style_temp')):
+if ( ! function_exists('delete_shortcode_column_style_temp') ) :
+	/**
+	 * Resets the column-style-temp to null on page load
+	 * which means it will remove the css style of any deleted shortcode
+	 */
 	function delete_shortcode_column_style_temp() {
-		delete_option( 'column_style_temp' );	
+		delete_option( 'column-style-temp' );	
 	}
-	if( get_option( 'column_style_temp' ) ) {
+	if( get_option( 'column-style-temp' ) ) {
 		delete_shortcode_column_style_temp();
 	}
 endif;
@@ -29,21 +32,19 @@ if (!function_exists('_action_theme_shortcode_column_enqueue_dynamic_css')):
 		$atts = fw_ext_shortcodes_decode_attr($atts, $shortcode, $data['post']->ID);
 		$atts['shortcode'] 	= $shortcode;
 		global $post;
-		$shortcode_atts = array();
-		$atts['id'] = substr($atts['id'], 0, 10);
+		$css = array();
+		$atts['id'] = substr( $shortcode, 0, 3 ) . '-' . substr($atts['id'], 0, 10);
 		$post_slug = $post->post_name;
 		
 		lastimosa_get_option_enqueue_wow( $atts );
 
-		$shortcode_atts[] = '.'.$post->post_type.'-'.$post->post_name.' .'.substr($atts['shortcode'], 0, 3).'-'.$atts['id'].' { ';
-		if( null !== lastimosa_get_option_spacing_css( $atts, 'mall', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'mall', 'margin' );
-		if( null !== lastimosa_get_option_spacing_css( $atts, 'pall', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css( $atts, 'pall', 'padding' );
-		$shortcode_atts = array_merge($shortcode_atts, lastimosa_get_options_background_css($atts));
-		$shortcode_atts[] = '}';
+		$css[] = '.' . $post->post_type . '-' . $post->post_name.' .' . $atts['id'] . ' .col-wrap { ';
+		$css = array_merge( $css, lastimosa_get_options_background_css($atts) );
+		$css[] = '}';
 		
-		$shortcode_atts = array_merge($shortcode_atts, lastimosa_get_option_spacing_breakpoints_css( $atts ));
+		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
 
-		lastimosa_options_get_shortcode_css($atts,$shortcode_atts);
+		if( ! empty( $css ) )		lastimosa_options_get_shortcode_css( $atts,$css );
 	}
 
 	add_action(

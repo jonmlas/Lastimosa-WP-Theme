@@ -15,7 +15,9 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php lastimosa_entry_meta(); ?>
+			<?php 
+			$post_meta = lastimosa_get_option( 'post_meta' );
+			lastimosa_entry_meta( $post_meta ); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->

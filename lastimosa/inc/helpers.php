@@ -65,15 +65,22 @@ function fw_theme_get_featured_posts() {
  * Custom template tags
  */
  
-if ( ! function_exists( 'fw_theme_paging_nav' ) ) : /**
+if ( ! function_exists( 'lastimosa_paging_nav' ) ) : 
+/**
  * Display navigation to next/previous set of posts when applicable.
- */ {
-	function fw_theme_paging_nav( $wp_query = null ) {
+ */ 
+	function lastimosa_paging_nav( $wp_query = null ) {
 
 		if ( ! $wp_query ) {
 			$wp_query = $GLOBALS['wp_query'];
 		}
 
+		$big = 999999999; // This needs to be an unlikely integer
+		if( is_home() ) {
+			$paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
+		}else{
+			$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+		}
 		// Don't print empty markup if there's only one page.
 
 		if ( $wp_query->max_num_pages < 2 ) {
@@ -99,14 +106,26 @@ if ( ! function_exists( 'fw_theme_paging_nav' ) ) : /**
 
 		// Set up paginated links.
 		$links = paginate_links( array(
-			'base'      => $pagenum_link,
+			'base' => str_replace( $big, '%#%', get_pagenum_link($big) ),
 			'format'    => $format,
 			'total'     => $wp_query->max_num_pages,
 			'current'   => $paged,
-			'mid_size'  => 1,
+			'mid_size' => 5,
+			'prev_next' => True,
 			'add_args'  => array_map( 'urlencode', $query_args ),
-			'prev_text' => __( '&larr; Previous', 'lastimosa' ),
-			'next_text' => __( 'Next &rarr;', 'lastimosa' ),
+			'prev_text'    => sprintf( '<i class="fa fa-angle-double-left"></i> %1$s', __( '', 'lastimosa' ) ),
+			'next_text'    => sprintf( '%1$s <i class="fa fa-angle-double-right"></i>', __( '', 'lastimosa' ) ),
+		) );
+		
+		$numeric_paginate_links = paginate_links( array(
+				'base' => str_replace( $big, '%#%', get_pagenum_link($big) ),
+				'current' => max( 1, $paged ),
+				'total' => $wp_query->max_num_pages,
+				'mid_size' => 5,
+				'prev_next' => True,
+				'prev_text'    => sprintf( '<i class="fa fa-angle-double-left"></i> %1$s', __( '', 'lastimosa' ) ),
+				'next_text'    => sprintf( '%1$s <i class="fa fa-angle-double-right"></i>', __( '', 'lastimosa' ) ),
+				'type' => 'list'
 		) );
 
 		if ( $links ) :
@@ -123,7 +142,6 @@ if ( ! function_exists( 'fw_theme_paging_nav' ) ) : /**
 		<?php
 		endif;
 	}
-}
 endif;
 
 
@@ -146,7 +164,14 @@ if ( ! function_exists( 'lastimosa_post_nav' ) ) : /**
 
 		?>
 		<nav class="navigation post-navigation" role="navigation">
-			<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'lastimosa' ); ?></h3>
+			<?php 
+			$postType = get_queried_object();
+			$obj = get_post_type_object( $postType->post_type );
+			$post_type = $obj->labels->singular_name;
+			if( $postType->post_type == 'post' ) $post_type .= ' Post';
+			?>
+			
+			<h3 class="screen-reader-text"><?php _e( $post_type . ' navigation', 'lastimosa' ); ?></h3>
 
 			<div class="nav-links row mb-4">
 				<?php
@@ -155,11 +180,11 @@ if ( ! function_exists( 'lastimosa_post_nav' ) ) : /**
 						__( '<span class="meta-nav">Published In</span>%title', 'lastimosa' ) );
 				else :
 					if(get_previous_post()) {
-						previous_post_link( '<div class="meta-nav col-md-6">%link</div>', __( '<h5 class="previous">Previous Post</h5><h4>%title</h4>', 'lastimosa' ) );
-						next_post_link( '<div class="meta-nav text-md-right col-md-6">%link</div>', __( '<h5 class="next">Next Post</h5><h4>%title</h4>', 'lastimosa' ) );
+						previous_post_link( '<div class="meta-nav col-md-6">%link</div>', __( '<h5 class="previous">Previous ' . $post_type . '</h5><h4>%title</h4>', 'lastimosa' ) );
+						next_post_link( '<div class="meta-nav text-md-right col-md-6">%link</div>', __( '<h5 class="next">Next ' . $post_type . '</h5><h4>%title</h4>', 'lastimosa' ) );
 					}else{
 						echo '<div class="meta-nav col-md-6"></div>';
-						next_post_link( '<div class="meta-nav text-md-right col-md-6">%link</div>', __( '<h5 class="next">Next Post</h5><h4>%title</h4>', 'lastimosa' ) );
+						next_post_link( '<div class="meta-nav text-md-right col-md-6">%link</div>', __( '<h5 class="next">Next ' . $post_type . '</h5><h4>%title</h4>', 'lastimosa' ) );
 					}
 				endif;
 				?>
@@ -170,7 +195,7 @@ if ( ! function_exists( 'lastimosa_post_nav' ) ) : /**
 	}
 }
 endif;
-add_action('lastimosa_after_entry','lastimosa_post_nav');
+add_action( 'lastimosa_after_entry', 'lastimosa_post_nav' );
 
 
 if ( ! function_exists( 'lastimosa_tags_list' ) ) :
@@ -475,5 +500,48 @@ if ( ! function_exists( 'lastimosa_get_image_height' ) ) :
 		}
 
 		return false;
+	}
+endif;
+
+
+if( ! function_exists('lastimosa_excerpt') ) :
+	function lastimosa_excerpt($limit) {
+		$limit++;
+		$excerpt = preg_replace('|<img (.+?)>|i', '', get_the_excerpt());
+		$excerpt = preg_replace('|<div id="attachment_(.+?)" class="wp-caption(.+?)<\/div>|i', '', $excerpt);
+		$excerpt = explode(' ', $excerpt, $limit);
+		if ( count($excerpt) >= $limit ) {
+		array_pop($excerpt);
+		$excerpt = implode(" ", $excerpt).'...';
+		} else {
+		$excerpt = implode(" ", $excerpt);
+		}	
+		$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+		return $excerpt;
+	}
+endif;
+
+
+if( ! function_exists('lastimosa_array_keys_exist') ) :
+	/**
+	 * Checks if multiple keys exist in an array
+	 *
+	 * @param array $array
+	 * @param array|string $keys
+	 *
+	 * @return bool
+	 */
+	function lastimosa_array_keys_exist( array $array, $keys ) {
+		$count = 0;
+		if ( ! is_array( $keys ) ) {
+			$keys = func_get_args();
+			array_shift( $keys );
+		}
+		foreach ( $keys as $key ) {
+			if ( isset( $array[$key] ) || array_key_exists( $key, $array ) ) {
+					$count ++;
+			}
+		}
+		return count( $keys ) === $count;
 	}
 endif;
