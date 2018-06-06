@@ -13,11 +13,17 @@ $options = array(
 		),*/
 		'inner-options' => array(
 		
-			'content-width'                => array(
+			'container-width'                => array(
 				'label' => __( 'Container Width', 'lastimosa' ),
 				'type'  => 'short-text',
-				'value' => '1400px',
+				'value' => '1200px',
 				'desc'  => __( 'The container width of your site\'s content. Enter in pixel or in percentage. ie: \'1130px\' or \'100%\' ', 'lastimosa' ),
+				'help'  => __( '<p><strong>Accepted Values</strong><br>
+												Pixel: 1200px<br>
+												Em: 75em<br>
+												Rem: 75rem<br>
+												Percentage: 80%<br>
+												Unitless: 1200</p>', 'lastimosa' ),
 			),
 			'layout'       => array(
 				'type'         => 'multi-picker',

@@ -2,6 +2,22 @@
 
 <?php
 
+// We're going to animate the items individually
+$animate_item = $atts['animate'];
+unset( $atts['animate'] ); // We're not going to pass data to lastimosa_get_option_advanced_class
+if( isset($animate_item) && !empty($animate_item['animation']))	{
+	$animate_item_class = 'wow ';
+	$animate_item_class .= $animate_item['animation'];
+}
+$animate_item_attr = array();
+$animate_item_attr['animate'] = $animate_item;
+$animate_item_attr = lastimosa_get_option_animate_attr( $animate_item_attr );
+if( isset($animate_item_attr['data-wow-delay']) ) {
+	$data_wow_delay = preg_replace('/[^0-9]/', '', $animate_item_attr['data-wow-delay']);
+}else{
+	$data_wow_delay = 0; 
+}
+
 $class = array();
 $class = array_merge( $class, lastimosa_get_option_advanced_class( $atts ) );
 $atts['id'] = 'portfolio-'.substr($atts['id'], 0, 10);
@@ -9,7 +25,6 @@ if( isset($class) ) {
 	array_unshift( $class, $atts['id'] );
 }
 $attr['class'] = join( ' ', $class );
-$attr = array_merge( $attr, lastimosa_get_option_animate_attr( $atts ) );
 
 global $wp_query;
 $ext_portfolio_instance = fw()->extensions->get( 'portfolio' );
@@ -52,13 +67,18 @@ $query = new WP_Query( $args ); ?>
 	<div class="entry-content">
 	
 	<?php if ( $query->have_posts() ) : ?>
+		<?php $ctr = 0;	?>
 		<ul class="portfolio-list row">
 			<?php
 			while ( $query->have_posts() ) : $query->the_post();
 				$loop_data = get_query_var( 'fw_portfolio_loop_data' );
 				$thumbnails_params = $loop_data['image_sizes']['featured-image'];
+				
+				$ctr++;
+				$animate_item_attr['data-wow-delay'] = ( $data_wow_delay + ($ctr * .25) ) . 's';
+			
 			?>
-			<li class="mix category_all <?php fw_theme_portfolio_post_taxonomies(get_the_ID()); ?> portfolio-item col-12 col-md-4">
+			<li class="mix category_all <?php fw_theme_portfolio_post_taxonomies(get_the_ID()); ?> portfolio-item col-12 col-md-4 <?php echo $animate_item_class; ?>" <?php echo lastimosa_attr_to_html($animate_item_attr); ?>>
 				<div class="portfolio-img imghvr-<?php echo $atts['hover_effect'] ?>">
 					<?php
 					$thumbnail_id = get_post_thumbnail_id();

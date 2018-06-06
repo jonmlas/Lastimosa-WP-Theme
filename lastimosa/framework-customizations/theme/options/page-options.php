@@ -25,12 +25,12 @@ $options = array(
 				),
 				'value'        => false,
 				
-			),*/
+			),
 			'footer_scripts' => array(
 				'label' => __( 'Footer Scripts', 'unyson' ),
 				'type'  => 'textarea',
 				'desc'  => __( 'Enter Footer Scripts. Include &#039;&lt;script&gt; ... &lt;/script&gt;&#039; tags', 'unyson' ),
-			),
+			),*/
 		),
 	),
 );

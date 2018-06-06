@@ -14,19 +14,17 @@
 		if (has_post_thumbnail()):
 			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );	
 			$page_header_attr = array(
-				'class' => 'entry-header',
+				'class' => 'entry-header container',
 				'style' => 'background-image: url("'.esc_url( $thumbnail[0] ).'"); height:'.$thumbnail[2].'px;'
 			);
 		else:
 			$page_header_attr = array(
-				'class' => 'entry-header',
+				'class' => 'entry-header container',
 			);
 		endif;
 	?>
 	<header <?php echo lastimosa_attr_to_html($page_header_attr); ?>>
-		<div class="container">
 			<?php do_action( 'lastimosa_entry_header' ); ?>
-		</div>
 	</header><!-- .panel-image -->
 
 	<div class="entry-content">
@@ -41,7 +39,7 @@
 	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
+		<footer class="entry-footer container">
 			<?php
 				edit_post_link(
 					sprintf(

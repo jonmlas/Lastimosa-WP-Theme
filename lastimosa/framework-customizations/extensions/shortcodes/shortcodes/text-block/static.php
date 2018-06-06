@@ -24,23 +24,38 @@ if ( ! function_exists('_action_theme_shortcode_text_block_enqueue_dynamic_css')
 		$atts = fw_ext_shortcodes_decode_attr($atts, $shortcode, $data['post']->ID);
 		$uri = fw_get_template_customizations_directory_uri('/extensions/shortcodes/shortcodes/text-block');
 
-		global $post;
-		$post_slug = $post->post_name;
-		$atts['id'] = $shortcode . '-' . substr($atts['id'], 0, 10);
 		$atts['shortcode'] 	= $shortcode;
-
-		$css = array(); // needs to be defined to use array_merge if show_more is empty
-		if( $atts['show_more']['enable'] ) {
-			$css[] = '.show-more .show:target ~ .' . $atts['shortcode'] . '-' . $atts['id'] . '.panel { ';
-			$css[] = 'max-height: rem(999999px);';
-			$css[] = '}';
-		}
+		$atts['id'] = $shortcode . '-' . substr($atts['id'], 0, 10);
 		
 		lastimosa_get_option_enqueue_wow( $atts );
 
+		$css = array(); // Needed to be declared to avoid null error in lastimosa_options_get_shortcode_css
+		if( $atts['show_more']['enable'] ) {
+			if( ! empty( $atts['show_more']['show_button'] ) ) {
+				$css[] = '.' . $atts['id'] . ' .read-more-state ~ .read-more-trigger:before { ';
+				$css[] = 'content: \'' . $atts['show_more']['show_button'] . '\';';
+				$css[] = '}';
+			}
+			if( ! empty( $atts['show_more']['hide_button'] ) ) {
+				$css[] = '.' . $atts['id'] . ' .read-more-state:checked ~ .read-more-trigger:before { ';
+				$css[] = 'content: \'' . $atts['show_more']['hide_button'] . '\';';
+				$css[] = '}';
+			}
+			$fade_color = lastimosa_get_option_color_picker( $atts['show_more']['fade_color'] );
+			if( ( ! empty( $fade_color ) ) && $fade_color != '#ffffff' && $atts['show_more']['fade'] ) {
+				$css[] = '.' . $atts['id'] . ' .read-more-wrap:after { ';
+				$css[] = 'background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .9) 50%, ' . $fade_color . ' 75%, ' . $fade_color . ' 100%);';
+				$css[] = 'background: linear-gradient(to bottom, rgba(' . $fade_color . ', 0) 0%, rgba(' . $fade_color . ', .9) 50%, ' . $fade_color . ' 75%, ' . $fade_color . ' 100%);';
+				$css[] = '}';
+			}
+			if( ! $atts['show_more']['fade'] ) {
+				$css[] = '.' . $atts['id'] . ' .read-more-wrap:after { ';
+				$css[] = 'background: none;';
+				$css[] = '}';
+			}
+		}
 		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
-		
-		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
+		lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 	add_action(

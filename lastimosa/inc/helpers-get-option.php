@@ -128,6 +128,30 @@ if(! function_exists('lastimosa_get_options_background_css')) :
 			}
 			$shortcode_atts[] = $background;
 			$shortcode_atts[] = $size;
+			
+			if( isset( $bg['overlay'] ) && ( $bg['overlay']['selected'] == 'yes' ) ) {
+				if( !empty( lastimosa_get_option_color_picker( $bg['overlay']['yes']['color'] ) ) ) {
+					$overlay = array();
+					$direction = $bg['overlay']['yes']['direction'];
+					$color = lastimosa_get_option_color_picker( $bg['overlay']['yes']['color'] );
+					if( !empty( lastimosa_get_option_color_picker( $bg['overlay']['yes']['gradient']) ) ) {
+						$gradient = lastimosa_get_option_color_picker( $bg['overlay']['yes']['gradient'] );
+					}else{
+						$gradient = $color;
+					}
+					$overlay[] = '&:before { ';
+					$overlay[] = 'content: \'\';
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						background-image: linear-gradient(to ' . $direction . ', ' . $color . ', ' . $gradient .');
+						opacity: '. $bg['overlay']['yes']['opacity'] . ';';
+					$overlay[] = '}';
+					$shortcode_atts[] = join( "\r\n", $overlay );
+				}
+			}
 			return $shortcode_atts;
 		}else{
 			return array();
@@ -141,13 +165,12 @@ if( ! function_exists('lastimosa_get_option_image') ) :
  *  Get the image from options
  */
 	function lastimosa_get_option_image( $atts ) {
-		//if(!empty($atts['image'])) return;
-		
+	
 		$width  = ( is_numeric( $atts['width'] ) && ( $atts['width'] > 0 ) ) ? $atts['width'] : '';
 		$height = ( is_numeric( $atts['height'] ) && ( $atts['height'] > 0 ) ) ? $atts['height'] : '';
 
 		if ( ! empty( $width ) && ! empty( $height ) ) {
-			$src = fw_resize( $image['src']['attachment_id'], $width, $height, true );
+			$src = fw_resize( $atts['image']['attachment_id'], $width, $height, true );
 		} else {
 			$src = $atts['image']['url'];
 		}
@@ -311,15 +334,12 @@ if( !function_exists('lastimosa_get_option_spacing_css') ) :
 	 */
 	function lastimosa_get_option_spacing_css( $atts ) {
 		$shortcode_atts = array();
-		if( $atts['shortcode'] 	== 'column' ) {
-			$colwrap = ' .col-wrap';
-		}else{
-			$colwrap = '';
-		}
+		$wrapper = '';
+		if( isset( $atts['shortcode'] ) && in_array( $atts['shortcode'], array( 'section', 'column') ) ) $wrapper = ' .wrap';
 		global $post;
 		
 		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mall', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'pall', 'padding' )) ) {
-			$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+			$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $wrapper . ' { ';
 				if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mall', 'margin' ) )			$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mall', 'margin' );
 				if( null !== lastimosa_get_option_spacing_css_property( $atts, 'pall', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'pall', 'padding' );
 			$shortcode_atts[] = '}';
@@ -327,7 +347,7 @@ if( !function_exists('lastimosa_get_option_spacing_css') ) :
 		
 		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'msm', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'psm', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 576px) {';
-				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $wrapper . ' { ';
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'msm', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'msm', 'margin' );
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'psm', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'psm', 'padding' );
 				$shortcode_atts[] = '}';
@@ -336,7 +356,7 @@ if( !function_exists('lastimosa_get_option_spacing_css') ) :
 		
 		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mmd', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'pmd', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 768px) {';
-				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $wrapper . ' { ';
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mmd', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mmd', 'margin' );
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'pmd', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'pmd', 'padding' );
 				$shortcode_atts[] = '}';
@@ -345,7 +365,7 @@ if( !function_exists('lastimosa_get_option_spacing_css') ) :
 		
 		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mlg', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'plg', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 992px) {';
-				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $colwrap . ' { ';
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . $wrapper . ' { ';
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mlg', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mlg', 'margin' );
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'plg', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'plg', 'padding' );
 				$shortcode_atts[] = '}';
@@ -354,7 +374,7 @@ if( !function_exists('lastimosa_get_option_spacing_css') ) :
 		
 		if( (null !== lastimosa_get_option_spacing_css_property( $atts, 'mxl', 'margin') ) || ( null !== lastimosa_get_option_spacing_css_property( $atts, 'pxl', 'padding' )) ) {
 			$shortcode_atts[] = '@media (min-width: 1200px) {';
-				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . '-'.$atts['id'] . $colwrap . ' { ';
+				$shortcode_atts[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . '-'.$atts['id'] . $wrapper . ' { ';
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'mxl', 'margin' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'mxl', 'margin' );
 					if( null !== lastimosa_get_option_spacing_css_property( $atts, 'pxl', 'padding' ) )		$shortcode_atts[]	= lastimosa_get_option_spacing_css_property( $atts, 'pxl', 'padding' );
 				$shortcode_atts[] = '}';
@@ -370,7 +390,8 @@ if( !function_exists('lastimosa_get_option_enqueue_wow') ) :
 	 * Enqueue WOW Animate Script
 	 */
 	function lastimosa_get_option_enqueue_wow( $atts ) {
-		if( !is_admin() && !empty( $atts['animate']['animation'] ) ) {
+		// The inline script gets duplicated if not enqueued check
+		if( ! wp_script_is( 'wow', 'enqueued' ) && !is_admin() && !empty( $atts['animate']['animation'] ) ) {
 			wp_enqueue_script(
 				'wow',
 				get_template_directory_uri() . '/js/wow.min.js',
@@ -407,7 +428,7 @@ if( !function_exists('lastimosa_options_get_shortcode_css') ) :
 	/**
 	 * Prints the CSS in the sass.php file
 	 */
-	function lastimosa_options_get_shortcode_css($atts,$shortcode_atts) {	
+	function lastimosa_options_get_shortcode_css( $atts, $shortcode_atts ) {	
 		$shortcode_style = '';
 		foreach ($shortcode_atts as $key => $value){
 			$shortcode_style .= $value;
@@ -418,7 +439,7 @@ if( !function_exists('lastimosa_options_get_shortcode_css') ) :
 			$shortcode_styles[get_the_ID()][$atts['id']] = $shortcode_style;		
 			add_option( $atts['shortcode'].'-style', $shortcode_styles, '', 'yes' );
 		} else {
-			$shortcode_styles = get_option( $atts['shortcode'].'-style' );		
+			$shortcode_styles = get_option( $atts['shortcode'] . '-style' );		
 			$shortcode_styles[get_the_ID()][$atts['id']] = $shortcode_style;
 			update_option( $atts['shortcode'].'-style', $shortcode_styles, 'yes' );
 		}	
@@ -428,7 +449,7 @@ if( !function_exists('lastimosa_options_get_shortcode_css') ) :
 			$shortcode_styles_temp[$atts['id']] = $shortcode_style;		
 			add_option( $atts['shortcode'].'-style-temp', $shortcode_styles_temp, '', 'yes' );
 		} else {	
-			$shortcode_styles_temp = get_option( $atts['shortcode'].'-style-temp');	
+			$shortcode_styles_temp = get_option( $atts['shortcode'] . '-style-temp');	
 			$shortcode_styles_temp[$atts['id']] = $shortcode_style;
 			update_option( $atts['shortcode'].'-style-temp', $shortcode_styles_temp, 'yes' );
 		}	

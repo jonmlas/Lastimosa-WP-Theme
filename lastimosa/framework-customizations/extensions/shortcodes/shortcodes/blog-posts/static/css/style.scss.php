@@ -7,9 +7,9 @@
 		box-shadow: unset;		
 	}
 	.thumbnail img {
-		min-width: 100%;
-		max-width: 100%;
-    height: auto;
+		margin: 0 auto;
+		display: block;
+		height: auto;
 		padding: 0 0 rem(8px) 0;
 	}
 	.btn.btn-default {
@@ -113,12 +113,15 @@
 		.col-md-6 .alignleft, .col-md-6 .alignright {
 			margin: 0;
 		}
+		article.post.hentry {
+			margin-bottom: 1rem;
+		}
 		article:after {
 			content: "";
 			border-bottom: none;
 		}
 		.thumbnail img.aligncenter {
-				min-width: 0;
+			min-width: 0;
 		}
 	}
 }

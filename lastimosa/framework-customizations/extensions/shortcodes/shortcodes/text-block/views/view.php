@@ -4,17 +4,15 @@ $class = array();
 $atts['id'] = 'text-block-'.substr($atts['id'], 0, 10);
 if(! empty($atts['color']) )					$class[] = $atts['color'];
 if( $atts['show_more']['enable'] ) {
-	$class[] = 'panel';
-	$btn[] = lastimosa_html_tag( 'a', array(
-			'href' 	=> '#' . $atts['id'] . '-show',
-			'class' => $atts['id'] . ' show btn btn-default btn-sm',
-			'id'		=> $atts['id'] . '-show',
-		), $atts['show_more']['show_button'] );
-	$btn[] = lastimosa_html_tag( 'a', array(
-			'href' 	=> '#' . $atts['id'] . '-hide',
-			'class' => $atts['id'] . ' hide btn btn-default btn-sm',
-			'id'		=> $atts['id'] . '-hide',
-		), $atts['show_more']['hide_button'] );
+	$input = lastimosa_html_tag( 'input', array(
+			'type' 	=> 'checkbox',
+			'class' => 'read-more-state',
+			'id'	=> $atts['id'],
+		), false );
+	$label = lastimosa_html_tag( 'label', array(
+			'class' => 'read-more-trigger',
+			'for'	=> $atts['id'],
+		), false );
 }
 $class = array_merge( $class, lastimosa_get_option_advanced_class( $atts ) );
 if( isset($class) ) {
@@ -23,14 +21,25 @@ if( isset($class) ) {
 $attr['class'] = join(' ', $class);
 $attr = array_merge( $attr, lastimosa_get_option_animate_attr( $atts ) );
 
-if( !empty($class) ) { 
-	if( $atts['show_more']['enable'] ) { ?>
-		<div class="show-more">
-			<?php echo join( ' ', $btn ); ?>
-			<div <?php echo lastimosa_attr_to_html($attr); ?>>
+if( !empty($class) ) {
+	if( $atts['show_more']['enable'] ) { 
+		//if( strpos( $atts['text'], '<!--more-->' ) ) {       // Testing if problems would occur.
+		if( preg_match( '/<!--more(.*?)?-->/', $atts['text'] ) ) {
+			$atts['text'] = str_replace( '<!--more--></p>', '</p><div class="read-more-target">', $atts['text']) . '</div>';
+		} else {
+			$array = explode('</p>', $atts['text'], 3); 
+			$last = array_pop($array);
+			$atts['text'] = implode('</p> ',$array) . ' ' . '<div class="read-more-target">' . ' ' . $last  . '</div>';
+		} ?>
+			
+		<div <?php echo lastimosa_attr_to_html($attr); ?>>
+			<?php echo $input; ?>
+			<div class="read-more-wrap">
 				<?php echo do_shortcode($atts['text']); ?>
 			</div>
+			<?php echo $label; ?>
 		</div>
+		
 	<?php } else { ?>
 		<div <?php echo lastimosa_attr_to_html($attr); ?>>
 			<?php echo do_shortcode($atts['text']); ?>

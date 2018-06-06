@@ -12,10 +12,8 @@ if (!function_exists('_action_theme_shortcode_text_rotator_enqueue_dynamic_css')
 		$atts = fw_ext_shortcodes_decode_attr($atts, $shortcode, $data['post']->ID);
 		$uri = fw_get_template_customizations_directory_uri('/extensions/shortcodes/shortcodes/text-rotator');
 		
-		// Start of original static.php code
-		// Enqueues these scripts if there is a video background.
-		wp_enqueue_style( 'fw-ext-builder-frontend-grid' );
-		$shortcodes_extension = fw_ext( 'shortcodes' );
+		$atts['shortcode'] 	= $shortcode;
+		$atts['id'] = $shortcode . '-' . substr($atts['id'], 0, 10);
 		
 		if ( !is_admin() ) {
 			/*wp_enqueue_script(
@@ -63,6 +61,12 @@ if (!function_exists('_action_theme_shortcode_text_rotator_enqueue_dynamic_css')
 				});
 			');
 		}
+		
+		lastimosa_get_option_enqueue_wow( $atts );
+
+		$css = array(); // Needed to be declared to avoid null error in lastimosa_options_get_shortcode_css
+		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
+		lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 

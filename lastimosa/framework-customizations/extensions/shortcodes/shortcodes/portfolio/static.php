@@ -46,12 +46,10 @@ if ( ! function_exists('_action_theme_shortcode_portfolio_enqueue_dynamic_css') 
 			');
 		}
 
-		$css = array(); // needs to be defined to use array_merge if show_more is empty
-		
 		lastimosa_get_option_enqueue_wow( $atts );
 
+		$css = array(); // Needed to be declared to avoid null error in lastimosa_options_get_shortcode_css
 		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
-		
 		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 

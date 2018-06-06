@@ -28,9 +28,10 @@ if (!function_exists('_action_theme_shortcode_contact_form_7_enqueue_dynamic_css
 		$atts['shortcode'] 	= $shortcode;
 
 		lastimosa_get_option_enqueue_wow( $atts );
-		$css = lastimosa_get_option_spacing_css( $atts );
 		
-		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
+		$css = array();
+		$css = lastimosa_get_option_spacing_css( $atts );
+		lastimosa_options_get_shortcode_css( $atts, $css );
 		
 	}
 

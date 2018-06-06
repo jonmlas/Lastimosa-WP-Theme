@@ -124,7 +124,7 @@ if(! function_exists('lastimosa_option_color_picker')) :
 	/**
 	 * Color Picker
 	 */
-	function lastimosa_option_color_picker($label = NULL, $default = '#fff', $desc = NULL) {
+	function lastimosa_option_color_picker($label = NULL, $default = '#ffffff', $desc = NULL) {
 		$option = array(
 			'type' => 'predefined-colors-color-picker',
 			'label' => __($label, 'lastimosa'),
@@ -521,6 +521,60 @@ if( ! function_exists('lastimosa_option_bg_atts')):
 							'title' => false,
 						),
 					)
+				),
+				'overlay' => array(
+					'type'  => 'multi-picker',
+					'label' => false,
+					'desc'  => false,
+					'picker' => array(
+						'selected' => array(
+							'type'  => 'switch',
+							'label' => __( 'Overlay', 'lastimosa' ),
+							'desc'  => __( 'Enable background overlay?', 'lastimosa' ),
+							'value' => 'no',
+							'right-choice' => array(
+								'value' => 'yes',
+								'label' => __('Yes', 'lastimosa'),
+							),
+							'left-choice' => array(
+								'value' => 'no',
+								'label' => __('No', 'lastimosa'),
+							),
+						),
+					),
+					'choices' => array(
+						'yes' => array(
+							'color' => lastimosa_option_color_picker('','', 'Color 1'),
+							'gradient' => lastimosa_option_color_picker('','', 'Color 2. Select second color to enable gradient.'),
+							'direction' => array(
+								'label' => __( '', 'lastimosa' ),
+								'desc'  => __( 'Gradient direction.', 'lastimosa' ),
+								'type'  => 'select',
+								'value' => 'bottom',
+								'choices' => array(
+									'bottom' 		=> __( 'Top to bottom', 'lastimosa' ),
+									'top' 			=> __( 'Bottom to top', 'lastimosa' ),
+									'right' 		=> __( 'Left to right', 'lastimosa' ),
+									'left' 			=> __( 'Right to left', 'lastimosa' ),
+									'top left' 		=> __( 'Top to left', 'lastimosa' ),
+									'top right' 	=> __( 'Top to right', 'lastimosa' ),
+									'bottom left' 	=> __( 'Bottom to left', 'lastimosa' ),
+									'bottom right' 	=> __( 'Bottom to right', 'lastimosa' ),
+								),
+							),
+							'opacity' => array(
+								'type'  => 'slider',
+								'value' => 100,
+								'properties' => array(
+									'min' => 0,
+									'max' => 1,
+									'step' => .1,
+								),
+								'label' => __( '', 'lastimosa' ),
+								'desc'  => __( 'Select the overlay color opacity in %', 'lastimosa' ),
+							)
+						),
+					),
 				),
 			),	
 		);
@@ -1141,17 +1195,21 @@ endif;
 
 
 if(! function_exists('lastimosa_option_text_alignment')) :
+	/**
+	 *  Options for Text Alignment
+	 */
 	function lastimosa_option_text_alignment() {
 		return array(
 			'type'    => 'select',
 			'label'   => __('Text Alignment', 'lastimosa'),
 			'desc'		=> __('', 'lastimosa'),
 			'choices' => array(
-				'text-left' => 'Left aligned text',
-				'text-center' => 'Center aligned text',
-				'text-right' => 'Right aligned text',
-				'text-justify' => 'Justified text',
-				'text-nowrap' => 'No wrap text',
+				'' 				=> 'Default',
+				'text-left' 	=> 'Left aligned text',
+				'text-center' 	=> 'Center aligned text',
+				'text-right' 	=> 'Right aligned text',
+				'text-justify' 	=> 'Justified text',
+				'text-nowrap' 	=> 'No wrap text',
 			)
 		);
 	}

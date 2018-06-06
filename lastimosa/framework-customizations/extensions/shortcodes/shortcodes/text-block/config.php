@@ -9,6 +9,6 @@ $cfg['page_builder'] = array(
 	'description' => __( 'Add a Text Block', 'lastimosa' ),
 	'tab'         => __( 'Content Elements', 'lastimosa' ),
 	'popup_size'    => 'medium', // can be large, medium or small
-	'title_template' => '{{= o.text }}',
+	'title_template' => '<div>{{= o.text }}</div>',
 );
 

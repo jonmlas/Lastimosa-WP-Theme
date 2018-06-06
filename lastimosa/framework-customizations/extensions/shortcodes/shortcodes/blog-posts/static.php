@@ -41,8 +41,9 @@ if (!function_exists('_action_theme_shortcode_blog_posts_enqueue_dynamic_css')):
 		}
 		
 		lastimosa_get_option_enqueue_wow( $atts );
-		$css = lastimosa_get_option_spacing_css( $atts );
 		
+		$css = array();
+		$css = lastimosa_get_option_spacing_css( $atts );
 		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 

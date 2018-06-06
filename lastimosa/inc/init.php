@@ -71,7 +71,6 @@ class Theme_Includes
 			self::include_child_first('/helpers.php');
 			self::include_child_first('/hooks.php');
 			self::include_child_first('/hooks-structure.php');
-			self::include_child_first('/page-meta.php');
 			self::include_child_first('/template-tags.php');
 			if ( is_plugin_active( 'unyson/unyson.php' ) ) {
 				self::include_child_first('/wp-sass/wp-sass.php');

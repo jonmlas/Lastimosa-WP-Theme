@@ -1,0 +1,42 @@
+.progress.progress-bar-style-1 {
+  position: relative;
+	min-height: 25px;
+	.progress-bar {
+		text-align: left;
+		white-space: nowrap;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		cursor: pointer;
+		animation: animate-positive 2s;
+	}
+	.progress-bar-animate {
+		-webkit-animation: 1s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+    animation: 1s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+	}
+	> .progress-title {
+		position: absolute;
+		left: 0px;
+		font-weight: 800;
+		padding: 3px 30px 2px 10px;
+		color: rgb(255, 255, 255);
+		transform: translateY(-50%);
+		top: 50%;
+	}
+	> .progress-value {
+		position: absolute;
+		right: 0px;
+		color: #333;
+		font-weight: 600;
+		padding: 3px 10px 2px;
+		transform: translateY(-50%);
+		top: 50%;
+	}
+}
+
+@-webkit-keyframes animate-positive{
+    0%{ width: 0; }
+}
+@keyframes animate-positive{
+    0%{ width: 0; }
+}

@@ -176,7 +176,7 @@ wp_enqueue_script(
 
 // SASS CSS
 wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.scss.php', 100 );
-
+wp_enqueue_style( 'style-shortcodes', get_template_directory_uri() . '/css/shortcodes.scss.php', 110 );
 
 if ( ! function_exists( 'lastimosa_sticky_header' ) ) :
 	/**
@@ -208,32 +208,4 @@ if ( ! function_exists( 'lastimosa_sticky_header' ) ) :
 		<?php
 	}
 	add_action( 'wp_footer', 'lastimosa_sticky_header', 30 );
-endif;
-
-// Smooth Scroll
-if (! function_exists('print_smooth_scroll')) :
-	function print_smooth_scroll() {
-		?>
-		<script>
-		jQuery(function ($) {
-			$(function() {
-				$('a[href*=#]:not([href=#])').click(function() {
-				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-
-					var target = $(this.hash);
-					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-					if (target.length) {
-					$('html,body').animate({
-						scrollTop: target.offset().top - 100
-					}, 1000);
-					return false;
-					}
-				}
-				});
-			});
-		});
-		</script>
-		<?php
-	}
-	//add_action( 'wp_footer', 'print_smooth_scroll', 30 );
 endif;

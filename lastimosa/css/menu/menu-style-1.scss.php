@@ -268,7 +268,7 @@ a.meanmenu-reveal {
 .site-navigation .current-menu-parent > a,
 .site-navigation .current-menu-ancestor > a {
 	color: $menu_active_color;
-  background-color:  <?php echo lastimosa_get_option_color_picker($menu['active_bg_color']); ?>;
+	background-color:  <?php echo lastimosa_get_option_color_picker($menu['active_bg_color']); ?>;
 }
 
 .site-navigation a:hover {
@@ -465,7 +465,7 @@ a.meanmenu-reveal {
 	}
 
 	<?php $theme_layout = lastimosa_get_option('theme_layout');	?>
-	$content-width: <?php echo $theme_layout['content-width']; ?>;
+	$content-width: <?php echo $theme_layout['container-width']; ?>;
 
 	.site-navigation .mega-menu {
 		display: none;

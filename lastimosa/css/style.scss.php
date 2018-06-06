@@ -2,18 +2,7 @@
 /* Lastimosa Styles */
 ?>
 
-$base-font-size: 16px;
-@function rem($value, $context: $base-font-size) {
-	@if type-of($value) == string {
-		@return auto;
-	} @else if unitless($value) {
-		@return ((1px * $value) / $context) * 1rem;
-	} @else if unit($value) == 'px' {
-  	@return ($value / $context) * 1rem;
-	} @else {
-		@return $value;
-	}
-}
+@import "functions";
 
 @import "bootstrap";
 @import "social-icons";
@@ -35,29 +24,6 @@ include 'footer.scss.php'; ?>
 @import "lib/hover.scss";
 @import "lib/imagehover.min.scss";
 @import "lib/animate.scss";
-<?php include 'comments/comments-style-1.scss.php';
-
-include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/section/static/css/style.scss.php');
-include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/column/static/css/style.scss.php');
-include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/accordion/static/css/style.scss.php');
-include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/text-block/static/css/style.scss.php');
-include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/button/static/css/style.scss.php');
-include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/icon/static/css/style.scss.php');
-//include( TEMPLATEPATH . '/framework-customizations/extensions/shortcodes/shortcodes/testimonials/static/css/style.scss.php'); ?>
-@import "../framework-customizations/extensions/portfolio/static/css/style.scss";
-
-@import "../framework-customizations/extensions/shortcodes/shortcodes/special-heading/static/css/style.scss";
-
-@import "../framework-customizations/extensions/shortcodes/shortcodes/special-heading/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/team-member-custom/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/portfolio/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/image-box/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/media-image/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/taxonomy/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/image-gallery/static/css/masonry.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/image-gallery/static/css/magnific-popup.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/image-gallery/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/events/static/css/style.scss";
-@import "../framework-customizations/extensions/shortcodes/shortcodes/tabs/static/css/style.scss";
+<?php include 'comments/comments-style-1.scss.php'; ?>
 
 <?php include 'responsive.scss.php'; ?>

@@ -1,0 +1,14 @@
+$base-font-size: 16px;
+@function rem($value, $context: $base-font-size) {
+	@if type-of($value) == string {
+		@return auto;
+	} @else if unit($value) == '%' or unit($value) == 'rem' or unit($value) == 'em' {
+  	@return $value;
+	} @else if unit($value) == 'px' {
+  	@return ($value / $context) * 1rem;
+	} @else if unitless($value) {
+		@return ((1px * $value) / $context) * 1rem;
+	} @else {
+		@return 0;
+	}
+}

@@ -72,8 +72,9 @@ if(! function_exists('lastimosa_entry_title') ) :
 	 * Featured Image
 	 */
 	function lastimosa_entry_title() {
-		$hide_page_title = get_post_meta(get_the_ID(), 'hide-page-title', true);
-		if(empty($hide_page_title)):
+		$page_header = lastimosa_get_post_option( get_the_ID(), 'page_header' );
+		$hide_page_title = lastimosa_get_post_option( get_the_ID(), 'hide_page_title' );
+		if( ! $hide_page_title && $page_header != 'transparent' ) :
 			the_title( '<h1 class="entry-title">', '</h1><!-- .entry-header -->' );
 		endif; 
 	}
@@ -148,8 +149,10 @@ if(!function_exists('lastimosa_theme_mods')) :
 	    set_theme_mod( 'box_container_start', '' );
 			set_theme_mod( 'box_container_end', '' ); 
     }
-    $header_class = array( 'site-header', 'mb-4' );
-    $header_class[] = get_post_meta( get_the_ID(), 'header-options', true ); 
+		
+    $header_class = array( 'site-header' );
+		$page_header = lastimosa_get_post_option( get_the_ID(), 'page_header' );
+		$header_class[] = $page_header; 
     $header_layout = lastimosa_get_option( 'header_layout', array( 'style' => array( 'selected' => 'style-1' )) );
 		if(!empty($header_layout['style']))	{
 			$header_class[] = $header_layout['style']['selected'];
@@ -158,5 +161,5 @@ if(!function_exists('lastimosa_theme_mods')) :
 			set_theme_mod( 'header_layout_selected', $header_layout['style']['selected'] );
 		}
   }
-  add_action( 'init', 'lastimosa_theme_mods' );
+  add_action( 'wp', 'lastimosa_theme_mods' );
 endif;

@@ -4,42 +4,42 @@
 
 $options = array(
 	'demo_text_2'                      => array(
-		'label' => __( 'Text', 'unyson' ),
+		'label' => __( 'Text', 'lastimosa' ),
 		'type'  => 'text',
 		'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_short_text_2'                => array(
-		'label' => __( 'Short Text', 'unyson' ),
+		'label' => __( 'Short Text', 'lastimosa' ),
 		'type'  => 'short-text',
 		'value' => '7',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_password_2'                  => array(
-		'label' => __( 'Password', 'unyson' ),
+		'label' => __( 'Password', 'lastimosa' ),
 		'type'  => 'password',
 		'value' => 'Dotted text',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_hidden_2'                    => array(
@@ -49,111 +49,111 @@ $options = array(
 		'desc'  => false,
 	),
 	'demo_textarea_2'                  => array(
-		'label' => __( 'Textarea', 'unyson' ),
+		'label' => __( 'Textarea', 'lastimosa' ),
 		'type'  => 'textarea',
 		'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => array(
 			'icon' => 'video',
 			'html' => '<iframe width="420" height="236" src="https://player.vimeo.com/video/101070863" frameborder="0" allowfullscreen></iframe>'
 		),
 	),
 	'demo_wp_editor_2'                 => array(
-		'label' => __( 'Rich Text Editor', 'unyson' ),
+		'label' => __( 'Rich Text Editor', 'lastimosa' ),
 		'type'  => 'wp-editor',
 		'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 		'reinit' => true,
 	),
 	'demo_html_2'                      => array(
-		'label' => __( 'HTML', 'unyson' ),
+		'label' => __( 'HTML', 'lastimosa' ),
 		'type'  => 'html',
 		'value' => '{some: "json"}',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'html'  => '<em>Lorem</em> <b>ipsum</b> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADWSURBVDjLlZNNCsIwEEZzKW/jyoVbD+Aip/AGgmvRldCKNxDBv4LSfSG7kBZix37BQGiapA48ZpjMvIZAGRExwDmnESw7MMvsHnMFTdOQUsqjrmtXsggKEEVReCDseZc/HbOgoCxLDytwUEFBVVUe/fjNDguEEFGSAiml4Xq+DdZJAV78sM1oOpnT/fI0oEYPZ0lBtjuaBWSttcHtRQWvx9sMrlcb7+HQwxlmojfI9ycziGyj34sK3AV8zd7KFSYFCCwO1aMFsQgK8DO1bRsFM0HBP9i9L2ONMKHNZV7xAAAAAElFTkSuQmCC">',
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_checkbox_2'                  => array(
-		'label' => __( 'Checkbox', 'unyson' ),
+		'label' => __( 'Checkbox', 'lastimosa' ),
 		'type'  => 'checkbox',
 		'value' => true,
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
-		'text'  => __( 'Custom text', 'unyson' ),
+			'lastimosa' ),
+		'text'  => __( 'Custom text', 'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_checkboxes_2'                => array(
-		'label'   => __( 'Checkboxes', 'unyson' ),
+		'label'   => __( 'Checkboxes', 'lastimosa' ),
 		'type'    => 'checkboxes',
 		'value'   => array(
 			'c1' => false,
 			'c2' => true,
 		),
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
-			'c1' => __( 'Checkbox 1 Custom Text', 'unyson' ),
-			'c2' => __( 'Checkbox 2 Custom Text', 'unyson' ),
-			'c3' => __( 'Checkbox 3 Custom Text', 'unyson' ),
+			'c1' => __( 'Checkbox 1 Custom Text', 'lastimosa' ),
+			'c2' => __( 'Checkbox 2 Custom Text', 'lastimosa' ),
+			'c3' => __( 'Checkbox 3 Custom Text', 'lastimosa' ),
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_switch_2'                    => array(
-		'label'        => __( 'Switch', 'unyson' ),
+		'label'        => __( 'Switch', 'lastimosa' ),
 		'type'         => 'switch',
 		'right-choice' => array(
 			'value' => 'yes',
-			'label' => __( 'Yes', 'unyson' )
+			'label' => __( 'Yes', 'lastimosa' )
 		),
 		'left-choice'  => array(
 			'value' => 'no',
-			'label' => __( 'No', 'unyson' )
+			'label' => __( 'No', 'lastimosa' )
 		),
 		'value'        => 'yes',
 		'desc'         => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'         => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_select_2'                    => array(
-		'label'   => __( 'Select', 'unyson' ),
+		'label'   => __( 'Select', 'lastimosa' ),
 		'type'    => 'select',
 		'value'   => 'c',
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
 			''  => '---',
-			'a' => __( 'Lorem ipsum', 'unyson' ),
+			'a' => __( 'Lorem ipsum', 'lastimosa' ),
 			'b' => array(
-				'text' => __( 'Consectetur', 'unyson' ),
+				'text' => __( 'Consectetur', 'lastimosa' ),
 				'attr' => array(
 					'label'         => 'Label overrides text',
 					'data-whatever' => 'some data',
@@ -161,31 +161,31 @@ $options = array(
 			),
 			array(
 				'attr'    => array(
-					'label'         => __( 'Optgroup Label', 'unyson' ),
+					'label'         => __( 'Optgroup Label', 'lastimosa' ),
 					'data-whatever' => 'some data',
 				),
 				'choices' => array(
-					'c' => __( 'Sed ut perspiciatis', 'unyson' ),
-					'd' => __( 'Excepteur sint occaecat', 'unyson' ),
+					'c' => __( 'Sed ut perspiciatis', 'lastimosa' ),
+					'd' => __( 'Excepteur sint occaecat', 'lastimosa' ),
 				),
 			),
-			1   => __( 'One', 'unyson' ),
-			2   => __( 'Two', 'unyson' ),
-			3   => __( 'Three', 'unyson' ),
+			1   => __( 'One', 'lastimosa' ),
+			2   => __( 'Two', 'lastimosa' ),
+			3   => __( 'Three', 'lastimosa' ),
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_short_select_2'              => array(
-		'label'   => __( 'Short Select', 'unyson' ),
+		'label'   => __( 'Short Select', 'lastimosa' ),
 		'type'    => 'short-select',
 		'value'   => '7',
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
 			'1' => '1',
 			'2' => '2',
@@ -197,22 +197,22 @@ $options = array(
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_select_multiple_2'           => array(
-		'label'   => __( 'Select Multiple', 'unyson' ),
+		'label'   => __( 'Select Multiple', 'lastimosa' ),
 		'type'    => 'select-multiple',
 		'value'   => array( 'c', '2' ),
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
 			''  => '---',
-			'a' => __( 'Lorem ipsum', 'unyson' ),
+			'a' => __( 'Lorem ipsum', 'lastimosa' ),
 			'b' => array(
-				'text' => __( 'Consectetur', 'unyson' ),
+				'text' => __( 'Consectetur', 'lastimosa' ),
 				'attr' => array(
 					'label'         => 'Label overrides text',
 					'data-whatever' => 'some data',
@@ -220,23 +220,23 @@ $options = array(
 			),
 			array(
 				'attr'    => array(
-					'label'         => __( 'Optgroup Label', 'unyson' ),
+					'label'         => __( 'Optgroup Label', 'lastimosa' ),
 					'data-whatever' => 'some data',
 				),
 				'choices' => array(
-					'c' => __( 'Sed ut perspiciatis', 'unyson' ),
-					'd' => __( 'Excepteur sint occaecat', 'unyson' ),
+					'c' => __( 'Sed ut perspiciatis', 'lastimosa' ),
+					'd' => __( 'Excepteur sint occaecat', 'lastimosa' ),
 				),
 			),
-			1   => __( 'One', 'unyson' ),
-			2   => __( 'Two', 'unyson' ),
-			3   => __( 'Three', 'unyson' ),
+			1   => __( 'One', 'lastimosa' ),
+			2   => __( 'Two', 'lastimosa' ),
+			3   => __( 'Three', 'lastimosa' ),
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_group_multi_select_2'        => array(
@@ -244,107 +244,107 @@ $options = array(
 		'options' => array(
 			'demo_multi_select_posts_2'      => array(
 				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Posts', 'unyson' ),
+				'label'      => __( 'Multi-Select: Posts', 'lastimosa' ),
 				'population' => 'posts',
 				'source'     => 'page',
 				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_multi_select_taxonomies_2' => array(
 				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Taxonomies', 'unyson' ),
+				'label'      => __( 'Multi-Select: Taxonomies', 'lastimosa' ),
 				'population' => 'taxonomy',
 				'source'     => 'category',
 				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_multi_select_users_2'      => array(
 				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Users', 'unyson' ),
+				'label'      => __( 'Multi-Select: Users', 'lastimosa' ),
 				'population' => 'users',
 				'source'     => 'administrator',
 				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_multi_select_array_2'      => array(
 				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Custom Array', 'unyson' ),
+				'label'      => __( 'Multi-Select: Custom Array', 'lastimosa' ),
 				'population' => 'array',
 				'choices'    => array(
-					'hello' => __( 'Hello', 'unyson' ),
-					'world' => __( 'World', 'unyson' ),
+					'hello' => __( 'Hello', 'lastimosa' ),
+					'world' => __( 'World', 'lastimosa' ),
 				),
 				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 		),
 	),
 	'demo_radio_2'                     => array(
-		'label'   => __( 'Radio', 'unyson' ),
+		'label'   => __( 'Radio', 'lastimosa' ),
 		'type'    => 'radio',
 		'value'   => 'c2',
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
-			'c1' => __( 'Radio 1 Custom Text', 'unyson' ),
-			'c2' => __( 'Radio 2 Custom Text', 'unyson' ),
-			'c3' => __( 'Radio 3 Custom Text', 'unyson' ),
+			'c1' => __( 'Radio 1 Custom Text', 'lastimosa' ),
+			'c2' => __( 'Radio 2 Custom Text', 'lastimosa' ),
+			'c3' => __( 'Radio 3 Custom Text', 'lastimosa' ),
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_radio_text_2'                => array(
-		'label'   => __( 'Radio Text', 'unyson' ),
+		'label'   => __( 'Radio Text', 'lastimosa' ),
 		'type'    => 'radio-text',
 		'value'   => '75',
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
-			'25'  => __( '25%', 'unyson' ),
-			'50'  => __( '50%', 'unyson' ),
-			'100' => __( '100%', 'unyson' ),
+			'25'  => __( '25%', 'lastimosa' ),
+			'50'  => __( '50%', 'lastimosa' ),
+			'100' => __( '100%', 'lastimosa' ),
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_image_picker_2'              => array(
-		'label'   => __( 'Image Picker', 'unyson' ),
+		'label'   => __( 'Image Picker', 'lastimosa' ),
 		'type'    => 'image-picker',
 		'value'   => '',
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'choices' => array(
 			'choice-1' => array(
 				'small' => array(
@@ -369,131 +369,131 @@ $options = array(
 		),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_icon_2'                      => array(
-		'label' => __( 'Icon', 'unyson' ),
+		'label' => __( 'Icon', 'lastimosa' ),
 		'type'  => 'icon',
 		'value' => 'fa fa-linux',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_upload_2'                    => array(
-		'label'       => __( 'Single Upload', 'unyson' ),
+		'label'       => __( 'Single Upload', 'lastimosa' ),
 		'desc'        => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'type'        => 'upload',
 		'images_only' => false,
 		'help'        => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_upload_images_2'             => array(
-		'label' => __( 'Single Upload (Images Only)', 'unyson' ),
+		'label' => __( 'Single Upload (Images Only)', 'lastimosa' ),
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'type'  => 'upload',
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_multi_upload_2'              => array(
-		'label'       => __( 'Multi Upload', 'unyson' ),
+		'label'       => __( 'Multi Upload', 'lastimosa' ),
 		'desc'        => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'type'        => 'multi-upload',
 		'images_only' => false,
 		'help'        => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_multi_upload_images_2'       => array(
-		'label' => __( 'Multi Upload (Images Only)', 'unyson' ),
+		'label' => __( 'Multi Upload (Images Only)', 'lastimosa' ),
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'type'  => 'multi-upload',
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_color_picker_2'              => array(
-		'label' => __( 'Color Picker', 'unyson' ),
+		'label' => __( 'Color Picker', 'lastimosa' ),
 		'type'  => 'color-picker',
 		'value' => '',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_rgba_color_picker_2' => array(
-		'label' => __( 'RGBA Color Picker', 'unyson' ),
+		'label' => __( 'RGBA Color Picker', 'lastimosa' ),
 		'type'  => 'rgba-color-picker',
 		'value' => 'rgba(255, 0, 0, .5)',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_gradient_2'                  => array(
-		'label' => __( 'Gradient', 'unyson' ),
+		'label' => __( 'Gradient', 'lastimosa' ),
 		'type'  => 'gradient',
 		'value' => array(
 			'primary'   => '#ffffff',
 			'secondary' => '#ffffff'
 		),
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_rgba_color_picker_2' => array(
-		'label' => __( 'RGBA Color Picker', 'unyson' ),
+		'label' => __( 'RGBA Color Picker', 'lastimosa' ),
 		'type'  => 'rgba-color-picker',
 		'value' => '',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_background_image_2'          => array(
-		'label'   => __( 'Background Image', 'unyson' ),
+		'label'   => __( 'Background Image', 'lastimosa' ),
 		'type'    => 'background-image',
 		'value'   => 'none',
 		'choices' => array(
@@ -561,16 +561,16 @@ $options = array(
 			),
 		),
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_typography_2'                => array(
-		'label' => __( 'Typography', 'unyson' ),
+		'label' => __( 'Typography', 'lastimosa' ),
 		'type'  => 'typography',
 		'value' => array(
 			'size'   => 17,
@@ -579,16 +579,16 @@ $options = array(
 			'color'  => '#0000ff'
 		),
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_typography-v2_2'                => array(
-		'label' => __( 'Typography V2', 'unyson' ),
+		'label' => __( 'Typography V2', 'lastimosa' ),
 		'type'  => 'typography-v2',
 		'value'      => array(
 			'family'    => 'Amarante',
@@ -611,25 +611,25 @@ $options = array(
 			'color'          => true
 		),
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 	),
 	'demo_datetime_range_2'            => array(
 		'type'             => 'datetime-range',
 		'attr'             => array( 'class' => 'custom-class', 'data-foo' => 'bar' ),
-		'label'            => __( 'Demo date range', 'unyson' ),
+		'label'            => __( 'Demo date range', 'lastimosa' ),
 		'desc'             => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'             => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 		'datetime-pickers' => array(
 			'from' => array(
@@ -650,14 +650,14 @@ $options = array(
 		'type'            => 'datetime-picker',
 		'value'           => '',
 		'attr'            => array( 'class' => 'custom-class', 'data-foo' => 'bar' ),
-		'label'           => __( 'Date & Time picker', 'unyson' ),
+		'label'           => __( 'Date & Time picker', 'lastimosa' ),
 		'desc'            => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'            => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 		'datetime-picker' => array(
 			'format'        => 'd-m-Y H:i',
@@ -672,54 +672,54 @@ $options = array(
 		)
 	),
 	'demo_slider_2' => array(
-		'label' => __( 'Slider', 'unyson' ),
+		'label' => __( 'Slider', 'lastimosa' ),
 		'type'  => 'slider',
 		'value' => 10,
-		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unyson' ),
+		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
-			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unyson' ),
-			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium', 'unyson' )
+			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'lastimosa' ),
+			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium', 'lastimosa' )
 		),
 	),
 	'demo_range_slider_2' => array(
-		'label' => __( 'Range Slider', 'unyson' ),
+		'label' => __( 'Range Slider', 'lastimosa' ),
 		'type'  => 'range-slider',
 		'value' => array(
 			'from' => 30,
 			'to' => 50
 		),
-		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unyson' ),
+		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'lastimosa' ),
 		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
-			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unyson' ),
-			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium', 'unyson' )
+			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'lastimosa' ),
+			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium', 'lastimosa' )
 		),
 	),
 	'demo_addable_popup_2'             => array(
-		'label'         => __( 'Addable Popup', 'unyson' ),
+		'label'         => __( 'Addable Popup', 'lastimosa' ),
 		'type'          => 'addable-popup',
 		'desc'          => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'template'      => '{{- demo_text }}',
 		'popup-options' => array(
 			'demo_text'                => array(
-				'label' => __( 'Text', 'unyson' ),
+				'label' => __( 'Text', 'lastimosa' ),
 				'type'  => 'text',
 				'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_image_picker'        => array(
-				'label'   => __( 'Image Picker', 'unyson' ),
+				'label'   => __( 'Image Picker', 'lastimosa' ),
 				'type'    => 'image-picker',
 				'value'   => '',
 				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'attr'    => array(
 					'data-height' => 70
 				),
@@ -747,53 +747,53 @@ $options = array(
 				),
 				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_upload_images'       => array(
-				'label' => __( 'Single Upload (Images Only)', 'unyson' ),
+				'label' => __( 'Single Upload (Images Only)', 'lastimosa' ),
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'type'  => 'upload',
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_addable_popup_inner' => array(
-				'label'         => __( 'Addable Popup', 'unyson' ),
+				'label'         => __( 'Addable Popup', 'lastimosa' ),
 				'type'          => 'addable-popup',
 				'desc'          => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'template'      => 'Title color-picker value : {{- demo_color_picker }}',
 				'popup-options' => array(
 					'demo_multi_upload_images' => array(
-						'label' => __( 'Multi Upload (images only)', 'unyson' ),
+						'label' => __( 'Multi Upload (images only)', 'lastimosa' ),
 						'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-							'unyson' ),
+							'lastimosa' ),
 						'type'  => 'multi-upload',
 						'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 							__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-								'unyson' ),
+								'lastimosa' ),
 							__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-								'unyson' )
+								'lastimosa' )
 						),
 					),
 					'demo_color_picker'        => array(
-						'label' => __( 'Color Picker', 'unyson' ),
+						'label' => __( 'Color Picker', 'lastimosa' ),
 						'type'  => 'color-picker',
 						'value' => '',
 						'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-							'unyson' ),
+							'lastimosa' ),
 						'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 							__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-								'unyson' ),
+								'lastimosa' ),
 							__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-								'unyson' )
+								'lastimosa' )
 						),
 					)
 				)
@@ -801,55 +801,55 @@ $options = array(
 		),
 	),
 	'demo_addable_option_2'            => array(
-		'label'  => __( 'Addable Option', 'unyson' ),
+		'label'  => __( 'Addable Option', 'lastimosa' ),
 		'type'   => 'addable-option',
 		'option' => array(
 			'type' => 'text',
 		),
 		'value'  => array( 'Option 1', 'Option 2', 'Option 3' ),
 		'desc'   => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'   => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		)
 	),
 	'demo_addable_box_2'               => array(
-		'label'        => __( 'Addable Box', 'unyson' ),
+		'label'        => __( 'Addable Box', 'lastimosa' ),
 		'type'         => 'addable-box',
 		'value'        => array(),
 		'desc'         => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'unyson' ),
+			'lastimosa' ),
 		'help'         => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'unyson' ),
+				'lastimosa' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-				'unyson' )
+				'lastimosa' )
 		),
 		'box-controls' => array(//'custom' => '<small class="dashicons dashicons-smiley" title="Custom"></small>',
 		),
 		'box-options'  => array(
 			'demo_text'     => array(
-				'label' => __( 'Text', 'unyson' ),
+				'label' => __( 'Text', 'lastimosa' ),
 				'type'  => 'text',
 				'value' => 'Lorem ipsum dolor sit amet',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_textarea' => array(
-				'label' => __( 'Textarea', 'unyson' ),
+				'label' => __( 'Textarea', 'lastimosa' ),
 				'type'  => 'textarea',
 				'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => array(
 					'icon' => 'video',
 					'html' => '<iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>'
@@ -862,29 +862,29 @@ $options = array(
 		'type'    => 'group',
 		'options' => array(
 			'demo_text_in_group_2'     => array(
-				'label' => __( 'Text in Group', 'unyson' ),
+				'label' => __( 'Text in Group', 'lastimosa' ),
 				'type'  => 'text',
 				'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_password_in_group_2' => array(
-				'label' => __( 'Password in Group', 'unyson' ),
+				'label' => __( 'Password in Group', 'lastimosa' ),
 				'type'  => 'password',
 				'value' => 'Dotted text',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 		),
@@ -896,29 +896,29 @@ $options = array(
 		'desc'          => false,
 		'inner-options' => array(
 			'demo_text'     => array(
-				'label' => __( 'Text in Multi', 'unyson' ),
+				'label' => __( 'Text in Multi', 'lastimosa' ),
 				'type'  => 'text',
 				'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 			'demo_textarea' => array(
-				'label' => __( 'Textarea in Multi', 'unyson' ),
+				'label' => __( 'Textarea in Multi', 'lastimosa' ),
 				'type'  => 'textarea',
 				'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 				'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			),
 		),
@@ -929,19 +929,19 @@ $options = array(
 		'desc'         => false,
 		'picker'       => array(
 			'gadget' => array(
-				'label'   => __( 'Multi Picker: Select', 'unyson' ),
+				'label'   => __( 'Multi Picker: Select', 'lastimosa' ),
 				'type'    => 'select',
 				'choices' => array(
-					'phone'  => __( 'Phone', 'unyson' ),
-					'laptop' => __( 'Laptop', 'unyson' )
+					'phone'  => __( 'Phone', 'lastimosa' ),
+					'laptop' => __( 'Laptop', 'lastimosa' )
 				),
 				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				)
 			)
 		),
@@ -949,26 +949,26 @@ $options = array(
 			'phone'  => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'memory' => array(
 					'type'    => 'select',
-					'label'   => __( 'Memory', 'unyson' ),
+					'label'   => __( 'Memory', 'lastimosa' ),
 					'choices' => array(
-						'16' => __( '16Gb', 'unyson' ),
-						'32' => __( '32Gb', 'unyson' ),
-						'64' => __( '64Gb', 'unyson' ),
+						'16' => __( '16Gb', 'lastimosa' ),
+						'32' => __( '32Gb', 'lastimosa' ),
+						'64' => __( '64Gb', 'lastimosa' ),
 					)
 				)
 			),
 			'laptop' => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'webcam' => array(
 					'type'  => 'switch',
-					'label' => __( 'Webcam', 'unyson' ),
+					'label' => __( 'Webcam', 'lastimosa' ),
 				)
 			),
 		),
@@ -983,19 +983,19 @@ $options = array(
 		),
 		'picker'       => array(
 			'gadget' => array(
-				'label'   => __( 'Multi Picker: Radio', 'unyson' ),
+				'label'   => __( 'Multi Picker: Radio', 'lastimosa' ),
 				'type'    => 'radio',
 				'choices' => array(
-					'phone'  => __( 'Phone', 'unyson' ),
-					'laptop' => __( 'Laptop', 'unyson' )
+					'phone'  => __( 'Phone', 'lastimosa' ),
+					'laptop' => __( 'Laptop', 'lastimosa' )
 				),
 				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				)
 			)
 		),
@@ -1003,26 +1003,26 @@ $options = array(
 			'phone'  => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'memory' => array(
 					'type'    => 'select',
-					'label'   => __( 'Memory', 'unyson' ),
+					'label'   => __( 'Memory', 'lastimosa' ),
 					'choices' => array(
-						'16' => __( '16Gb', 'unyson' ),
-						'32' => __( '32Gb', 'unyson' ),
-						'64' => __( '64Gb', 'unyson' ),
+						'16' => __( '16Gb', 'lastimosa' ),
+						'32' => __( '32Gb', 'lastimosa' ),
+						'64' => __( '64Gb', 'lastimosa' ),
 					)
 				)
 			),
 			'laptop' => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'webcam' => array(
 					'type'  => 'switch',
-					'label' => __( 'Webcam', 'unyson' ),
+					'label' => __( 'Webcam', 'lastimosa' ),
 				)
 			),
 		),
@@ -1034,11 +1034,11 @@ $options = array(
 		'desc'         => false,
 		'picker'       => array(
 			'gadget' => array(
-				'label'   => __( 'Multi Picker: Image Picker', 'unyson' ),
+				'label'   => __( 'Multi Picker: Image Picker', 'lastimosa' ),
 				'type'    => 'image-picker',
 				'choices' => array(
 					'phone'  => array(
-						'label' => __( 'Phone', 'unyson' ),
+						'label' => __( 'Phone', 'lastimosa' ),
 						'small' => array(
 							'height' => 70,
 							'src'    => get_template_directory_uri() . '/images/image-picker-demo/thumb1.jpg'
@@ -1049,7 +1049,7 @@ $options = array(
 						),
 					),
 					'laptop' => array(
-						'label' => __( 'Laptop', 'unyson' ),
+						'label' => __( 'Laptop', 'lastimosa' ),
 						'small' => array(
 							'height' => 70,
 							'src'    => get_template_directory_uri() . '/images/image-picker-demo/thumb2.jpg'
@@ -1061,12 +1061,12 @@ $options = array(
 					)
 				),
 				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				)
 			)
 		),
@@ -1074,26 +1074,26 @@ $options = array(
 			'phone'  => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'memory' => array(
 					'type'    => 'select',
-					'label'   => __( 'Memory', 'unyson' ),
+					'label'   => __( 'Memory', 'lastimosa' ),
 					'choices' => array(
-						'16' => __( '16Gb', 'unyson' ),
-						'32' => __( '32Gb', 'unyson' ),
-						'64' => __( '64Gb', 'unyson' ),
+						'16' => __( '16Gb', 'lastimosa' ),
+						'32' => __( '32Gb', 'lastimosa' ),
+						'64' => __( '64Gb', 'lastimosa' ),
 					)
 				)
 			),
 			'laptop' => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'webcam' => array(
 					'type'  => 'switch',
-					'label' => __( 'Webcam', 'unyson' ),
+					'label' => __( 'Webcam', 'lastimosa' ),
 				)
 			),
 		),
@@ -1105,24 +1105,24 @@ $options = array(
 		'desc'         => false,
 		'picker'       => array(
 			'gadget' => array(
-				'label'        => __( 'Switch', 'unyson' ),
+				'label'        => __( 'Switch', 'lastimosa' ),
 				'type'         => 'switch',
 				'right-choice' => array(
 					'value' => 'laptop',
-					'label' => __( 'Laptop', 'unyson' )
+					'label' => __( 'Laptop', 'lastimosa' )
 				),
 				'left-choice'  => array(
 					'value' => 'phone',
-					'label' => __( 'Phone', 'unyson' )
+					'label' => __( 'Phone', 'lastimosa' )
 				),
 				'value'        => 'yes',
 				'desc'         => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					'unyson' ),
+					'lastimosa' ),
 				'help'         => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-						'unyson' ),
+						'lastimosa' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-						'unyson' )
+						'lastimosa' )
 				),
 			)
 		),
@@ -1130,26 +1130,26 @@ $options = array(
 			'phone'  => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'memory' => array(
 					'type'    => 'select',
-					'label'   => __( 'Memory', 'unyson' ),
+					'label'   => __( 'Memory', 'lastimosa' ),
 					'choices' => array(
-						'16' => __( '16Gb', 'unyson' ),
-						'32' => __( '32Gb', 'unyson' ),
-						'64' => __( '64Gb', 'unyson' ),
+						'16' => __( '16Gb', 'lastimosa' ),
+						'32' => __( '32Gb', 'lastimosa' ),
+						'64' => __( '64Gb', 'lastimosa' ),
 					)
 				)
 			),
 			'laptop' => array(
 				'price'  => array(
 					'type'  => 'text',
-					'label' => __( 'Price', 'unyson' ),
+					'label' => __( 'Price', 'lastimosa' ),
 				),
 				'webcam' => array(
 					'type'  => 'switch',
-					'label' => __( 'Webcam', 'unyson' ),
+					'label' => __( 'Webcam', 'lastimosa' ),
 				)
 			),
 		),

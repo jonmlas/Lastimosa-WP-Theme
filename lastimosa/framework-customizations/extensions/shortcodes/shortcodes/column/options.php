@@ -7,7 +7,7 @@ $options = array(
 		'type' => 'unique' 
 	),
 	'tab_layout' => array(
-		'title'   => __( 'Layout', 'unyson' ),
+		'title'   => __( 'Layout', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
 			'alignment' =>	array(
@@ -71,15 +71,15 @@ $options = array(
 				)
 			),
 			'height'   => array(
-				'label'        => __( 'Height', 'unyson' ),
+				'label'        => __( 'Height', 'lastimosa' ),
 				'type'         => 'switch',
 				'left-choice'  => array(
 					'value' => '',
-					'label' => __( 'Auto', 'unyson' )
+					'label' => __( 'Auto', 'lastimosa' )
 				),
 				'right-choice' => array(
 					'value' => 'h-100',
-					'label' => __( 'Full', 'unyson' )
+					'label' => __( 'Full', 'lastimosa' )
 				),
 				'value'        => '',
 				'desc'    => __( 'Defines the height of the content area.','lastimosa' ),
@@ -87,10 +87,17 @@ $options = array(
 		),
 	),
 	'tab_bg' => array(
-		'title'   => __( 'Background', 'unyson' ),
+		'title'   => __( 'Background', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
 			'background' => lastimosa_option_bg_atts('Column')
+		),
+	),
+	'tab_link' => array(
+		'title'   => __( 'Link', 'lastimosa' ),
+		'type'    => 'tab',
+		'options' => array(
+			'link' => lastimosa_option_link(),
 		),
 	),
 	'tab_hover' => array(
@@ -127,11 +134,11 @@ $options = array(
 		),
 	),
 	'tab_advanced' => array(
-		'title'   => __( 'Advanced', 'unyson' ),
+		'title'   => __( 'Advanced', 'lastimosa' ),
 		'type'    => 'tab',
 		'options' => array(
 			'advanced_group' => array(
-				'title'   => __( 'Advance', 'unyson' ),
+				'title'   => __( 'Advance', 'lastimosa' ),
 				'type'    => 'group',
 				'options' => array(
 					'spacing'   => lastimosa_option_spacing( array(	'all' => array( 'value' => 'py-2' ) ) ),
@@ -147,6 +154,7 @@ $options = array(
 						)
 					),
 					'visibility'=> lastimosa_option_visibility(),
+					'custom_id' => lastimosa_option_custom_id( 'Column ID', 'Useful for anchor links' ),
 					'class' 		=> lastimosa_option_class(),
 				),
 			),

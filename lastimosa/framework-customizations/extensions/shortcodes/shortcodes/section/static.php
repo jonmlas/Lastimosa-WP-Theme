@@ -22,7 +22,6 @@ if ( ! function_exists('delete_shortcode_section_style_temp') ) :
 endif;
 
 if ( ! function_exists( '_action_theme_shortcode_section_enqueue_dynamic_css' ) ) :
-
 	/**
 	 * @internal
 	 * @param array $data
@@ -163,7 +162,7 @@ if ( ! function_exists( '_action_theme_shortcode_section_enqueue_dynamic_css' ) 
 		
 		global $post;
 		$post_slug 	= $post->post_name;
-		$colwrap 		= $atts['width'];
+		$colwrap 	= $atts['width'];
 		/*if(in_array($atts['style']['selected'], array('default','parallax'))) {
 			// We'll have to move the section's background array.
 			$atts['background'] = $atts['style'][$atts['style']['selected']]['background'];
@@ -171,23 +170,23 @@ if ( ! function_exists( '_action_theme_shortcode_section_enqueue_dynamic_css' ) 
 		}*/
 		$atts['background'] = $atts['style'][$atts['style']['selected']]['background'];
 		
-		$css = array();
+		$css = array(); // Needed to be declared to avoid null error in lastimosa_options_get_shortcode_css
 		// Section atts
 		if( !in_array($atts['style']['selected'], array('parallax')) ) {
 			$css[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' { ';
-			$css 	 = array_merge($css, lastimosa_get_options_background_css($atts));
+			$css   = array_merge($css, lastimosa_get_options_background_css($atts));
 			$css[] = '}';
 		}
 		
 		// Wrapper atts
 		if( in_array($atts['style']['selected'], array('parallax')) ) {
 			$css[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' { ';
-			$css 	 = array_merge($css, lastimosa_get_options_background_css($atts));
+			$css   = array_merge($css, lastimosa_get_options_background_css($atts));
 			$css[] = '}';
 		}
 		
 		if( $atts['height']['select'] == 'custom' ) {
-			$css[]	= '@media (min-width: 768px) {';
+			$css[] = '@media (min-width: 768px) {';
 			$css[] = '.' . $post->post_type . '-' . $post->post_name . ' .' . $atts['id'] . ' .' . $colwrap . ' { ';
 			$css[] = 'min-height:'.$atts['height']['custom']['height'] . ';';
 			$css[] = '}';
@@ -211,13 +210,12 @@ if ( ! function_exists( '_action_theme_shortcode_section_enqueue_dynamic_css' ) 
 		}
 		
 		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
-
-		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
+		lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
-add_action(
-	'fw_ext_shortcodes_enqueue_static:section',
-	'_action_theme_shortcode_section_enqueue_dynamic_css'
-);
+	add_action(
+		'fw_ext_shortcodes_enqueue_static:section',
+		'_action_theme_shortcode_section_enqueue_dynamic_css'
+	);
 
 endif;

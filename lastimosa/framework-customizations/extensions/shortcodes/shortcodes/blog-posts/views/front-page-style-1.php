@@ -61,7 +61,7 @@ $numeric_paginate_links = paginate_links( array(
 		echo '<div class="row">';	
 		while ( have_posts() ) : the_post();
 			$i++;
-			include dirname( __FILE__ ) .'/'.$atts['style']['view'].'.php';
+			include dirname( __FILE__ ) .'/'.$atts['style']['selected'].'.php';
 			if( $i == $atts['columns'] && $atts['columns'] != 1 && (($wp_query->current_post +1) != ($wp_query->post_count)) ) {
 				echo '<div class="w-100"></div>';
 				$i = 0;

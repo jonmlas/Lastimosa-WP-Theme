@@ -1,0 +1,46 @@
+/* 
+ * http://bestjquery.com/tutorial/progress-bar/demo78/ 
+*/
+
+.progress-bar-style-2 {
+	.progress-title{
+		font-weight: 700;
+		margin: 0 0 10px 12px;
+	}
+	.progress-outer{
+		background: #fff;
+		padding: 5px 60px 5px 5px;
+		border: 5px solid #bebfbf;
+		border-radius: 45px;
+		margin-bottom: 20px;
+		position: relative;
+	}
+	.progress{
+		background: #bebfbf;
+		border-radius: 20px;
+		margin: 0;
+		.progress-bar{
+			border-radius: 20px;
+			box-shadow: none;
+			animation: animate-positive 2s;
+		}
+		.progress-bar-animate {
+			-webkit-animation: 1s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+			animation: 1s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+		}
+		.progress-value{
+			font-size: 20px;
+			font-weight: 700;
+			color: #6b7880;
+			position: absolute;
+			top: 3px;
+			right: 10px;
+			line-height: 1;
+			transform: translateY(-50%);
+			top: 50%;
+		}
+	}
+	@keyframes animate-positive{
+		0%{ width: 0; }
+	}
+}

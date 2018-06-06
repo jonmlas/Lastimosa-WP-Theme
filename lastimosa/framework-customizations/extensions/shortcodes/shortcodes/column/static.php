@@ -32,19 +32,19 @@ if (!function_exists('_action_theme_shortcode_column_enqueue_dynamic_css')):
 		$atts = fw_ext_shortcodes_decode_attr($atts, $shortcode, $data['post']->ID);
 		$atts['shortcode'] 	= $shortcode;
 		global $post;
-		$css = array();
+		
 		$atts['id'] = substr( $shortcode, 0, 3 ) . '-' . substr($atts['id'], 0, 10);
 		$post_slug = $post->post_name;
 		
 		lastimosa_get_option_enqueue_wow( $atts );
-
-		$css[] = '.' . $post->post_type . '-' . $post->post_name.' .' . $atts['id'] . ' .col-wrap { ';
+		
+		$css = array();
+		$css[] = '.' . $post->post_type . '-' . $post->post_name.' .' . $atts['id'] . ' .wrap { ';
 		$css = array_merge( $css, lastimosa_get_options_background_css($atts) );
 		$css[] = '}';
 		
 		$css = array_merge( $css, lastimosa_get_option_spacing_css( $atts ) );
-
-		if( ! empty( $css ) )		lastimosa_options_get_shortcode_css( $atts,$css );
+		lastimosa_options_get_shortcode_css( $atts,$css );
 	}
 
 	add_action(

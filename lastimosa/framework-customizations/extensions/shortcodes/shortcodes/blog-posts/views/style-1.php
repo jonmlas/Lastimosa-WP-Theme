@@ -38,7 +38,11 @@ $col_class .= ' hvr-grow';
 		
 			if( $atts['columns'] > 1 && $atts['image_position'] != 'center' ) $image_position = 'float-none float-xl-' . $image_float . ' ' . $image_margin;
 			
-			$thumbnail_class= 'thumbnail';
+			$thumbnail_class = array();
+			$thumbnail_class[] = 'thumbnail';
+			$thumbnail_class[] = $image_position;
+			$thumbnail_class = join( ' ', $thumbnail_class );
+			
 			if( $atts['columns'] > 3 ) 	$thumbnail_class .= ' clearfix';
 			?>
 
@@ -46,7 +50,7 @@ $col_class .= ' hvr-grow';
 				<a href="<?php the_permalink() ?>">
 				<?php
 				if ( has_post_thumbnail() ) {
-					the_post_thumbnail( $atts['image'], array( 'class' => $image_position ) );
+					the_post_thumbnail( $atts['image'] );
 				} else {
 					if( $atts['image_placeholder'] ) {
 						$image_sizes = lastimosa_get_image_sizes();

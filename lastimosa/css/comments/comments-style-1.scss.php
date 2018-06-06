@@ -1,7 +1,7 @@
 <?php 
 	$theme_layout = lastimosa_get_option('theme_layout');		
 ?>
-$comment-width: <?php echo $theme_layout['content-width']; ?>;
+$comment-width: <?php echo $theme_layout['container-width']; ?>;
 
 .comments-area {
 	width:100%;

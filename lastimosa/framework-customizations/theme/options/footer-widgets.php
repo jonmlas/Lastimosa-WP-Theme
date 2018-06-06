@@ -132,49 +132,6 @@ $options = array(
 						'background' => lastimosa_option_bg_atts('Widget')
 					),
 				),
-				/*'overlay' => array(
-					'type'  => 'multi-picker',
-					'label' => false,
-					'desc'  => false,
-					'picker' => array(
-						'overlay' => array(
-							'type'  => 'switch',
-							'label' => __( 'Overlay Color', 'lastimosa' ),
-							'desc'  => __( 'Enable widget color overlay?', 'lastimosa' ),
-							'value' => 'no',
-							'right-choice' => array(
-								'value' => 'yes',
-								'label' => __('Yes', 'lastimosa'),
-							),
-							'left-choice' => array(
-								'value' => 'no',
-								'label' => __('No', 'lastimosa'),
-							),
-						),
-					),
-					'choices' => array(
-						'no'  => array(),
-						'yes' => array(
-							'color'    => array(
-									'label' => __( '', 'lastimosa' ),
-									'desc' => __( 'Overlay Color', 'lastimosa' ),
-									'type'  => 'color-picker',
-									'value' => '#000',
-								),
-							'opacity' => array(
-								'type'  => 'slider',
-								'value' => 100,
-								'properties' => array(
-									'min' => 0,
-									'max' => 100,
-									'sep' => 1,
-								),
-								'label' => __( '', 'lastimosa' ),
-								'desc'  => __( 'Select the overlay color opacity in %', 'lastimosa' ),
-							)
-						),
-					),
-				), */
 			),
 		),
 		'show_borders' => false,

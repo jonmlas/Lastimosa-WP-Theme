@@ -9,6 +9,7 @@
 
 body {
 	<?php echo join( ' ', lastimosa_get_options_background_css( $body_bg_atts ) ); ?>
+	overflow-x: hidden;
 }
 
 <?php if($theme_layout['layout']['selected'] == 'container') { ?>
@@ -21,20 +22,34 @@ box.container {
 }
 <?php } ?>
 
-$content-width: <?php echo $theme_layout['content-width']; ?>;
+$container_width: <?php echo $theme_layout['container-width']; ?>;
 .container,
 main .fw-container,
 article.post-password-required {
 	width:100%;
-  max-width:$content-width;
+	max-width: rem($container_width);
 }
 
 .site-main.container {
-  padding: 0;
 	min-height: 50vh;
+}
+section, .wrap, .wrap > * {
+	position: relative;
 }
 article.post-password-required {
 	margin:0 auto;
+}
+
+.link {
+	cursor: pointer;
+}
+
+/* Anchor link margin top fix */
+:target:before {
+content: "";
+display: block;
+height: rem(100px); /* fixed header height*/
+margin: rem(-100px) 0 0; /* negative fixed header height */
 }
 
 <?php 
@@ -302,22 +317,33 @@ a img.aligncenter {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-article {
-	margin-bottom: 2rem;
-}
 
+main article > .entry-content {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.unyson.page-builder main article > .entry-content {
+    margin-left: 0;
+    margin-right: 0;
+}
+.site-main > article {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 #content.site-content {
-  padding-bottom: 3.75rem;
-  padding-top: 4.125rem;
+	padding-bottom: 3.75rem;
+	padding-top: 4.125rem;
 }
-
+.sticky-header main.site-main {
+    padding-top: 80px;
+}
 .sticky .entry-title::before {
-  content: '\f08d';
-  font-family: fontawesome;
-  font-size: 1.563rem;
-  left: -2.5rem;
-  position: absolute;
-  top: 0.375rem;
+	content: '\f08d';
+	font-family: fontawesome;
+	font-size: 1.563rem;
+	left: -2.5rem;
+	position: absolute;
+	top: 0.375rem;
 }
 
 .sticky .entry-title {

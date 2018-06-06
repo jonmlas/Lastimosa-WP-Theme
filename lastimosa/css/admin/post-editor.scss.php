@@ -1,3 +1,9 @@
+.mb-0 {
+	margin-bottom: 0;
+}
+.builder-item .pb-item img.media-image {
+    background: #f0f0f0;
+}
 .builder-items .fw-row {
   display: -ms-flexbox;
   display: flex;
@@ -99,6 +105,10 @@ if(!empty($theme_colors)) {
 	for ($i = 0; $i < count($theme_colors); $i++) {
 		echo 'option[value="text-'.sanitize_title_with_dashes($theme_colors[$i]['name']) . '"] {' .
 						'color:'.$theme_colors[$i]['color'].';'.
+					'}';
+		echo 'option[value="bg-'.sanitize_title_with_dashes($theme_colors[$i]['name']) . '"] {' .
+						'color: invert('.$theme_colors[$i]['color'].');'.
+						'background-color: '.$theme_colors[$i]['color'].';'.
 					'}';
 	}
 } ?>

@@ -2,7 +2,7 @@
 $uri = fw_get_template_customizations_directory_uri('/extensions/shortcodes/shortcodes/blog-posts');
 
 if( is_front_page() ) {
-	include dirname( __FILE__ ) .'/front-page-' . $atts['style']['view'].'.php';
+	include dirname( __FILE__ ) .'/front-page-' . $atts['style']['selected'].'.php';
 	return;
 }
 $i = 0;
@@ -37,7 +37,7 @@ if ( !is_admin() && $atts['page_navigation'] == 'infinite' ) {
 		echo '<div class="row">';	
 		while ( $wp_query->have_posts() ) : $wp_query->the_post();
 			$i++;
-			include dirname( __FILE__ ) . '/' . $atts['style']['view'] . '.php';
+			include dirname( __FILE__ ) . '/' . $atts['style']['selected'] . '.php';
 			if( $i == $atts['columns'] && $atts['columns'] != 1 && (($wp_query->current_post +1) != ($wp_query->post_count)) ) {
 				echo '<div class="w-100"></div>';
 				$i = 0;

@@ -13,8 +13,8 @@ $options = array(
 		'type'    => 'tab',
 		'options' => array(
 			'text'  => array(
-				'label' => __( 'Label', 'fw' ),
-				'desc'  => __( 'Enter the button text', 'fw' ),
+				'label' => __( 'Label', 'lastimosa' ),
+				'desc'  => __( 'Enter the button text', 'lastimosa' ),
 				'type'  => 'text',
 				'value' => 'Submit'
 			),

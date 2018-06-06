@@ -1,5 +1,5 @@
 <?php 
-$css_styles = get_option( 'text-block-style');
+$css_styles = get_option( 'special-heading-style');
 if( !empty($css_styles) ) :
 	foreach($css_styles as $id_key => $id_value)
 	{

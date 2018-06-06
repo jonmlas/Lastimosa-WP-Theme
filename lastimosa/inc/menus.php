@@ -45,9 +45,9 @@ $lastimosa_menus = array(
 		'menu_class'      => 'nav-menu',
 		'link_before'     => '<span>',
 		'link_after'      => '</span>',
-		'item_spacing'   	=> 'discard',
+		'item_spacing'    => 'discard',
 		'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
-    'walker'          => new wp_bootstrap_navwalker()
+		'walker'          => new wp_bootstrap_navwalker()
 	),
 	'secondary' => array(
 		'theme_location'  => 'secondary',
@@ -58,9 +58,9 @@ $lastimosa_menus = array(
 		'menu_class'      => 'nav-menu',
 		'link_before'     => '<span>',
 		'link_after'      => '</span>',
-		'item_spacing'   	=> 'discard',
+		'item_spacing'    => 'discard',
 		'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
-    'walker'          => new wp_bootstrap_navwalker()
+		'walker'          => new wp_bootstrap_navwalker()
 	),
 	'footer'    => array(
 		'theme_location'  => 'footer',
@@ -69,7 +69,7 @@ $lastimosa_menus = array(
 		'container_id'    => 'footer-menu',
 		'container_class' => 'footer-menu',
 		'menu_class'      => '',
-		'item_spacing'   	=> 'discard',
+		'item_spacing'    => 'discard',
 		'link_before'     => '<span>',
 		'link_after'      => '</span>'
 	)

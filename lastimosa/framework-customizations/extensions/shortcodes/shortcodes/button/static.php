@@ -5,9 +5,9 @@
 // This will erase the css after you remove the button
 if (!function_exists('delete_shortcode_button_style_temp')):
 	function delete_shortcode_button_style_temp() {
-			delete_option( 'btn-style_temp' );	
+			delete_option( 'btn-style-temp' );	
 	}
-	if( get_option( 'btn-style_temp' ) ) {
+	if( get_option( 'btn-style-temp' ) ) {
 		delete_shortcode_button_style_temp();
 	}
 endif;
@@ -34,9 +34,10 @@ if (!function_exists('_action_theme_shortcode_button_enqueue_dynamic_css')):
 		}
 
 		lastimosa_get_option_enqueue_wow( $atts );
-		$css = lastimosa_get_option_spacing_css( $atts );
 		
-		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
+		$css = array();
+		$css = lastimosa_get_option_spacing_css( $atts );
+		lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 add_action(

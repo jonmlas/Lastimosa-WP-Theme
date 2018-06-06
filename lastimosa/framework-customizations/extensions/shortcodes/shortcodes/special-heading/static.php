@@ -27,9 +27,10 @@ if (!function_exists('_action_theme_shortcode_special_heading_enqueue_dynamic_cs
 		$atts['id'] = substr($atts['id'], 0, 10);
 		
 		lastimosa_get_option_enqueue_wow( $atts );
-		$css = lastimosa_get_option_spacing_css( $atts );
 		
-		if( ! empty( $css ) )	lastimosa_options_get_shortcode_css( $atts, $css );
+		$css = array(); // Needed to be declared to avoid null error in lastimosa_options_get_shortcode_css
+		$css = lastimosa_get_option_spacing_css( $atts );
+		lastimosa_options_get_shortcode_css( $atts, $css );
 	}
 
 	add_action(

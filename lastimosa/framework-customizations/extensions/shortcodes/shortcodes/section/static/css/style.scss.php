@@ -48,42 +48,40 @@ section {
 	}
 }
 
-@media (min-width: 768px) {
-	.full-vh {
-		min-height: 100%;  /* Fallback for vh unit */
-		-webkit-height: 100vh;
-		-moz-height: 100vh;
-		-ms-height: 100vh;
-		-o-height: 100vh;
-		min-height: 100vh;
-	}
+.full-vh {
+	min-height: 100%;  /* Fallback for vh unit */
+	-webkit-height: 100vh;
+	-moz-height: 100vh;
+	-ms-height: 100vh;
+	-o-height: 100vh;
+	min-height: 100vh;
+}
 
-	.two-thirds-vh {
-		min-height: 75%;  /* Fallback for vh unit */
-		-webkit-height: 75vh;
-		-moz-height: 75vh;
-		-ms-height: 75vh;
-		-o-height: 75vh;		
-		min-height: 75vh;
-	}
+.two-thirds-vh {
+	min-height: 75%;  /* Fallback for vh unit */
+	-webkit-height: 75vh;
+	-moz-height: 75vh;
+	-ms-height: 75vh;
+	-o-height: 75vh;		
+	min-height: 75vh;
+}
 
-	.half-vh {
-		min-height: 50%;  /* Fallback for vh unit */
-		-webkit-height: 50vh;
-		-moz-height: 50vh;
-		-ms-height: 50vh;
-		-o-height: 50vh;	
-		min-height: 50vh;
-	}
+.half-vh {
+	min-height: 50%;  /* Fallback for vh unit */
+	-webkit-height: 50vh;
+	-moz-height: 50vh;
+	-ms-height: 50vh;
+	-o-height: 50vh;	
+	min-height: 50vh;
+}
 
-	.quarter-vh {
-		min-height: 25%;  /* Fallback for vh unit */
-		-webkit-height: 25vh;
-		-moz-height: 25vh;
-		-ms-height: 25vh;
-		-o-height: 25vh;	
-		min-height: 25vh;
-	}
+.quarter-vh {
+	min-height: 25%;  /* Fallback for vh unit */
+	-webkit-height: 25vh;
+	-moz-height: 25vh;
+	-ms-height: 25vh;
+	-o-height: 25vh;	
+	min-height: 25vh;
 }
 
 .vertical-center {

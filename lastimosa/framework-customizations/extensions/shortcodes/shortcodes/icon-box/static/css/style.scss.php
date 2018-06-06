@@ -1,12 +1,8 @@
-/* Style for the Icon Shortcode */
+/* Styles for the Icon Box Shortcode */
 
-.icon-list {
-	padding-left:0;
-	i, span.title  {
-		display:inline-block;
-		vertical-align:middle;
-	}
-	span.title  {
-		margin: 0 5px;
-	}
+.icon-box > p {
+    margin-bottom: 0;
+}
+.overflow-fix > * {
+    overflow: hidden;
 }
